@@ -1,0 +1,9 @@
+{
+  "globals": {
+    "document": true
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": "off",
+    "no-console": "off"
+  }
+}

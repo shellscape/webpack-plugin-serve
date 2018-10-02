@@ -1,0 +1,70 @@
+{
+  "name": "webpack-plugin-serve",
+  "version": "0.1.0",
+  "description": "",
+  "license": "MIT",
+  "repository": "shellscape/webpack-plugin-serve",
+  "author": "shellscape",
+  "homepage": "https://github.com/shellscape/webpack-plugin-serve",
+  "bugs": "https://github.com/shellscape/webpack-plugin-serve/issues",
+  "bin": "",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">= 10.11.0"
+  },
+  "scripts": {
+    "ci:coverage": "nyc npm run test && nyc report --reporter=text-lcov > coverage.lcov",
+    "ci:lint": "npm run lint && npm run security",
+    "ci:lint:commits": "commitlint --from=${CIRCLE_BRANCH} --to=${CIRCLE_SHA1}",
+    "ci:test": "npm run test",
+    "commitlint": "commitlint",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "lint": "eslint --fix --cache lib test",
+    "lint-staged": "lint-staged",
+    "run": "webpack --config test/fixtures/simple/webpack.config.js",
+    "security": "npm audit",
+    "test": "ava"
+  },
+  "files": [
+    "lib/",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "connect-history-api-fallback": "^1.5.0",
+    "koa": "^2.5.3",
+    "koa-compress": "^3.0.0",
+    "koa-connect": "^2.0.1",
+    "koa-static": "^5.0.0",
+    "onetime": "^2.0.1",
+    "opn": "^5.4.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.1.2",
+    "@commitlint/config-conventional": "^7.1.2",
+    "ava": "^1.0.0-beta.8",
+    "eslint": "^5.6.1",
+    "eslint-config-shellscape": "^2.0.2",
+    "lint-staged": "^7.3.0",
+    "nyc": "^13.0.1",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.14.3",
+    "standard-version": "^4.4.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  },
+  "keywords": [
+    "dev",
+    "devserver",
+    "serve",
+    "server",
+    "webpack"
+  ],
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
