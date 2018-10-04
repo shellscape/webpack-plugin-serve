@@ -1,3 +1,7 @@
 {
-  "extends": "shellscape"
+  "extends": "shellscape",
+  "globals": {
+    "WebSocket": true,
+    "window": true
+  }
 }
