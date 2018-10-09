@@ -1,6 +1,5 @@
-const url = require('url');
-
 const test = require('ava');
+const getPort = require('get-port');
 const Koa = require('koa');
 const router = require('koa-route');
 const defer = require('p-defer');
@@ -10,7 +9,10 @@ const { middleware } = require('../lib/ws');
 
 test('websocket middleware', async (t) => {
   const app = new Koa();
-  let deferred = defer();
+  const port = await getPort();
+  const uri = `ws://localhost:${port}/test`;
+  const routeDeferred = defer();
+  const resultDeferred = defer();
 
   app.use(middleware);
   app.use(
@@ -20,11 +22,11 @@ test('websocket middleware', async (t) => {
       const socket = await ctx.ws();
 
       t.truthy(socket);
-      deferred.resolve();
+      routeDeferred.resolve();
     })
   );
 
-  const server = app.listen(0);
+  const server = app.listen(port);
 
   await {
     then(r, f) {
@@ -33,20 +35,13 @@ test('websocket middleware', async (t) => {
     }
   };
 
-  const address = server.address();
-  address.hostname = address.address;
-
-  const uri = `ws://${url.format(address)}/test`;
   const socket = new WebSocket(uri);
 
-  await deferred.promise;
-
-  deferred = defer();
-
-  socket.on('open', () => {
+  socket.on('open', async () => {
+    await routeDeferred.promise;
     socket.close();
-    deferred.resolve();
+    resultDeferred.resolve();
   });
 
-  return deferred.promise;
+  await resultDeferred.promise;
 });
