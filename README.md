@@ -22,6 +22,8 @@ A Webpack development server in a plugin.
 
 ## Requirements
 
+`webpack-plugin-serve` is an evergreen module. 🌲
+
 This module requires Node v10+. The client scripts in this module require [browsers which support `async/await`](https://caniuse.com/#feat=async-functions). Users may also choose to compile the client script via an appropriately configured [Babel](https://babeljs.io/) webpack loader for use in older browsers.
 
 ## Install
