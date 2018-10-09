@@ -8,7 +8,8 @@ module.exports = {
   mode: 'development',
   output: {
     filename: './output.js',
-    path: resolve(__dirname, './output')
+    path: resolve(__dirname, './output'),
+    publicPath: 'output/'
   },
   plugins: [new Serve()],
   resolve: {
