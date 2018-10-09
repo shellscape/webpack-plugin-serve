@@ -42,6 +42,17 @@ yarn add webpack-plugin-serve --dev
 npx webpack --config test/fixtures/simple/webpack.config.js
 ```
 
+## Options
+
+https
+https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener
+
+http2
+true
+or https://nodejs.org/api/http2.html#http2_http2_createserver_options_onrequesthandler
+or https://nodejs.org/api/http2.html#http2_http2_createsecureserver_options_onrequesthandler
+
+
 ## Meta
 
 [CONTRIBUTING](./.github/CONTRIBUTING)
