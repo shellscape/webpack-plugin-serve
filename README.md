@@ -20,7 +20,9 @@
 
 A Webpack development server in a plugin.
 
-_Note: This module requires **Node v10.11.0+**._
+## Requirements
+
+This module requires Node v10+. The client scripts in this module require [browsers which support `async/await`](https://caniuse.com/#feat=async-functions). Users may also choose to compile the client script via an appropriately configured [Babel](https://babeljs.io/) webpack loader for use in older browsers.
 
 ## Install
 

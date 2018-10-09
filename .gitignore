@@ -6,3 +6,6 @@ node_modules
 output.js
 output.js.map
 *.hot-update.*
+
+.nyc_output
+coverage.lcov
