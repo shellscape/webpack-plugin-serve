@@ -1,3 +1,5 @@
+const url = require('url');
+
 const test = require('ava');
 const Koa = require('koa');
 const router = require('koa-route');
@@ -32,8 +34,10 @@ test('websocket middleware', async (t) => {
   };
 
   const address = server.address();
-  // eslint-disable-next-line no-unused-vars
-  const socket = new WebSocket(`ws://[::]:${address.port}/test`);
+  address.hostname = address.address;
+
+  const uri = `ws://${url.format(address)}/test`;
+  const socket = new WebSocket(uri);
 
   await deferred.promise;
 
