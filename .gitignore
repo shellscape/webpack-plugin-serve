@@ -9,3 +9,5 @@ output.js.map
 
 .nyc_output
 coverage.lcov
+
+lib/overlays/loading/loading.js
