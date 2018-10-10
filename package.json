@@ -24,9 +24,7 @@
     "lint": "eslint --fix --cache lib test",
     "lint-staged": "lint-staged",
     "security": "npm audit",
-    "test": "ava",
-    "build:loading-overlay": "webpack --entry ./lib/overlays/loading/index.js --config ./lib/overlays/loading/webpack.config.js -o ./lib/overlays/loading/loading.js",
-    "prepublish": "npm run build:loading-overlay"
+    "test": "ava"
   },
   "files": [
     "lib/",
@@ -52,12 +50,9 @@
     "ws": "^6.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
     "@commitlint/cli": "^7.1.2",
     "@commitlint/config-conventional": "^7.1.2",
     "ava": "^1.0.0-beta.8",
-    "babel-loader": "^8.0.4",
     "del-cli": "^1.1.0",
     "eslint": "^5.6.1",
     "eslint-config-shellscape": "^2.0.2",
