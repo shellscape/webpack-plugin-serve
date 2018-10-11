@@ -58,46 +58,39 @@ module.exports = {
 ## Options
 
 ### `compress`
-Type: `boolean` 
-
+Type: `boolean`<br>
 Default: `null`
 
 Enables compress middleware (`koa-compress`), serving content "gziped".
 
 ### `historyFallback`
-Type: `boolean`
-
+Type: `boolean`<br>
 Default: `false`
 
 When using the HTML5 History API, the `index.html` page will likely have to be served in place of any 404 responses, specially when developing `SPAs`
 
 ### `hmr`
-Type: `boolean`
-
+Type: `boolean`<br>
 Default: `true`
 
 Enables [`Hot module replacement`](https://webpack.js.org/concepts/hot-module-replacement/) which exchanges, adds or removes modules while the application still running, without the need of a full reload.
 
 ### `host`
-Type: `string` | `() => string`;
-
+Type: `string` | `() => string`<br>
 Default: `::`
 
 ### `port`
-Type: `number`
-
+Type: `number`<br>
 Default: 55555
 
 ### `open`
-Type: `boolean`
-
+Type: `boolean`<br>
 Default: `false`
 
 When enabled, wps in going to open the browser when running.
 
 ### `progress`
-Type: `boolean`
-
+Type: `boolean`<br>
 Default: `true` 
 
 When set to true, enables webpack `ProgressPlugin` and enables a loading overlay which appears everytime a compilation happens.
@@ -105,27 +98,40 @@ When set to true, enables webpack `ProgressPlugin` and enables a loading overlay
 ### `middleware`
 Type: `(app: Koa.Application, builtInMiddlewares) => Promise<any>`
 
+E.g: 
+```js
+module.exports = {
+  plugins: [
+    new WebpackPluginServe({
+      middleware: (app, /* builtInMiddlewares*/) =>
+        app.use(async (ctx, next) => {
+          ctx.body = 'Hello world';
+          await next();
+        })
+    })
+  ]
+};
+```
+
 Passing a function to it allows end user to manipulate and execute custom middlewares.
 
 ### `log`
-Type: `Object<{ level: 'info' | 'trace' | 'debug' | 'info' | 'warn' | 'error' }>`
-
+Type: `Object<{level: LogLevel}>`<br>
+LogLevel: `'info'` | `'trace'` | `'debug'` | `'info'` | `'warn'` | `'error'`<br>
 Default: `'info'`
 
 
 ### `secure`
-Type: `boolean`
-
+Type: `boolean`<br>
 Default: `false`
 
-Defines if `http` or `https` while serving your bundle.
+Defines if `http` or `https` should be used while serving your bundle files.
 
 ### `static`
 TODO
 
 ### `https`
-Type: Object<[Node https options](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener)>
-
+Type: Object<[Node https options](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener)><br>
 Default: `null`
 
 ### `http2`
