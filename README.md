@@ -121,12 +121,6 @@ LogLevel: `'info'` | `'trace'` | `'debug'` | `'info'` | `'warn'` | `'error'`<br>
 Default: `'info'`
 
 
-### `secure`
-Type: `boolean`<br>
-Default: `false`
-
-Defines if `http` or `https` should be used while serving your bundle files.
-
 ### `static`
 TODO
 
