@@ -58,7 +58,6 @@
     "eslint-config-shellscape": "^2.0.2",
     "execa": "^1.0.0",
     "get-port": "^4.0.0",
-    "html-loader": "^0.5.5",
     "lint-staged": "^7.3.0",
     "node-fetch": "^2.2.0",
     "nyc": "^13.0.1",
