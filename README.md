@@ -42,23 +42,98 @@ yarn add webpack-plugin-serve --dev
 
 ## Usage
 
-```console
-npx webpack --config test/fixtures/simple/webpack.config.js
+```js
+const WebpackPluginServe = require('webpack-plugin-serve');
+
+module.exports = {
+  ...
+  plugins: [
+    new WebpackPluginServe()
+  ]
+};
+
 ```
+
 
 ## Options
 
-https
-https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener
+### `compress`
+Type: `boolean` 
 
-http2
-true
-or https://nodejs.org/api/http2.html#http2_http2_createserver_options_onrequesthandler
-or https://nodejs.org/api/http2.html#http2_http2_createsecureserver_options_onrequesthandler
+Default: `null`
+
+Enables compress middleware (`koa-compress`), serving content "gziped".
+
+### `historyFallback`
+Type: `boolean`
+
+Default: `false`
+
+When using the HTML5 History API, the `index.html` page will likely have to be served in place of any 404 responses, specially when developing `SPAs`
+
+### `hmr`
+Type: `boolean`
+
+Default: `true`
+
+Enables [`Hot module replacement`](https://webpack.js.org/concepts/hot-module-replacement/) which exchanges, adds or removes modules while the application still running, without the need of a full reload.
+
+### `host`
+Type: `string` | `() => string`;
+
+Default: `::`
+
+### `port`
+Type: `number`
+
+Default: 55555
+
+### `open`
+Type: `boolean`
+
+Default: `false`
+
+When enabled, wps in going to open the browser when running.
+
+### `progress`
+Type: `boolean`
+
+Default: `true` 
+
+When set to true, enables webpack `ProgressPlugin` and enables a loading overlay which appears everytime a compilation happens.
+
+### `middleware`
+Type: `(app: Koa.Application, builtInMiddlewares) => Promise<any>`
+
+Passing a function to it allows end user to manipulate and execute custom middlewares.
+
+### `log`
+Type: `Object<{ level: 'info' | 'trace' | 'debug' | 'info' | 'warn' | 'error' }>`
+
+Default: `'info'`
+
+
+### `secure`
+Type: `boolean`
+
+Default: `false`
+
+Defines if `http` or `https` while serving your bundle.
+
+### `static`
+TODO
+
+### `https`
+Type: Object<[Node https options](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener)>
+
+Default: `null`
+
+### `http2`
+Type: `boolean` | [http2 options](https://nodejs.org/api/http2.html#http2_http2_createserver_options_onrequesthandler) | [https2 options](https://nodejs.org/api/http2.html#http2_http2_createsecureserver_options_onrequesthandler)
 
 
 ## Meta
 
-[CONTRIBUTING](./.github/CONTRIBUTING)
+[CONTRIBUTING](./.github/CONTRIBUTING.md)
 
 [LICENSE (Mozilla Public License)](./LICENSE)
