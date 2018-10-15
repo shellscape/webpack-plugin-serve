@@ -68,6 +68,19 @@ $ npx webpack --watch
 
 ## Options
 
+### `client`
+Type: `Object`<br>
+Default: `null`
+
+Sets options specifically for the client script. In most situations this option doesn't need to be modified.
+
+#### Properties
+
+#### `client.address`
+Type: `String`
+
+If set, allows for overriding the `WebSocket` address, which corresponds to the server address by default. Values for this option should be in a valid `{host}:{port}` format. e.g. `localhost:433`.
+
 ### `compress`
 Type: `Boolean`<br>
 Default: `false`
