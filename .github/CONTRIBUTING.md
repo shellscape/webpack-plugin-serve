@@ -8,9 +8,8 @@ We 💛 contributions! The rules for contributing to this org are few:
 1. Adhere to the code style the org has chosen
 
 
-### Few things before commiting
+## Before Committing
 
-1. Make sure you are using the supported node version (10.11.0)
-    1. if you have nvm installed on your machine, just run `nvm use` 
-1. You don't want to see ci failing on your PR, just run few commands before your commit: `npm run ci:lint` and `npm run ci:test`.
-2. If everything is passing, **OPEN YOUR PR!!!!**
+1. Use at least Node.js v10.11.0 or higher. [NVM](https://github.com/creationix/nvm) can be handy for switching between Node versions.
+1. Lint your changes via `npm run lint`. Fix any errors and warnings before committing.
+1. Test your changes via `npm run test`. Only Pull Requests with passing tests will be accepted.

@@ -11,6 +11,9 @@
 [loglevelpre]: https://github.com/kutuluk/loglevel-plugin-prefix
 [methodFactory]: lib/MethodFactory.js
 [prefixFactory]: factory/PrefixFactory.js
+[https]: https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener
+[http2]: https://nodejs.org/api/http2.html#http2_http2_createserver_options_onrequesthandler
+[http2tls]: https://nodejs.org/api/http2.html#http2_http2_createsecureserver_options_onrequesthandler
 
 [![tests][tests]][tests-url]
 [![cover][cover]][cover-url]
@@ -42,68 +45,98 @@ yarn add webpack-plugin-serve --dev
 
 ## Usage
 
+Create a `webpack.config.js` file:
+
 ```js
-const WebpackPluginServe = require('webpack-plugin-serve');
+const Serve = require('webpack-plugin-serve');
+const options = { ... };
 
 module.exports = {
   ...
   plugins: [
-    new WebpackPluginServe()
+    new Serve(options)
   ]
 };
 
 ```
 
+And run `webpack` in watch mode:
+
+```console
+$ npx webpack --watch
+```
 
 ## Options
 
 ### `compress`
-Type: `boolean`<br>
-Default: `null`
-
-Enables compress middleware (`koa-compress`), serving content "gziped".
-
-### `historyFallback`
-Type: `boolean`<br>
+Type: `Boolean`<br>
 Default: `false`
 
-When using the HTML5 History API, the `index.html` page will likely have to be served in place of any 404 responses, specially when developing `SPAs`
+If `true`, enables compression middleware which serves files with GZip compression.
+
+### `historyFallback`
+Type: `Boolean | Object`<br>
+Default: `false`
+
+If `true`, enables History API Fallback via [`connect-history-api-fallback`](https://github.com/bripkens/connect-history-api-fallback). Users may also pass an `options` Object to this property. Please see `connect-history-api-fallback` for details.
+
+This setting can be handy when using the HTML5 History API; `index.html` page will likely have to be served in place of any 404 responses from the server, specially when developing Single Page Applications.
 
 ### `hmr`
 Type: `boolean`<br>
 Default: `true`
 
-Enables [`Hot module replacement`](https://webpack.js.org/concepts/hot-module-replacement/) which exchanges, adds or removes modules while the application still running, without the need of a full reload.
+If `true`, will enables [`Hot Module Replacement`](https://webpack.js.org/concepts/hot-module-replacement/) which exchanges, adds, or removes modules from a bundle dynamically while the application still running, without the need of a full page reload.
 
 ### `host`
-Type: `string` | `() => string`<br>
-Default: `::`
+Type: `String | Promise`<br>
+Default: `::` for IPv6, `127.0.0.1` for IPv4
+
+Sets the host the server should listen from. Users may choose to set this to a `Promise`, or a `Function` which returns a `Promise` for situations in which the server needs to wait for a host to resolve.
+
+### `http2`
+Type: `boolean` | [http2 options]() | [https2 options]()
+
+If set, this option will instruct the server to enable HTTP2. Properties for this option should correspond to [HTTP2 options][http2] or [HTTP2 SSL options][http2tls].
+
+### `https`
+Type: `Object`
+Default: `null`
+
+If set, this option will instruct the server to enable SSL via HTTPS. Properties for this option should correspond to [HTTPS options][https].
 
 ### `port`
-Type: `number`<br>
-Default: 55555
+Type: `Number | Promise`<br>
+Default: `55555`
+
+Sets the port on which the server should listen. Users may choose to set this to a `Promise`, or a `Function` which returns a `Promise` for situations in which the server needs to wait for a port to resolve.
 
 ### `open`
 Type: `boolean`<br>
 Default: `false`
 
-When enabled, wps in going to open the browser when running.
+If `true`, opens the default browser to the set `host` and `port`. Users may also choose to pass an `Object` containing options for the [`opn`](https://github.com/sindresorhus/opn) module, which is used for this feature.
 
 ### `progress`
 Type: `boolean`<br>
-Default: `true` 
+Default: `true`
 
-When set to true, enables webpack `ProgressPlugin` and enables a loading overlay which appears everytime a compilation happens.
+If `true`, the module will add a `ProgressPlugin` instance to the `webpack` compiler, and display a progress indicator on the page within the browser.
 
 ### `middleware`
-Type: `(app: Koa.Application, builtInMiddlewares) => Promise<any>`
+Type: `Function`
+Default: `(app, builtins) => {}`
 
-E.g: 
+Allows users to implement custom middleware, and manipulate the order in which built-in middleware is executed. This method may also return a `Promise` to pause further middleware evaluation until the `Promise` resolves. This property should only be set by users with solid knowledge of Express/Koa style middleware and those which understand the consequences of manipulating the order of built-in middleware.
+
+#### Example
+
 ```js
+// webpack.config.js
 module.exports = {
   plugins: [
     new WebpackPluginServe({
-      middleware: (app, /* builtInMiddlewares*/) =>
+      middleware: (app, builtins) =>
         app.use(async (ctx, next) => {
           ctx.body = 'Hello world';
           await next();
@@ -113,24 +146,18 @@ module.exports = {
 };
 ```
 
-Passing a function to it allows end user to manipulate and execute custom middlewares.
-
 ### `log`
-Type: `Object<{level: LogLevel}>`<br>
-LogLevel: `'info'` | `'trace'` | `'debug'` | `'info'` | `'warn'` | `'error'`<br>
-Default: `'info'`
+Type: `String`<br>
+Default: `'info'`<br>
+Valid Values: `'info' | 'trace' | 'debug' | 'info' | 'warn' | 'error'`
 
+Sets a level for which messages should appear in the console. For example: if `warn` is set, every message at the `warn` and `error` levels will be visible. This module doesn't produce much log output, so this setting is probably not needed.
 
 ### `static`
-TODO
+ Type: `String | Array(String)`
+Default: `compiler.context`
 
-### `https`
-Type: Object<[Node https options](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener)><br>
-Default: `null`
-
-### `http2`
-Type: `boolean` | [http2 options](https://nodejs.org/api/http2.html#http2_http2_createserver_options_onrequesthandler) | [https2 options](https://nodejs.org/api/http2.html#http2_http2_createsecureserver_options_onrequesthandler)
-
+Sets the directory(s) from which static files will be served. Bundles will be served from the `output` config setting.
 
 ## Meta
 
