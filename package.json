@@ -2,7 +2,7 @@
   "name": "webpack-plugin-serve",
   "version": "0.1.0",
   "description": "",
-  "license": "MIT",
+  "license": "MPL-2.0",
   "repository": "shellscape/webpack-plugin-serve",
   "author": "shellscape",
   "homepage": "https://github.com/shellscape/webpack-plugin-serve",
