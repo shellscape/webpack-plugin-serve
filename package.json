@@ -19,7 +19,7 @@
     "ci:test": "npm run test -- --verbose",
     "commitlint": "commitlint",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "dev": "npm run dev:clean && webpack --config test/fixtures/simple/webpack.config.js --watch",
+    "dev": "npm run dev:clean && node node_modules/webpack-nano/bin/wp --config test/fixtures/simple/webpack.config.js",
     "dev:clean": "del test/fixtures/simple/output/*",
     "lint": "eslint --fix --cache lib test",
     "lint-staged": "lint-staged",
@@ -65,7 +65,7 @@
     "prettier": "^1.14.3",
     "standard-version": "^4.4.0",
     "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2"
+    "webpack-nano": "github:shellscape/webpack-nano"
   },
   "keywords": [
     "dev",

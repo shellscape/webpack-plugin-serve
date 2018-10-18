@@ -16,5 +16,6 @@ module.exports = {
     alias: {
       'webpack-plugin-serve/client': resolve(__dirname, '../../../lib/client')
     }
-  }
+  },
+  watch: true
 };
