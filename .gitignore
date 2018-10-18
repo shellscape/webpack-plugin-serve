@@ -2,10 +2,12 @@
 npm-debug.log
 coverage
 node_modules
+.eslintcache
 
 output.js
 output.js.map
 *.hot-update.*
+wps-hmr.*
 
 .nyc_output
 coverage.lcov

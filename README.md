@@ -1,16 +1,12 @@
-[tests]: 	https://img.shields.io/circleci/project/github/shellscape/postcss-less.svg
-[tests-url]: https://circleci.com/gh/shellscape/postcss-less
+[tests]: 	https://img.shields.io/circleci/project/github/shellscape/webpack-plugin-serve.svg
+[tests-url]: https://circleci.com/gh/shellscape/webpack-plugin-serve
 
-[cover]: https://codecov.io/gh/shellscape/postcss-less/branch/master/graph/badge.svg
-[cover-url]: https://codecov.io/gh/shellscape/postcss-less
+[cover]: https://codecov.io/gh/shellscape/webpack-plugin-serve/branch/master/graph/badge.svg
+[cover-url]: https://codecov.io/gh/shellscape/webpack-plugin-serve
 
-[size]: https://packagephobia.now.sh/badge?p=postcss-less
-[size-url]: https://packagephobia.now.sh/result?p=postcss-less
+[size]: https://packagephobia.now.sh/badge?p=webpack-plugin-serve
+[size-url]: https://packagephobia.now.sh/result?p=webpack-plugin-serve
 
-[loglevel]: https://githhub.com/pimterry/loglevel
-[loglevelpre]: https://github.com/kutuluk/loglevel-plugin-prefix
-[methodFactory]: lib/MethodFactory.js
-[prefixFactory]: factory/PrefixFactory.js
 [https]: https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener
 [http2]: https://nodejs.org/api/http2.html#http2_http2_createserver_options_onrequesthandler
 [http2tls]: https://nodejs.org/api/http2.html#http2_http2_createsecureserver_options_onrequesthandler
