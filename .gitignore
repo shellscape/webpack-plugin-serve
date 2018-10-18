@@ -2,6 +2,7 @@
 npm-debug.log
 coverage
 node_modules
+.eslintcache
 
 output.js
 output.js.map
