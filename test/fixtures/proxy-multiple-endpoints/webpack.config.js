@@ -13,20 +13,21 @@ module.exports = {
   },
   plugins: [
     new Serve({
+      port: 55558,
       middleware: (app, builtins) => {
         app.use(
           builtins.proxy('/api', {
-            target: 'http://localhost:3003'
+            target: 'http://localhost:3005'
           })
         );
         app.use(
           builtins.proxy('/wps', {
-            target: 'http://localhost:3003'
+            target: 'http://localhost:3005'
           })
         );
         app.use(
           builtins.proxy('/wp', {
-            target: 'http://localhost:3003'
+            target: 'http://localhost:3005'
           })
         );
       }
@@ -36,6 +37,5 @@ module.exports = {
     alias: {
       'webpack-plugin-serve/client': resolve(__dirname, '../../../lib/client')
     }
-  },
-  watch: true
+  }
 };
