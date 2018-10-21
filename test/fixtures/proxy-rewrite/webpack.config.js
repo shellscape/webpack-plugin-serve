@@ -13,10 +13,12 @@ module.exports = {
   },
   plugins: [
     new Serve({
+      port: 55556,
       middleware: (app, builtins) => {
         app.use(
           builtins.proxy('/api', {
-            target: 'http://localhost:3003'
+            target: 'http://localhost:3004',
+            pathRewrite: { '^/api': '' }
           })
         );
       }
@@ -26,5 +28,6 @@ module.exports = {
     alias: {
       'webpack-plugin-serve/client': resolve(__dirname, '../../../lib/client')
     }
-  }
+  },
+  watch: true
 };
