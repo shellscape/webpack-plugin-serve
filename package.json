@@ -46,6 +46,7 @@
     "loglevelnext": "^3.0.0",
     "onetime": "^2.0.1",
     "opn": "^5.4.0",
+    "p-defer": "^1.0.0",
     "strip-ansi": "^5.0.0",
     "ws": "^6.0.0"
   },
@@ -61,7 +62,6 @@
     "lint-staged": "^7.3.0",
     "node-fetch": "^2.2.0",
     "nyc": "^13.0.1",
-    "p-defer": "^1.0.0",
     "pre-commit": "^1.2.2",
     "prettier": "^1.14.3",
     "standard-version": "^4.4.0",
