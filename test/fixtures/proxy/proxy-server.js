@@ -8,18 +8,18 @@ const defaultRoutes = [
   {
     url: '/api',
     handler: async (ctx) => {
-      ctx.body = 'Hello world 1';
+      ctx.body = '/api endpoint';
     }
   },
   {
     url: '/api/test',
     handler: async (ctx) => {
-      ctx.body = 'Hello world from test';
+      ctx.body = '/api/test endpoint';
     }
   }
 ];
 
-const bootstrapServer = (routes = defaultRoutes) => {
+const proxyServer = (routes = defaultRoutes) => {
   routes.forEach((route) => {
     app.use(router.get(route.url, route.handler));
   });
@@ -27,5 +27,5 @@ const bootstrapServer = (routes = defaultRoutes) => {
 };
 
 module.exports = {
-  bootstrapServer
+  proxyServer
 };

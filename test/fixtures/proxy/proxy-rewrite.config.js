@@ -2,6 +2,8 @@ const { resolve } = require('path');
 
 const { WebpackPluginServe: Serve } = require('../../../lib/');
 
+const logLevel = 'silent';
+
 module.exports = {
   context: __dirname,
   entry: ['./app.js', 'webpack-plugin-serve/client'],
@@ -13,10 +15,12 @@ module.exports = {
   },
   plugins: [
     new Serve({
+      log: { level: logLevel },
       port: 55556,
       middleware: (app, builtins) => {
         app.use(
           builtins.proxy('/api', {
+            logLevel,
             target: 'http://localhost:3004',
             pathRewrite: { '^/api': '' }
           })

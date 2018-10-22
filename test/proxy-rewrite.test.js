@@ -2,32 +2,36 @@
 const webpack = require('webpack');
 const test = require('ava');
 const fetch = require('node-fetch');
+const defer = require('p-defer');
 
-const { bootstrapServer } = require('./helpers/bootstrap-server');
-const webpackConfig = require('./fixtures/proxy-rewrite/webpack.config');
+const { proxyServer } = require('./fixtures/proxy/proxy-server');
+const webpackConfig = require('./fixtures/proxy/proxy-rewrite.config');
 
-let targetServer;
-let webpackCompiler = webpack(webpackConfig);
+const deferred = defer();
+const compiler = webpack(webpackConfig);
+let server;
+let watcher;
 
-test.before('Starting server', async () => {
-  targetServer = bootstrapServer([
+test.before(async () => {
+  server = proxyServer([
     {
       url: '/test',
       handler: async (ctx) => {
-        ctx.body = 'Hello world from test';
+        ctx.body = '/test endpoint rewrite';
       }
     }
   ]).listen(3004);
-  webpackCompiler = webpackCompiler.watch();
+  watcher = compiler.watch({}, deferred.resolve);
+  await deferred.promise;
 });
 
-test.after('Closing server', () => {
-  targetServer.close();
-  webpackCompiler.close();
+test.after.always(() => {
+  server.close();
+  watcher.close();
 });
 
-test('Should not return /api body text', async (t) => {
+test('should rewrite /api', async (t) => {
   const response = await fetch('http://localhost:55556/api/test');
-  const responseText = await response.text();
-  t.is(responseText, 'Hello world from test');
+  const result = await response.text();
+  t.snapshot(result);
 });
