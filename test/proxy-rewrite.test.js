@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const test = require('ava');
 const fetch = require('node-fetch');
 
-const { bootstrapServer } = require('./helpers/dummyServer');
+const { bootstrapServer } = require('./helpers/bootstrap-server');
 const webpackConfig = require('./fixtures/proxy-rewrite/webpack.config');
 
 let targetServer;

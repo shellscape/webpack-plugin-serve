@@ -3,8 +3,8 @@ const webpack = require('webpack');
 const test = require('ava');
 const fetch = require('node-fetch');
 
-const { bootstrapServer } = require('./helpers/dummyServer');
-const webpackConfig = require('./fixtures/proxy-multiple-endpoints/webpack.config');
+const { bootstrapServer } = require('./helpers/bootstrap-server');
+const webpackConfig = require('./fixtures/proxy-multiple/webpack.config');
 
 let targetServer;
 let webpackCompiler = webpack(webpackConfig);
