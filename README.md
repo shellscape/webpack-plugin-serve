@@ -155,12 +155,21 @@ module.exports = {
 };
 ```
 
+Currently supported built-in middleware that are available on the `builtins` parameter:
+
+`compress` → forwards to [koa-compress](https://github.com/koajs/compress)<br>
+`historyFallback` → forwards to [connect-history-api-fallback](https://github.com/bripkens/connect-history-api-fallback/)<br>
+`static` → forwards to [koa-static](https://github.com/koajs/static)<br>
+`websocket` → Custom middleware that provides `WebSocket` support<br>
+`proxy` → forwards to [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware)
+
+
 ### `log`
 Type: `String`<br>
-Default: `'info'`<br>
-Valid Values: `'info' | 'trace' | 'debug' | 'info' | 'warn' | 'error'`
+Default: `{ level: 'info' }`<br>
+Valid `level` Values: `'info' | 'trace' | 'debug' | 'info' | 'warn' | 'error'`
 
-Sets a level for which messages should appear in the console. For example: if `warn` is set, every message at the `warn` and `error` levels will be visible. This module doesn't produce much log output, so this setting is probably not needed.
+Sets a level for which messages should appear in the console. For example: if `warn` is set, every message at the `warn` and `error` levels will be visible. This module doesn't produce much log output, so you probably won't have to fiddle with this.
 
 ### `static`
  Type: `String | Array(String)`

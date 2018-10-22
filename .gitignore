@@ -4,6 +4,7 @@ coverage
 node_modules
 .eslintcache
 
+test/**/output*
 output.js
 output.js.map
 *.hot-update.*
