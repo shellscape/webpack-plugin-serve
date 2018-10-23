@@ -3,6 +3,8 @@ Proxying some URLs can be useful when you have an API backend server and you wan
 
 Proxying is supported via [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware) module but it doesn't contain any fancy options processing for proxying it just provides access directly.
 
+_Note: The `app.use(...)` call here is slightly different than what Express users are used to seeing with `http-proxy-middleware`. This is due to subtle differences in how the module interacts with `Koa`, which is used under the hood in this plugin._
+
 ### Meat and Potatoes
 
 To get started, your `webpack` configuration should be setup and building successfully. Next, you have to know which local path you wan't to proxy to which location target. We are going to setup this using the middleware option.
