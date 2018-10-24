@@ -172,8 +172,8 @@ Valid `level` Values: `'info' | 'trace' | 'debug' | 'info' | 'warn' | 'error'`
 Sets a level for which messages should appear in the console. For example: if `warn` is set, every message at the `warn` and `error` levels will be visible. This module doesn't produce much log output, so you probably won't have to fiddle with this.
 
 ### `static`
- Type: `String | Array(String)`
-Default: `compiler.context`
+Type: `String | Array(String)`<br>
+Default: `compiler.context`<br>
 
 Sets the directory(s) from which static files will be served. Bundles will be served from the `output` config setting.
 
