@@ -109,7 +109,7 @@ Type: `boolean` | [http2 options]() | [https2 options]()
 If set, this option will instruct the server to enable HTTP2. Properties for this option should correspond to [HTTP2 options][http2] or [HTTP2 SSL options][http2tls].
 
 ### `https`
-Type: `Object`
+Type: `Object`<br>
 Default: `null`
 
 If set, this option will instruct the server to enable SSL via HTTPS. Properties for this option should correspond to [HTTPS options][https].
@@ -133,7 +133,7 @@ Default: `true`
 If `true`, the module will add a `ProgressPlugin` instance to the `webpack` compiler, and display a progress indicator on the page within the browser.
 
 ### `middleware`
-Type: `Function`
+Type: `Function`<br>
 Default: `(app, builtins) => {}`
 
 Allows users to implement custom middleware, and manipulate the order in which built-in middleware is executed. This method may also return a `Promise` to pause further middleware evaluation until the `Promise` resolves. This property should only be set by users with solid knowledge of Express/Koa style middleware and those which understand the consequences of manipulating the order of built-in middleware.
@@ -173,7 +173,7 @@ Sets a level for which messages should appear in the console. For example: if `w
 
 ### `static`
 Type: `String | Array(String)`<br>
-Default: `compiler.context`<br>
+Default: `compiler.context`
 
 Sets the directory(s) from which static files will be served. Bundles will be served from the `output` config setting.
 
