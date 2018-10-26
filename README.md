@@ -19,6 +19,8 @@
 
 A Webpack development server in a plugin.
 
+Be sure to [browse our recipes](./recipes/README.md) after reading the documentation below.
+
 ## Requirements
 
 `webpack-plugin-serve` is an evergreen module. 🌲
@@ -163,7 +165,6 @@ Currently supported built-in middleware that are available on the `builtins` par
 `websocket` → Custom middleware that provides `WebSocket` support<br>
 `proxy` → forwards to [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware)
 
-
 ### `log`
 Type: `String`<br>
 Default: `{ level: 'info' }`<br>
@@ -176,6 +177,26 @@ Type: `String | Array(String)`<br>
 Default: `compiler.context`
 
 Sets the directory(s) from which static files will be served. Bundles will be served from the `output` config setting.
+
+## Proxying
+
+Proxying with `webpack-plugin-serve` is supported via the [`middleware`](#middleware) option. But while this plugin module doesn't contain any fancy options processing for proxying, it does include access to the [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware) module by default, and the rest should look familiar to users of `http-proxy-middleware`.
+
+```js
+// webpack.config.js
+module.exports = {
+  ...,
+  plugins: [
+    new WebpackPluginServe({
+      middleware: (app, builtins) => {
+        app.use(builtins.proxy('/api', { target: 'http://10.10.10.1:1337' }));
+      }
+    })
+  ]
+};
+```
+
+_Note: The `app.use(...)` call here is slightly different than what Express users are used to seeing with `http-proxy-middleware`. This is due to subtle differences in how the module interacts with `Koa`, which is used under the hood in this plugin._
 
 ## Meta
 
