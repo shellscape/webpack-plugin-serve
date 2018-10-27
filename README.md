@@ -11,6 +11,10 @@
 [http2]: https://nodejs.org/api/http2.html#http2_http2_createserver_options_onrequesthandler
 [http2tls]: https://nodejs.org/api/http2.html#http2_http2_createsecureserver_options_onrequesthandler
 
+<div align="center">
+	<img width="256" src="assets/serve.svg" alt="webpack-plugin-serve"><br/><br/>
+</div>
+
 [![tests][tests]][tests-url]
 [![cover][cover]][cover-url]
 [![size][size]][size-url]
