@@ -50,7 +50,7 @@ yarn add webpack-plugin-serve --dev
 Create a `webpack.config.js` file:
 
 ```js
-const Serve = require('webpack-plugin-serve');
+const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
 const options = { ... };
 
 module.exports = {
