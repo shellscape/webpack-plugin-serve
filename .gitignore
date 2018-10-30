@@ -12,3 +12,5 @@ wps-hmr.*
 
 .nyc_output
 coverage.lcov
+
+dist
