@@ -69,6 +69,7 @@ module.exports = {
     new Serve({
       historyFallback: true,
       hmr: false,
+      liveReload: true,
       static: [outputPath]
     })
   ],
