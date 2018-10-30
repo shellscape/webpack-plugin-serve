@@ -106,7 +106,7 @@ This setting can be handy when using the HTML5 History API; `index.html` page wi
 Type: `boolean`<br>
 Default: `true`
 
-If `true`, will enables [`Hot Module Replacement`](https://webpack.js.org/concepts/hot-module-replacement/) which exchanges, adds, or removes modules from a bundle dynamically while the application still running, without the need of a full page reload.
+If `true`, will enable [`Hot Module Replacement`](https://webpack.js.org/concepts/hot-module-replacement/) which exchanges, adds, or removes modules from a bundle dynamically while the application still running, without the need of a full page reload.
 
 ### `host`
 Type: `String | Promise`<br>
@@ -125,17 +125,25 @@ Default: `null`
 
 If set, this option will instruct the server to enable SSL via HTTPS. Properties for this option should correspond to [HTTPS options][https].
 
-### `port`
-Type: `Number | Promise`<br>
-Default: `55555`
+### `liveReload`
+Type: `boolean`<br>
+Default: `false`
 
-Sets the port on which the server should listen. Users may choose to set this to a `Promise`, or a `Function` which returns a `Promise` for situations in which the server needs to wait for a port to resolve.
+If `true`, will instruct the client to perform a full page reload after each build.
+
+_Note: This option overrides any value set for the `hmr` option property._
 
 ### `open`
 Type: `boolean`<br>
 Default: `false`
 
 If `true`, opens the default browser to the set `host` and `port`. Users may also choose to pass an `Object` containing options for the [`opn`](https://github.com/sindresorhus/opn) module, which is used for this feature.
+
+### `port`
+Type: `Number | Promise`<br>
+Default: `55555`
+
+Sets the port on which the server should listen. Users may choose to set this to a `Promise`, or a `Function` which returns a `Promise` for situations in which the server needs to wait for a port to resolve.
 
 ### `progress`
 Type: `boolean`<br>

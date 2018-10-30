@@ -67,7 +67,7 @@
     "prettier": "^1.14.3",
     "standard-version": "^4.4.0",
     "webpack": "^4.20.2",
-    "webpack-nano": "github:shellscape/webpack-nano"
+    "webpack-nano": "^0.1.3"
   },
   "keywords": [
     "dev",
