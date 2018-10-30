@@ -27,6 +27,7 @@
     "test": "ava"
   },
   "files": [
+    "client.js",
     "lib/",
     "README.md",
     "LICENSE"
