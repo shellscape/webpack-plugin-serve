@@ -36,14 +36,10 @@ This module requires Node v10+. The client scripts in this module require [brows
 Using npm:
 
 ```console
-npm install webpack-plugin-serve --save-dev
+npm install webpack-nano webpack-plugin-serve --save-dev
 ```
 
-Using yarn:
-
-```console
-yarn add webpack-plugin-serve --dev
-```
+_Note: We recommend using [webpack-nano](https://github.com/shellscape/webpack-nano), a very tiny, very clean webpack CLI._
 
 ## Usage
 
@@ -62,15 +58,16 @@ module.exports = {
   ...
   plugins: [
     new Serve(options)
-  ]
+  ],
+  watch: true  // ← important: webpack and the server will continue to run in watch mode
 };
 
 ```
 
-And run `webpack` in watch mode:
+And run `webpack`:
 
 ```console
-$ npx webpack --watch
+$ npx wp
 ```
 
 ## Options
@@ -113,6 +110,8 @@ Type: `String | Promise`<br>
 Default: `::` for IPv6, `127.0.0.1` for IPv4
 
 Sets the host the server should listen from. Users may choose to set this to a `Promise`, or a `Function` which returns a `Promise` for situations in which the server needs to wait for a host to resolve.
+
+_Note: The default URI is `http://[::]:{port}`. For more info, please read [the FAQ](.github/FAQ.md)._
 
 ### `http2`
 Type: `boolean` | [http2 options]() | [https2 options]()
