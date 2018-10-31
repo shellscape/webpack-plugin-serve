@@ -5,10 +5,12 @@ const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const watch = process.env.NODE_ENV === 'development';
+const outputPath = resolve(__dirname, 'dist');
 
 module.exports = {
   entry: ['webpack-plugin-serve/client', './src/index.js'],
   mode: process.env.NODE_ENV,
+  devtool: 'cheap-eval-source-map',
   module: {
     rules: [
       {
@@ -81,7 +83,7 @@ module.exports = {
     ]
   },
   output: {
-    path: resolve(__dirname, 'dist'),
+    path: outputPath,
     publicPath: '/',
     filename: 'bundle.js'
   },
@@ -93,9 +95,10 @@ module.exports = {
       }
     }),
     new Serve({
+      // note: this value is true by default
       hmr: true,
       historyFallback: true,
-      static: [resolve(__dirname, 'dist')]
+      static: [outputPath]
     })
   ],
   watch
