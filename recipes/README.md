@@ -9,3 +9,8 @@ Recipes are snippets of code and useful tidbits that may be helpful to developer
 [Using a Dynamic Port](./dynamic-port.md)<br/>
 [Using an Internal IP Address](./internal-ip.md)<br/>
 [Watching Static Content](./watch-static-content.md)
+
+Prepared dishes:
+
+[Angular](./angular/README.md)<br/>
+[React](./react/README.md)
