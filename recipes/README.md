@@ -12,5 +12,5 @@ Recipes are snippets of code and useful tidbits that may be helpful to developer
 
 Dishes ready: 
 
-[Angular](./angular/README.md)
+[Angular](./angular/README.md)<br/>
 [React](./react/README.md)
