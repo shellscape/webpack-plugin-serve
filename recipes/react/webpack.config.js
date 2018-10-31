@@ -8,7 +8,7 @@ const watch = process.env.NODE_ENV === 'development';
 const outputPath = resolve(__dirname, 'dist');
 
 module.exports = {
-  entry: ['webpack-plugin-serve/client', './src/index.js'],
+  entry: ['@babel/polyfill', './src/index.js', 'webpack-plugin-serve/client'],
   mode: process.env.NODE_ENV,
   devtool: 'cheap-eval-source-map',
   module: {
