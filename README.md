@@ -145,10 +145,12 @@ Default: `55555`
 Sets the port on which the server should listen. Users may choose to set this to a `Promise`, or a `Function` which returns a `Promise` for situations in which the server needs to wait for a port to resolve.
 
 ### `progress`
-Type: `boolean`<br>
+Type: `boolean | 'minimal'`<br>
 Default: `true`
 
 If `true`, the module will add a `ProgressPlugin` instance to the `webpack` compiler, and display a progress indicator on the page within the browser.
+
+If `minimal`, an indicator much simpler and with a minimal design is going to be used instead of the default one.
 
 ### `middleware`
 Type: `Function`<br>
