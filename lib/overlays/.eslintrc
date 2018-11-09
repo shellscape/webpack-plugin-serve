@@ -1,8 +1,0 @@
-{
-  "globals": {
-    "document": true
-  },
-  "rules": {
-    "no-undef": "off"
-  }
-}

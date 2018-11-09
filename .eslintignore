@@ -3,3 +3,4 @@ dist
 *.snap
 output.js
 wps-hmr.*
+*.hot-update.js
