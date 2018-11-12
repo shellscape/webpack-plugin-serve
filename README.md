@@ -114,7 +114,7 @@ Sets the host the server should listen from. Users may choose to set this to a `
 _Note: The default URI is `http://[::]:{port}`. For more info, please read [the FAQ](.github/FAQ.md)._
 
 ### `http2`
-Type: `boolean` | [http2 options]() | [https2 options]()
+Type: `boolean` | [`http2` options](https://nodejs.org/api/http2.html#http2_http2_createserver_options_onrequesthandler) | [secure `http2` options](https://nodejs.org/api/http2.html#http2_http2_createsecureserver_options_onrequesthandler)
 
 If set, this option will instruct the server to enable HTTP2. Properties for this option should correspond to [HTTP2 options][http2] or [HTTP2 SSL options][http2tls].
 
@@ -132,25 +132,14 @@ If `true`, will instruct the client to perform a full page reload after each bui
 
 _Note: This option overrides any value set for the `hmr` option property._
 
-### `open`
-Type: `boolean`<br>
-Default: `false`
+### `log`
+Type: `String`<br>
+Default: `{ level: 'info' }`<br>
+Valid `level` Values: `'info' | 'trace' | 'debug' | 'info' | 'warn' | 'error'`
 
-If `true`, opens the default browser to the set `host` and `port`. Users may also choose to pass an `Object` containing options for the [`opn`](https://github.com/sindresorhus/opn) module, which is used for this feature.
+Sets a level for which messages should appear in the console. For example: if `warn` is set, every message at the `warn` and `error` levels will be visible. This module doesn't produce much log output, so you probably won't have to fiddle with this.
 
-### `port`
-Type: `Number | Promise`<br>
-Default: `55555`
-
-Sets the port on which the server should listen. Users may choose to set this to a `Promise`, or a `Function` which returns a `Promise` for situations in which the server needs to wait for a port to resolve.
-
-### `progress`
-Type: `boolean | String`<br>
-Default: `true`
-
-If [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy), the module will add a `ProgressPlugin` instance to the `webpack` compiler, and display a progress indicator on the page within the browser.
-
-If a value of `'minimal'` is set, the progress indicator will render as a small, colored bar at the top of the window. This can be useful when the default fancy progress indicator interferes with elements in the page.
+A `timestamp: true` property/value may also be used to preface each log line with an `HH:mm:ss` format timestamp.
 
 ### `middleware`
 Type: `Function`<br>
@@ -183,12 +172,25 @@ Currently supported built-in middleware that are available on the `builtins` par
 `websocket` → Custom middleware that provides `WebSocket` support<br>
 `proxy` → forwards to [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware)
 
-### `log`
-Type: `String`<br>
-Default: `{ level: 'info' }`<br>
-Valid `level` Values: `'info' | 'trace' | 'debug' | 'info' | 'warn' | 'error'`
+### `open`
+Type: `boolean | Object`<br>
+Default: `false`
 
-Sets a level for which messages should appear in the console. For example: if `warn` is set, every message at the `warn` and `error` levels will be visible. This module doesn't produce much log output, so you probably won't have to fiddle with this.
+If `true`, opens the default browser to the set `host` and `port`. Users may also choose to pass an `Object` containing options for the [`opn`](https://github.com/sindresorhus/opn) module, which is used for this feature.
+
+### `port`
+Type: `Number | Promise`<br>
+Default: `55555`
+
+Sets the port on which the server should listen. Users may choose to set this to a `Promise`, or a `Function` which returns a `Promise` for situations in which the server needs to wait for a port to resolve.
+
+### `progress`
+Type: `boolean | String`<br>
+Default: `true`
+
+If [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy), the module will add a `ProgressPlugin` instance to the `webpack` compiler, and display a progress indicator on the page within the browser.
+
+If a value of `'minimal'` is set, the progress indicator will render as a small, colored bar at the top of the window. This can be useful when the default fancy progress indicator interferes with elements in the page.
 
 ### `static`
 Type: `String | Array(String)`<br>
