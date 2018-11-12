@@ -135,7 +135,7 @@ _Note: This option overrides any value set for the `hmr` option property._
 ### `log`
 Type: `String`<br>
 Default: `{ level: 'info' }`<br>
-Valid `level` Values: `'info' | 'trace' | 'debug' | 'info' | 'warn' | 'error'`
+Valid `level` Values: `'trace' | 'debug' | 'info' | 'warn' | 'error'`
 
 Sets a level for which messages should appear in the console. For example: if `warn` is set, every message at the `warn` and `error` levels will be visible. This module doesn't produce much log output, so you probably won't have to fiddle with this.
 
