@@ -9,7 +9,17 @@
   included in all copies or substantial portions of this Source Code Form.
 */
 
-// This file exists merely as an easy reference for folks adding it to their configuration entries
-const client = require('./lib/client');
+/**
+ * @note This file exists merely as an easy reference for folks adding it to their configuration entries
+ */
 
-module.exports = client;
+(() => {
+  if (window.webpackPluginServe) {
+    return;
+  }
+
+  window.webpackPluginServe = true;
+
+  // eslint-disable-next-line global-require
+  require('./lib/client');
+})();
