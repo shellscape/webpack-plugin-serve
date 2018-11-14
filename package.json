@@ -9,6 +9,7 @@
   "bugs": "https://github.com/shellscape/webpack-plugin-serve/issues",
   "bin": "",
   "main": "lib/index.js",
+  "typings": "index.d.ts",
   "engines": {
     "node": ">= 10.11.0"
   },
@@ -30,7 +31,8 @@
     "client.js",
     "lib/",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "index.d.ts"
   ],
   "peerDependencies": {
     "webpack": "^4.20.2"
