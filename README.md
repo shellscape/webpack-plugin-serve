@@ -198,6 +198,22 @@ Default: `compiler.context`
 
 Sets the directory(s) from which static files will be served. Bundles will be served from the `output` config setting.
 
+### `status`
+Type: `boolean`<br>
+Default: `true`
+
+By default, `webpack-plugin-serve` will display a status overlay when a build results in errors and/or warnings. To disable this feature, set `status: false` in the options.
+
+<div align="center">
+	<img height="244" src="assets/status-overlay.png" alt="status overlay"><br/><br/>
+</div>
+
+When the minimize button (yellow dot) is clicked, the overlay will shrink to a single small box in the lower right corner of the page and display a status beacon using the same green, red, and yellow colors for build success, errors, and warnings, respectively.
+
+<div align="center">
+	<img src="assets/status-beacons.gif" alt="status beacons"><br/><br/>
+</div>
+
 ## Proxying
 
 Proxying with `webpack-plugin-serve` is supported via the [`middleware`](#middleware) option. But while this plugin module doesn't contain any fancy options processing for proxying, it does include access to the [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware) module by default, and the rest should look familiar to users of `http-proxy-middleware`.
