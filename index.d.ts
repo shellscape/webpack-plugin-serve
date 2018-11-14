@@ -77,7 +77,7 @@ declare module 'webpack-plugin-serve' {
     status?: boolean;
   }
 
-  export declare class WebpackPluginServe {
+  export class WebpackPluginServe {
     constructor(opts?: WebpackPluginServeOptions);
   }
 }
