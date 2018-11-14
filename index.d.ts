@@ -1,14 +1,20 @@
 import { Url } from 'url';
-import { Config as HttpProxyMiddlewareConfig, Proxy} from 'http-proxy-middleware';
+import {
+  Config as HttpProxyMiddlewareConfig,
+  Proxy
+} from 'http-proxy-middleware';
 import * as Koa from 'koa';
-import * as Http2 from 'http2';
-import * as Https from 'https';
-import { ZlibOptions } from "zlib";
+import {
+  ServerOptions as Http2ServerOptions,
+  SecureServerOptions as Http2SecureServerOptions
+} from 'http2';
+import { ServerOptions as HttpsServerOptions} from 'https';
+import { ZlibOptions } from 'zlib';
 
 declare module 'webpack-plugin-serve' {
   interface CompressOptions extends ZlibOptions {
     filter?: (content_type: string) => boolean;
-    threshold?: number
+    threshold?: number;
   }
 
   interface KoaStaticOptions {
@@ -59,8 +65,8 @@ declare module 'webpack-plugin-serve' {
     historyFallback?: boolean | HistoryApiFallbackOptions;
     hmr?: boolean;
     host?: string | (() => Promise<string>) | (() => string);
-    http2?: boolean | Http2.ServerOptions | Http2.SecureServerOptions;
-    https?: Https.ServerOptions;
+    http2?: boolean | Http2ServerOptions | Http2SecureServerOptions;
+    https?: HttpsServerOptions;
     liveReload?: boolean;
     log?: {
       level: string;
