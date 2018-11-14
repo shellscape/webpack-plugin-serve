@@ -34,7 +34,7 @@ declare module 'webpack-plugin-serve' {
     to: string | RegExp | RewriteTo;
   }
 
-  interface HistoryApiFallback {
+  interface HistoryApiFallbackOptions {
     disableDotRule?: true;
     htmlAcceptHeaders?: string[];
     index?: string;
