@@ -47,7 +47,7 @@ declare module 'webpack-plugin-serve' {
     proxy: (args: HttpProxyMiddleware.Config) => HttpProxyMiddleware.Proxy;
     compress: (opts: CompressOptions) => void;
     static: (opts: KoaStaticOptions) => void;
-    historyFallback: (opts: HistoryApiFallback) => void;
+    historyFallback: (opts: HistoryApiFallbackOptions) => void;
     websocket: () => void;
   }
 
