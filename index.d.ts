@@ -5,53 +5,53 @@ import * as Http2 from 'http2';
 import * as Https from 'https';
 import * as zlib from "zlib";
 
-export interface CompressOptions extends zlib.ZlibOptions {
-  filter?: (content_type: string) => boolean;
-  threshold?: number
-}
-
-export interface KoaStaticOptions {
-  maxage?: number;
-  hidden?: boolean;
-  index?: string;
-  defer?: boolean;
-  gzip?: boolean;
-  br?: boolean;
-  setHeaders?: (res, path, stats) => any;
-  extensions?: Array<string> | boolean;
-}
-
-type RewriteTo = (context: Context) => string;
-
-interface Context {
-  match: RegExpMatchArray;
-  parsedUrl: Url;
-}
-
-interface Rewrite {
-  from: RegExp;
-  to: string | RegExp | RewriteTo;
-}
-
-interface HistoryApiFallback {
-  disableDotRule?: true;
-  htmlAcceptHeaders?: string[];
-  index?: string;
-  logger?: typeof console.log;
-  rewrites?: Rewrite[];
-  verbose?: boolean;
-}
-
-interface Builtins {
-  proxy: (args: HttpProxyMiddleware.Config) => HttpProxyMiddleware.Proxy;
-  compress: (opts: CompressOptions) => void;
-  static: (opts: KoaStaticOptions) => void;
-  historyFallback: (opts: HistoryApiFallback) => void;
-  websocket: () => void;
-}
-
 declare module 'webpack-plugin-serve' {
-  interface WebpackPluginServeOptions {
+  interface CompressOptions extends zlib.ZlibOptions {
+    filter?: (content_type: string) => boolean;
+    threshold?: number
+  }
+
+  interface KoaStaticOptions {
+    maxage?: number;
+    hidden?: boolean;
+    index?: string;
+    defer?: boolean;
+    gzip?: boolean;
+    br?: boolean;
+    setHeaders?: (res, path, stats) => any;
+    extensions?: Array<string> | boolean;
+  }
+
+  type RewriteTo = (context: Context) => string;
+
+  interface Context {
+    match: RegExpMatchArray;
+    parsedUrl: Url;
+  }
+
+  interface Rewrite {
+    from: RegExp;
+    to: string | RegExp | RewriteTo;
+  }
+
+  interface HistoryApiFallback {
+    disableDotRule?: true;
+    htmlAcceptHeaders?: string[];
+    index?: string;
+    logger?: typeof console.log;
+    rewrites?: Rewrite[];
+    verbose?: boolean;
+  }
+
+  interface Builtins {
+    proxy: (args: HttpProxyMiddleware.Config) => HttpProxyMiddleware.Proxy;
+    compress: (opts: CompressOptions) => void;
+    static: (opts: KoaStaticOptions) => void;
+    historyFallback: (opts: HistoryApiFallback) => void;
+    websocket: () => void;
+  }
+
+  export interface WebpackPluginServeOptions {
     client?: {
       address: string;
     };
