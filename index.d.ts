@@ -55,6 +55,7 @@ declare module 'webpack-plugin-serve' {
     static: (opts: KoaStaticOptions) => void;
     historyFallback: (opts: HistoryApiFallbackOptions) => void;
     websocket: () => void;
+    notFound: (callback?: (ctx: Koa.Context) => void) => void;
   }
 
   export interface WebpackPluginServeOptions {

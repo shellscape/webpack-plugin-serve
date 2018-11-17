@@ -170,7 +170,8 @@ Currently supported built-in middleware that are available on the `builtins` par
 `historyFallback` → forwards to [connect-history-api-fallback](https://github.com/bripkens/connect-history-api-fallback/)<br>
 `static` → forwards to [koa-static](https://github.com/koajs/static)<br>
 `websocket` → Custom middleware that provides `WebSocket` support<br>
-`proxy` → forwards to [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware)
+`proxy` → forwards to [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware)<br/>
+`notFound` → overrides default not found behavior
 
 ### `open`
 Type: `boolean | Object`<br>
