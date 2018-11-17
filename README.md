@@ -12,7 +12,7 @@
 [http2tls]: https://nodejs.org/api/http2.html#http2_http2_createsecureserver_options_onrequesthandler
 
 <div align="center">
-	<img width="256" src="assets/serve.svg" alt="webpack-plugin-serve"><br/><br/>
+	<img width="256" src="https://raw.githubusercontent.com/shellscape/webpack-plugin-serve/master/assets/serve.svg?sanitize=true" alt="webpack-plugin-serve"><br/><br/>
 </div>
 
 [![tests][tests]][tests-url]
