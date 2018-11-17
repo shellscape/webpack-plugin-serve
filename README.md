@@ -23,7 +23,13 @@
 
 A Webpack development server in a plugin.
 
-Be sure to [browse our recipes](./recipes/README.md) after reading the documentation below.
+Be sure to [browse our recipes](./recipes/README.md) and peruse the [FAQ](./.github/FAQ.md) after reading the documentation below.
+
+<a href="https://www.patreon.com/shellscape">
+  <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
+</a>
+
+_Please consider donating if you find this project useful._
 
 ## Requirements
 
