@@ -167,11 +167,11 @@ module.exports = {
 Currently supported built-in middleware that are available on the `builtins` parameter:
 
 `compress` → forwards to [koa-compress](https://github.com/koajs/compress)<br>
+`four0four` → handles requests that result in a 404 status<br>
 `historyFallback` → forwards to [connect-history-api-fallback](https://github.com/bripkens/connect-history-api-fallback/)<br>
-`static` → forwards to [koa-static](https://github.com/koajs/static)<br>
-`websocket` → Custom middleware that provides `WebSocket` support<br>
 `proxy` → forwards to [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware)<br/>
-`notFound` → overrides default not found behavior
+`static` → forwards to [koa-static](https://github.com/koajs/static)<br>
+`websocket` → Custom middleware that provides `WebSocket` support
 
 ### `open`
 Type: `boolean | Object`<br>
