@@ -1,0 +1,23 @@
+{
+  "name": "benchmark",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "wps": "cross-env SERVER_NAME=wps webpack --config ./webpack.config.js",
+    "wds": "cross-env SERVER_NAME=wds webpack-dev-server --config ./webpack.config.js",
+    "ws": "cross-env SERVER_NAME=ws webpack-serve --config ./webpack.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "speed-measure-webpack-plugin": "^1.2.3",
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10",
+    "webpack-plugin-serve": "^0.1.1",
+    "webpack-serve": "^2.0.3"
+  }
+}
