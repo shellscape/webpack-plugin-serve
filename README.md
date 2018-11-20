@@ -76,6 +76,43 @@ And run `webpack`:
 $ npx wp
 ```
 
+### Node 8
+Node 8 was chosen to not be supported to to a problem on how node http handles upgrade requests. To be able to be used on node 8, there is a workaround for that problem, where you enforce the callback to be called during those upgrade requests.
+
+We do not support node version 8, we encourage and only support the usage with node `> 10`.
+
+When adding `webpack-plugin-serve` to your config, you have to do few things before.
+
+```js
+const { ServerResponse} = require('http');
+
+const { WebpackPluginServe: Serve } = require('../../../lib/');
+
+const options = { ... };
+const serve = new Serve(options);
+
+// Here the workaround is applied to allow upgrade requests to be passed down the chain of koa middlewares
+
+serve.on('listening', (server) => {
+  server.on('upgrade', (req) => server.emit('request', req, new ServerResponse(req)));
+});
+
+
+module.exports = {
+	// an example entry definition
+	entry: [
+		'app.js',
+		'webpack-plugin-serve/client' // ← important: this is required, where the magic happens in the browser
+	]
+  ...
+  plugins: [
+    serve // ← important: Here is the difference of usage.
+  ],
+  watch: true  // ← important: webpack and the server will continue to run in watch mode
+};
+
+```
+
 ## Options
 
 ### `client`
