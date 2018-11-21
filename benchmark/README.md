@@ -18,7 +18,7 @@ To run any of them, just run `npm run` + name of server (first initial letters).
 Results for 9 modules: 
 
 |X |GOT|Plugins|
-|---|---|---|---|
+|---|---|---|
 |WPS|1.23s|0.032s|
 |WDS|1.44s|-|
 |WS|1.29s|-|
@@ -26,7 +26,7 @@ Results for 9 modules:
 Results for 14 modules:
 
 |X |GOT|Plugins|
-|---|---|---|---|
+|---|---|---|
 |WPS|1.31s|0.025s|
 |WDS|1.61s|-|
 |WS|1.58s|-|
