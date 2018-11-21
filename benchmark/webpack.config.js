@@ -8,18 +8,12 @@ const smp = new SpeedMeasurePlugin();
 
 const config = {
   context: __dirname,
-<<<<<<< HEAD
-  entry: ['./app.js'],
-=======
   entry: ['./src/index.js'],
->>>>>>> misc: update benchmark folder with more modules
   mode: 'development',
   output: {
     filename: './output.js',
     path: resolve(__dirname, './output'),
     publicPath: 'output/'
-<<<<<<< HEAD
-=======
   },
   module: {
     rules: [
@@ -31,7 +25,6 @@ const config = {
         }
       }
     ]
->>>>>>> misc: update benchmark folder with more modules
   }
 };
 
