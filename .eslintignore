@@ -4,3 +4,4 @@ dist
 output.js
 wps-hmr.*
 *.hot-update.js
+benchmark/*
