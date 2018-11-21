@@ -19,7 +19,7 @@ Results for 9 modules:
 
 |X |GOT|Plugins|
 |---|---|---|
-|WPS|1.23s|0.032s|
+|WPS|1.23s|0.025s|
 |WDS|1.44s|-|
 |WS|1.29s|-|
 
