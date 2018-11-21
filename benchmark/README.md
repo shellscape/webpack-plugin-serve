@@ -1,5 +1,5 @@
 # [WIP] Development server benchmarks
-> This is a first draft, updates are going to be made into this folder to be able to run automate all the benchmarks without having to manually run each of them.
+> This is a first draft, updates are going to be made into this folder to be able to run automatically all the benchmarks without having to manually run each of them.
 
 ## Usage
 There are 3 servers available:
