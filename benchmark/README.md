@@ -15,11 +15,22 @@ To run any of them, just run `npm run` + name of server (first initial letters).
 
 `GOT = general output time`
 
-|X |GOT|Plugins|Loaders|
+Results for 9 modules: 
+
+|X |GOT|Plugins|
 |---|---|---|---|
-|WPS|0.116s|0.022s|0.0166s|
-|WDS|0.527s|-|0.384s|
-|WS|0.344s|-|0.185s|
+|WPS|1.23s|0.032s|
+|WDS|1.44s|-|
+|WS|1.29s|-|
+
+Results for 14 modules:
+
+|X |GOT|Plugins|
+|---|---|---|---|
+|WPS|1.31s|0.025s|
+|WDS|1.61s|-|
+|WS|1.58s|-|
+
 
 ## Computer specs
 Intel® Core™ i5-4200U CPU @ 1.60GHz × 4<br/>

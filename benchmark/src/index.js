@@ -11,6 +11,11 @@ export { default as S6 } from './6';
 export { default as S7 } from './7';
 export { default as S8 } from './8';
 export { default as S9 } from './9';
+export { default as S10 } from './10';
+export { default as S11 } from './11';
+export { default as S12 } from './12';
+export { default as S13 } from './13';
+export { default as S14 } from './14';
 
 if (module.hot) {
   module.hot.accept((err) => {
