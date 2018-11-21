@@ -15,8 +15,8 @@ To run any of them, just run `npm run` + name of server (first initial letters).
 
 `GOT = general output time`
 
-|   |GOT|Plugins|Loaders|
-|---|---|---|---|---|
+|X |GOT|Plugins|Loaders|
+|---|---|---|---|
 |WPS|0.117s|0.024s|0.016s|
 |WDS|0.474s|-|0.355s|
 |WS|0.289s|-|0.148s|
