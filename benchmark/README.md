@@ -17,9 +17,9 @@ To run any of them, just run `npm run` + name of server (first initial letters).
 
 |X |GOT|Plugins|Loaders|
 |---|---|---|---|
-|WPS|0.117s|0.024s|0.016s|
-|WDS|0.474s|-|0.355s|
-|WS|0.289s|-|0.148s|
+|WPS|0.116s|0.022s|0.0166s|
+|WDS|0.527s|-|0.384s|
+|WS|0.344s|-|0.185s|
 
 ## Computer specs
 Intel® Core™ i5-4200U CPU @ 1.60GHz × 4<br/>
