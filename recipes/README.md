@@ -5,6 +5,7 @@ Recipes are snippets of code and useful tidbits that may be helpful to developer
 🍳 What's Cooking:
 
 [Bonjour Broadcast](./bonjour-broadcast.md)<br/>
+[Custom Headers](./custom-headers.md)<br/>
 [Proxies](./proxies.md)<br/>
 [Using a Dynamic Port](./dynamic-port.md)<br/>
 [Using an Internal IP Address](./internal-ip.md)<br/>
