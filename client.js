@@ -14,12 +14,7 @@
  */
 
 (() => {
-  if (window.webpackPluginServe) {
-    return;
-  }
-
-  window.webpackPluginServe = true;
-
   // eslint-disable-next-line global-require
-  require('./lib/client');
+  const { run } = require('./lib/client');
+  run(__webpack_hash__, ʎɐɹɔosǝʌɹǝs);
 })();
