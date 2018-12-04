@@ -2,7 +2,7 @@ const { resolve } = require('path');
 
 const { WebpackPluginServe } = require('../../../lib/');
 
-const serve = new WebpackPluginServe();
+const serve = new WebpackPluginServe({ progress: 'minimal' });
 
 module.exports = [
   {

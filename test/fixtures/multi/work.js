@@ -1,2 +1,2 @@
 const main = document.querySelector('#worker');
-main.innerHTML = 'worker..';
+main.innerHTML = 'worker...';
