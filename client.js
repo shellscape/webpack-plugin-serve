@@ -21,5 +21,5 @@
   window.webpackPluginServe = true;
 
   // eslint-disable-next-line global-require
-  require('./lib/client');
+  require('./lib/client/client');
 })();
