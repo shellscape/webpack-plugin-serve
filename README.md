@@ -91,6 +91,11 @@ Type: `String`
 
 If set, allows for overriding the `WebSocket` address, which corresponds to the server address by default. Values for this option should be in a valid `{host}:{port}` format. e.g. `localhost:433`.
 
+#### `client.retry`
+Type: `Boolean`
+
+If `true`, instructs the client to attempt to reconnect all `WebSockets` when their connects are interrupted, usually as a result of the server being stopped and/or restarted. _Note: This can be very spammy in the browser console, as there is no way to suppress error messages from the browser when a `WebSocket` fails to connect._
+
 ### `compress`
 Type: `Boolean`<br>
 Default: `false`
