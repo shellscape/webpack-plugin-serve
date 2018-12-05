@@ -1,6 +1,8 @@
 # [WIP] Development server benchmarks
 > This is a first draft, updates are going to be made into this folder to be able to run automatically all the benchmarks without having to manually run each of them.
 
+_Note: numbers may not vary much, since the actual overall gain is on the browser sync and hmr updates. This won't increase webpack compilation time._
+
 ## Usage
 There are 3 servers available:
 * `webpack-serve (ws)`
