@@ -48,5 +48,6 @@
   { "name": "x³ ⋅ hold", "color": "#CFD8DC" },
   { "name": "x⁴ ⋅ in progress", "color": "#4CAF50" },
   { "name": "x⁵ ⋅ invalid", "color": "#CFD8DC" },
-  { "name": "x⁶ ⋅ wontfix", "color": "#CFD8DC" }
+  { "name": "x⁶ ⋅ wontfix", "color": "#CFD8DC" },
+  { "name": "x⁷ . could not reproduce", "color": "#CFD8DC" }
 ]
