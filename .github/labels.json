@@ -44,9 +44,10 @@
   { "name": "v⁵ ⋅ next", "color": "#CDDC39" },
 
   { "name": "x¹ ⋅ abandoned", "color": "#CFD8DC" },
-  { "name": "x² ⋅ duplicate", "color": "#CFD8DC" },
-  { "name": "x³ ⋅ hold", "color": "#CFD8DC" },
-  { "name": "x⁴ ⋅ in progress", "color": "#4CAF50" },
-  { "name": "x⁵ ⋅ invalid", "color": "#CFD8DC" },
-  { "name": "x⁶ ⋅ wontfix", "color": "#CFD8DC" }
+  { "name": "x² ⋅ could not reproduce", "color": "#CFD8DC" },
+  { "name": "x³ ⋅ duplicate", "color": "#CFD8DC" },
+  { "name": "x⁴ ⋅ hold", "color": "#CFD8DC" },
+  { "name": "x⁵ ⋅ in progress", "color": "#4CAF50" },
+  { "name": "x⁶ ⋅ invalid", "color": "#CFD8DC" },
+  { "name": "x⁷ ⋅ wontfix", "color": "#CFD8DC" }
 ]
