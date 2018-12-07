@@ -15,6 +15,6 @@
 
 (() => {
   // eslint-disable-next-line global-require
-  const { run } = require('./lib/client');
+  const { run } = require('./lib/client/client');
   run(__webpack_hash__, ʎɐɹɔosǝʌɹǝs);
 })();
