@@ -2,7 +2,7 @@ const { resolve } = require('path');
 
 const { WebpackPluginServe } = require('../../../lib/');
 
-const serve = new WebpackPluginServe({ progress: 'minimal' });
+const serve = new WebpackPluginServe();
 
 module.exports = [
   {
@@ -24,7 +24,7 @@ module.exports = [
   },
   {
     context: __dirname,
-    entry: ['./worker.js', 'webpack-plugin-serve/client'],
+    entry: ['./worker.js'],
     mode: 'development',
     output: {
       filename: './dist-worker.js',

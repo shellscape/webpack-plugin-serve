@@ -7,3 +7,11 @@ if (module.hot) {
     }
   });
 }
+
+// uncomment to produce a build error
+// if (!window) {
+//   require('tests');
+// }
+
+// uncomment to produce a build warning
+// console.log(require);
