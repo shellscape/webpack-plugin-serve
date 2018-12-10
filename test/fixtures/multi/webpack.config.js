@@ -24,7 +24,7 @@ module.exports = [
   },
   {
     context: __dirname,
-    entry: ['./worker.js'],
+    entry: ['./worker.js', 'webpack-plugin-serve/client'],
     mode: 'development',
     output: {
       filename: './dist-worker.js',
