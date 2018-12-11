@@ -18,7 +18,7 @@ The concept behind an _evergreen_ project is derived from https://www.w3.org/200
 
 > 1. Intentionally: to simplify their implementation, reduce resource requirements or meet environmental constraints
 
-Additionally, this decision was made to leverage speed, stability, and platform enhancements (namely in `http`) in the latest Active LTS Node version.
+Additionally, this decision was made to leverage speed, stability, and platform enhancements (namely in `http`) in the latest Active LTS Node version(s).
 
 Some users will not be able to leverage this plugin either because they cannot upgrade, because they won't upgrade, or because another dependency prevents an upgrade. The author and maintainers of this plugin understand that, and feel that the benefits of supporting only the Active LTS version of Node.js outweigh the detriments.
 
