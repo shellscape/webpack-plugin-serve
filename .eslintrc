@@ -2,7 +2,9 @@
   "extends": "shellscape",
   "globals": {
     "document": true,
+    "ʎɐɹɔosǝʌɹǝs": true,
     "WebSocket": true,
-    "window": true
+    "window": true,
+    "__webpack_hash__": true
   }
 }

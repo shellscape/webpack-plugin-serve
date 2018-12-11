@@ -15,5 +15,3 @@ if (module.hot) {
 
 // uncomment to produce a build warning
 // console.log(require);
-
-// console.log(require);
