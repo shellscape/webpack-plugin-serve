@@ -37,6 +37,12 @@ _Please consider donating if you find this project useful._
 
 This module requires Node v10+. The client scripts in this module require [browsers which support `async/await`](https://caniuse.com/#feat=async-functions). Users may also choose to compile the client script via an appropriately configured [Babel](https://babeljs.io/) webpack loader for use in older browsers.
 
+## Feature Parity
+
+In many ways, `webpack-plugin-serve` stands out from the alternatives. Feature parity with existing solutions is a high priority. If a feature you've come to expect in an alternative isn't directly available, it's likely easy to implement via middleware. Feel free to open an issue for direction.
+
+For those interested in direct comparisons, please see the [Feature Grid](./.github/FEATURES.md) for a breakdown of feature comparisons between `webpack-plugin-serve` and the alternatives.
+
 ## Install
 
 Using npm:
@@ -245,9 +251,6 @@ module.exports = {
 ```
 
 _Note: The `app.use(...)` call here is slightly different than what Express users are used to seeing with `http-proxy-middleware`. This is due to subtle differences in how the module interacts with `Koa`, which is used under the hood in this plugin._
-
-## Feature set comparison
-We created a grid that can be seen [here](./feature-set.md) comparing all features the other development servers have.
 
 ## Meta
 
