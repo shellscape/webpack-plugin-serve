@@ -11,7 +11,7 @@
   "main": "lib/index.js",
   "typings": "index.d.ts",
   "engines": {
-    "node": ">= 10.11.0"
+    "node": ">= 8.0.0 < 9.0.0 || >= 10.0.0 < 10.14.0"
   },
   "scripts": {
     "ci:coverage": "nyc npm run test && nyc report --reporter=text-lcov > coverage.lcov",
