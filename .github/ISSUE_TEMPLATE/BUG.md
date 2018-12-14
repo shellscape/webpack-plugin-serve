@@ -17,7 +17,7 @@ about: Something went awry and you'd like to tell us about it.
 - Webpack Version:
 - Operating System (or Browser):
 - Node Version:
-- webpack-plugin-dev Version:
+- webpack-plugin-serve Version:
 
 ### How Do We Reproduce?
 
