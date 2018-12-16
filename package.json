@@ -31,7 +31,8 @@
     "security": "npm audit",
     "pretest": "npm run test:ts",
     "test": "ava",
-    "test:ts": "tsc --build test/typescript/tsconfig.json"
+    "test:ts": "tsc --build test/typescript/tsconfig.json",
+    "test:coverage": "nyc npm run test && nyc report --reporter=lcov"
   },
   "files": [
     "client.js",
