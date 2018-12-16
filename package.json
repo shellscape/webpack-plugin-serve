@@ -27,7 +27,8 @@
     "lint": "eslint --fix --cache lib test",
     "lint-staged": "lint-staged",
     "security": "npm audit",
-    "test": "ava"
+    "test": "ava",
+    "test:coverage": "nyc npm run test && nyc report --reporter=lcov"
   },
   "files": [
     "client.js",
