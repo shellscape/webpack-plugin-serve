@@ -11,7 +11,7 @@ module.exports = {
     path: resolve(__dirname, './output'),
     publicPath: 'output/'
   },
-  plugins: [new Serve({ client: { retry: true } })],
+  plugins: [new Serve()],
   resolve: {
     alias: {
       'webpack-plugin-serve/client': resolve(__dirname, '../../../client')
