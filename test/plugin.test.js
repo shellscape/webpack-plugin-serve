@@ -1,9 +1,10 @@
+/* eslint-disable no-param-reassign */
+process.env.WPS_ENV = 'test';
 const test = require('ava');
 
 const { WebpackPluginServe } = require('../lib');
 
 // allow more than one instance at a time.
-process.env.WPS_ENV = 'test';
 
 test('defaults', (t) => {
   const plugin = new WebpackPluginServe();
@@ -15,7 +16,13 @@ test('non-default', (t) => {
     compress: true,
     historyFallback: true,
     host: '127.0.0.1',
-    port: 3124
+    port: 3124,
+    middleware: (app) => {
+      app.use(async (ctx, next) => {
+        ctx.body = 'Hello';
+        await next();
+      });
+    }
   });
 
   t.deepEqual(plugin.options.compress, {});

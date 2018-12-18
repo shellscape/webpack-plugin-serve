@@ -14,9 +14,9 @@ test('client', (t) => {
   t.falsy(result.error);
 });
 
-test('error', (t) => {
-  const result = validate({ foo: 'bar' });
-  t.snapshot(result.error);
+test('error', async (t) => {
+  const error = await t.throwsAsync(() => validate({ foo: 'bar' }));
+  t.is(error.message, '"foo" is not allowed');
 });
 
 test('promise', (t) => {

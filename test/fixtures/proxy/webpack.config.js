@@ -1,18 +1,12 @@
-const { resolve } = require('path');
+const merge = require('webpack-merge');
+
+const baseConfig = require('../commonAssets/webpack.config');
 
 const { WebpackPluginServe: Serve } = require('../../../lib/');
 
 const logLevel = 'silent';
 
-module.exports = {
-  context: __dirname,
-  entry: ['./app.js', 'webpack-plugin-serve/client'],
-  mode: 'development',
-  output: {
-    filename: './output.js',
-    path: resolve(__dirname, './output'),
-    publicPath: 'output/'
-  },
+module.exports = merge(baseConfig, {
   plugins: [
     new Serve({
       port: 55556,
@@ -39,10 +33,5 @@ module.exports = {
       }
     })
   ],
-  resolve: {
-    alias: {
-      'webpack-plugin-serve/client': resolve(__dirname, '../../../lib/client')
-    }
-  },
   watch: true
-};
+});

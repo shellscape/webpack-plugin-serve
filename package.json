@@ -90,6 +90,7 @@
     "typescript": "^3.3.3",
     "webpack": "^4.28.1",
     "webpack-nano": "^0.6.1"
+    "webpack-merge": "^4.1.5"
   },
   "keywords": [
     "dev",
