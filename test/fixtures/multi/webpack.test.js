@@ -1,21 +1,15 @@
 const { resolve } = require('path');
 
-const getPort = require('get-port');
-
 const merge = require('webpack-merge');
 
 const baseConfig = require('../commonAssets/webpack.config');
 
-const { WebpackPluginServe: Serve } = require('../../../lib/');
+const { WebpackPluginServe } = require('../../../lib');
 
-const serve = new Serve({
-  host: 'localhost',
-  port: getPort({ port: 55555 })
-});
+const serve = new WebpackPluginServe();
 
 const mainConfig = merge(baseConfig, {
-  plugins: [serve],
-  watch: true
+  plugins: [serve]
 });
 
 module.exports = [
