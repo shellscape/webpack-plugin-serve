@@ -8,6 +8,9 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
+          name: Node Info
+          command: node --version && npm --version
+      - run:
           name: Install Dependencies
           command: npm install
       - save_cache:
@@ -21,6 +24,9 @@ jobs:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: Node Info
+          command: node --version && npm --version
       - run:
           name: Workaround for GoogleChrome/puppeteer#290
           command: 'sh .circleci/setup-puppeteer.sh'

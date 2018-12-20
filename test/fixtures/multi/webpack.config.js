@@ -4,7 +4,10 @@ const getPort = require('get-port');
 
 const { WebpackPluginServe: Serve } = require('../../../lib/');
 
-const serve = new Serve({ port: getPort({ port: 55555 }) });
+const serve = new Serve({
+  host: 'localhost',
+  port: getPort({ port: 55555 })
+});
 
 module.exports = [
   {

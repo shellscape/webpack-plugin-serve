@@ -22,6 +22,15 @@ const getPort = (stdout) => {
   };
 };
 
+const replace = (path, content) => {
+  return {
+    then(r) {
+      writeFileSync(path, content);
+      setTimeout(r, 5000);
+    }
+  };
+};
+
 const setup = async (base, name) => {
   const fixturesPath = join(__dirname, '../fixtures');
   const src = join(fixturesPath, base);
@@ -49,24 +58,9 @@ const browser = async (t, run) => {
   const page = await instance.newPage();
   const util = {
     getPort,
+    replace,
     setup,
-    waitForBuild,
-    replace(path, content) {
-      return {
-        then(r) {
-          // wait for HMR to perform the replacement
-          page.on('console', (message) => {
-            const text = message.text();
-            if (/wps:\sBuild(.+)\sreplaced/.test(text)) {
-              // there's some kind of lag betwene puppeteer and ava. this time is somewhat arbitrary
-              // but keeps things executing in the right order without failure.
-              setTimeout(r, 1000);
-            }
-          });
-          writeFileSync(path, content);
-        }
-      };
-    }
+    waitForBuild
   };
   try {
     await run(t, page, util);

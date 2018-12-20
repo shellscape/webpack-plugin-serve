@@ -13,7 +13,12 @@ module.exports = {
     path: resolve(__dirname, './output'),
     publicPath: 'output/'
   },
-  plugins: [new Serve({ port: getPort({ port: 55555 }) })],
+  plugins: [
+    new Serve({
+      host: 'localhost',
+      port: getPort({ port: 55555 })
+    })
+  ],
   resolve: {
     alias: {
       'webpack-plugin-serve/client': resolve(__dirname, '../../../client')

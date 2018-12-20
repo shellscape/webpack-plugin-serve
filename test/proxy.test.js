@@ -12,7 +12,7 @@ let watcher;
 let server;
 
 test.before('Starting server', async () => {
-  server = proxyServer().listen(3003);
+  server = proxyServer().listen(8888);
   watcher = compiler.watch({}, deferred.resolve);
   await deferred.promise;
 });
@@ -23,13 +23,13 @@ test.after.always('Closing server', () => {
 });
 
 test('should reach /api proxy endpoint', async (t) => {
-  const response = await fetch('http://localhost:55555/api');
+  const response = await fetch('http://localhost:55556/api');
   const result = await response.text();
   t.snapshot(result);
 });
 
 test('should reach /api/test proxy endpoint', async (t) => {
-  const response = await fetch('http://localhost:55555/api/test');
+  const response = await fetch('http://localhost:55556/api/test');
   const result = await response.text();
   t.snapshot(result);
 });

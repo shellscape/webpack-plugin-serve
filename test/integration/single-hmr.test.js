@@ -9,7 +9,6 @@ const { browser } = require('../helpers/puppeteer');
 test('single compiler', browser, async (t, page, util) => {
   const { getPort, replace, setup, waitForBuild } = util;
   const fixturePath = await setup('simple', 'single-hmr');
-
   const proc = execa('wp', [], { cwd: fixturePath });
   const { stdout, stderr } = proc;
   const port = await getPort(stdout);

@@ -20,7 +20,7 @@ test.before(async () => {
         ctx.body = '/test endpoint rewrite';
       }
     }
-  ]).listen(3004);
+  ]).listen(8889);
   watcher = compiler.watch({}, deferred.resolve);
   await deferred.promise;
 });
@@ -31,7 +31,7 @@ test.after.always(() => {
 });
 
 test('should rewrite /api', async (t) => {
-  const response = await fetch('http://localhost:55556/api/test');
+  const response = await fetch('http://localhost:55557/api/test');
   const result = await response.text();
   t.snapshot(result);
 });
