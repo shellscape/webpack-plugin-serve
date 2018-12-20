@@ -8,7 +8,7 @@
 - [What does the "Not Found / 404" error mean?](#what-does-the-not-found--404-error-mean)
 - [Why does the `static` option default to `compiler.context`?](#why-does-the-static-option-default-to-compilercontext)
 - [Why can't I use Node v10.14.x?](#why-cant-i-use-node-v1014x)
-- [Why do I have to also included `webpack-plugin-serve/client` in my entry point?](#why-do-i-have-to-also-included-webpack-plugin-serveclient-in-my-entry-point)
+- [Why do I have to included `webpack-plugin-serve/client` in the entry?](#why-do-i-have-to-included-webpack-plugin-serveclient-in-the-entry)
 - [Usage with multiple entrypoints](#usage-with-multiple-entrypoints)
 
 <!-- tocstop -->
