@@ -7,24 +7,18 @@ const execa = require('execa');
 const { browser } = require('../helpers/puppeteer');
 
 test('single compiler', browser, async (t, page, util) => {
-  const { getPort, replace, setup } = util;
+  const { getPort, replace, setup, waitForBuild } = util;
   const fixturePath = await setup('simple', 'single-hmr');
 
   const proc = execa('wp', [], { cwd: fixturePath });
-
-  await {
-    then(r) {
-      // wait for the build to finish
-      setTimeout(r, 1000);
-    }
-  };
-
-  const { stdout } = proc;
+  const { stdout, stderr } = proc;
   const port = await getPort(stdout);
   const url = `http://localhost:${port}`;
 
-  await page.goto(url);
-  await page.waitForSelector('main');
+  await waitForBuild(stderr);
+  await page.goto(url, {
+    waitUntil: 'networkidle0'
+  });
 
   const componentPath = join(fixturePath, 'component.js');
   const content = `const main = document.querySelector('main'); main.innerHTML = 'test';`;

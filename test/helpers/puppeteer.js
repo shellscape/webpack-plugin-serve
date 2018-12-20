@@ -31,12 +31,26 @@ const setup = async (base, name) => {
   return dest;
 };
 
+const waitForBuild = (stderr) => {
+  return {
+    then(r) {
+      stderr.on('data', (data) => {
+        const content = strip(data.toString());
+        if (/webpack: Hash:/.test(content)) {
+          r();
+        }
+      });
+    }
+  };
+};
+
 const browser = async (t, run) => {
   const instance = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
   const page = await instance.newPage();
   const util = {
     getPort,
     setup,
+    waitForBuild,
     replace(path, content) {
       return {
         then(r) {
