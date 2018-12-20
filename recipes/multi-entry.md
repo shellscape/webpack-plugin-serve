@@ -1,6 +1,8 @@
 ## 🍲 Setting up Multiple entries
 
-When building a multi-page application, in order to optimise code/module reuse across the whole application a multi entry configuration is used and developers want to use all the features webpack have, such as `hot module replacement` when one change any file. In order to take advantage of it the client file has to be present on the dependecy tree to detect and propagate those changes. Sometimes developers get confused because they don't know where exactly to include the client file when facing this scenario.
+When building a multi-page application, in order to optimise code/module reuse across the whole application a multi entry configuration is used and developers want to use all the features webpack have, such as `hot module replacement` when one change any file. 
+
+In order to take advantage of it the client file has to be present on the dependecy tree to detect and propagate those changes. Sometimes developers get confused because they don't know where exactly to include the client file when facing this scenario.
 
 ### Meat and Potatoes
 
