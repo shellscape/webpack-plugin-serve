@@ -68,7 +68,7 @@ When creating `webpack-plugin-serve`, we drew upon lessons learned from webpack-
 
 The minor version range for Node v10.14.x contains [a regression](https://github.com/nodejs/node/pull/17806#issuecomment-446213378) which causes `ERR_STREAM_WRITE_AFTER_END` and `Invalid WebSocket frame: RSV1 must be clear` errors when using WebSockets. We've narrowed the issue down to that version range of Node, as 10.13.x is not effected.
 
-### Why do I have to also included `webpack-plugin-serve/client` in my entry point?
+### Why do I have to include `webpack-plugin-serve/client` in the entry?
 
 Why and what a file is needed to use some features of a development server have been unknown for a long time, users just include this file because they need but not usually know what this file does.
 
