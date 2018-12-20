@@ -94,7 +94,7 @@ module.exports = {
 }
 ```
 
-The correct way to allow `HMR` when any dependency tree (any entry point and its dependencies) gets updates, user needs to import the "control" file in all the entries.
+The correct way to allow `HMR` when any dependency tree (any entry point and its dependencies) gets updated, user needs to import the client file in all entries.
 
 ```js
 module.exports = {
