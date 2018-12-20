@@ -32,7 +32,7 @@ const setup = async (base, name) => {
 };
 
 const browser = async (t, run) => {
-  const instance = await puppeteer.launch();
+  const instance = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
   const page = await instance.newPage();
   const util = {
     getPort,
