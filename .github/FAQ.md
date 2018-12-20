@@ -8,6 +8,8 @@
 - [What does the "Not Found / 404" error mean?](#what-does-the-not-found--404-error-mean)
 - [Why does the `static` option default to `compiler.context`?](#why-does-the-static-option-default-to-compilercontext)
 - [Why can't I use Node v10.14.x?](#why-cant-i-use-node-v1014x)
+- [Why do I have to also included `webpack-plugin-serve/client` in my entry point?](#why-do-i-have-to-also-included-webpack-plugin-serveclient-in-my-entry-point)
+- [Usage with multiple entrypoints](#usage-with-multiple-entrypoints)
 
 <!-- tocstop -->
 
@@ -65,3 +67,43 @@ When creating `webpack-plugin-serve`, we drew upon lessons learned from webpack-
 ### Why can't I use Node v10.14.x?
 
 The minor version range for Node v10.14.x contains [a regression](https://github.com/nodejs/node/pull/17806#issuecomment-446213378) which causes `ERR_STREAM_WRITE_AFTER_END` and `Invalid WebSocket frame: RSV1 must be clear` errors when using WebSockets. We've narrowed the issue down to that version range of Node, as 10.13.x is not effected.
+
+### Why do I have to also included `webpack-plugin-serve/client` in my entry point?
+
+Why and what a file is needed to use some features of a development server have been unknown for a long time, users just include this file because they need but not usually know what this file does.
+
+On `webpack-plugin-serve` this file is responsible to control the `Hot Module Replacement`, i.e, the communication between the webpack compiler and the browser. After a change happens on a file, the server is going to send a message to the browser "Hey browser, here are the files you have to hot replace, and here is the new compilation hash". By doing that, the script that you included knows what files changed and handles them to the `webpack` hmr code that exists on the browser too.
+
+This file is also responsible to serve some of the special features we created, the overlays (status and progress).
+
+### Usage with multiple entrypoints
+
+Because users don't actually know what the file that needs to be included with entrypoints does, confusion stats to show up when one has a setup with named entrypoints.
+
+Basically in this scenario:
+
+```js
+module.exports = {
+  entry: {
+    app1: './src/app1.js',
+    app2: './src/app2.js',
+    app3: './src/app3.js',
+    app4: './src/app4.js'
+  }
+  // ... rest of config
+}
+```
+
+The correct way to allow `HMR` when any dependency tree (any entry point and its dependencies) gets updates, user needs to import the "control" file in all the entries.
+
+```js
+module.exports = {
+  entry: {
+    app1: ['./src/app1.js', 'webpack-plugin-serve/client'],
+    app2: ['./src/app2.js', 'webpack-plugin-serve/client'],
+    app3: ['./src/app3.js', 'webpack-plugin-serve/client'],
+    app4: ['./src/app4.js', 'webpack-plugin-serve/client']
+  }
+  // ... rest of config
+}
+```
