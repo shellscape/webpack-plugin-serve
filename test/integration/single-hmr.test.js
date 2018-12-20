@@ -21,7 +21,7 @@ test('single compiler', browser, async (t, page, util) => {
 
   const { stdout } = proc;
   const port = await getPort(stdout);
-  const url = `http://[::]:${port}`;
+  const url = `http://localhost:${port}`;
 
   await page.goto(url);
   await page.waitForSelector('main');
