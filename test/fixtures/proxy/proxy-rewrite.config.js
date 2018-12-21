@@ -16,12 +16,12 @@ module.exports = {
   plugins: [
     new Serve({
       log: { level: logLevel },
-      port: 55556,
+      port: 55557,
       middleware: (app, builtins) => {
         app.use(
           builtins.proxy('/api', {
             logLevel,
-            target: 'http://localhost:3004',
+            target: 'http://localhost:8889',
             pathRewrite: { '^/api': '' }
           })
         );

@@ -1,5 +1,7 @@
 const { resolve } = require('path');
 
+const getPort = require('get-port');
+
 const { WebpackPluginServe: Serve } = require('../../../lib/');
 
 module.exports = {
@@ -11,7 +13,12 @@ module.exports = {
     path: resolve(__dirname, './output'),
     publicPath: 'output/'
   },
-  plugins: [new Serve({ client: { retry: true } })],
+  plugins: [
+    new Serve({
+      host: 'localhost',
+      port: getPort({ port: 55555 })
+    })
+  ],
   resolve: {
     alias: {
       'webpack-plugin-serve/client': resolve(__dirname, '../../../client')
