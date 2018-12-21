@@ -79,6 +79,7 @@
     "puppeteer": "^1.11.0",
     "standard-version": "^4.4.0",
     "webpack": "^4.28.1",
+    "supertest": "^3.3.0",
     "webpack-merge": "^4.1.5",
     "webpack-nano": "^0.5.1"
   },
