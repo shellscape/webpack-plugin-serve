@@ -18,19 +18,19 @@ module.exports = {
   devtool: 'cheap-eval-source-map',
   module: {
     rules: [
-			{
-				test: /\.vue$/,
-				exclude: /node_modules/,
-				loader: 'vue-loader',
-			},
+      {
+        test: /\.vue$/,
+        exclude: /node_modules/,
+        loader: 'vue-loader',
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader?cacheDirectory'
       },
-			{
+      {
         test: /\.css$/,
-				use: ['vue-style-loader', 'css-loader']
+        use: ['vue-style-loader', 'css-loader']
       },
       {
         test: /\.woff(\?.*)?$/,
@@ -97,14 +97,14 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
-	resolve: {
-		alias: {
-			vue$: 'vue/dist/vue.esm.js',
-		},
-		extensions: ['*', '.js', '.vue', '.json'],
-	},
+  resolve: {
+    alias: {
+      vue$: 'vue/dist/vue.esm.js',
+    },
+    extensions: ['*', '.js', '.vue', '.json'],
+  },
   plugins: [
-		new VueLoaderPlugin(),
+    new VueLoaderPlugin(),
     new HtmlWebpackPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
