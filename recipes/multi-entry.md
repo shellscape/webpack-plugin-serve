@@ -25,7 +25,7 @@ module.exports = {
 
 ### Making the Meal
 
-Now that you have your config, let's include the client file on your entries.
+We'll now add the client script to the entries we'd like to have client-side features added to:
 
 ```js
 const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
