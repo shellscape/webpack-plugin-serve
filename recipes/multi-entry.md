@@ -9,7 +9,6 @@ In order to take advantage of it the client file has to be present on the depend
 Given that your configuration is already configured as multi-entry
 
 ```js
-const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
 
 const serve = new Serve();
 
