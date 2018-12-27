@@ -6,7 +6,7 @@ In order to take advantage of it the client file has to be present on the depend
 
 ### Meat and Potatoes
 
-Given that your configuration is already configured as multi-entry
+Let's say for this example that you have an application which bundles two pages and a web worker separately:
 
 ```js
 
