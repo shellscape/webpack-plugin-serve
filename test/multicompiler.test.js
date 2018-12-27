@@ -7,5 +7,4 @@ test('multicompiler', async (t) => {
   t.truthy(stderr.includes('Build Finished'));
   t.truthy(stderr.includes('Child 0:'));
   t.truthy(stderr.includes('Child 1:'));
-  t.truthy(stderr.includes('./dist-worker.js  58.3 KiB    main  [emitted]  main'));
 });

@@ -6,12 +6,8 @@ const request = require('supertest');
 
 const { getBuiltins } = require('../lib/middleware');
 
-let app = null;
-test.beforeEach(() => {
-  app = new Koa();
-});
-
-test.serial('call 404 middleware with a custom handler', async (t) => {
+test('call 404 middleware with a custom handler', async (t) => {
+  const app = new Koa();
   const { four0four } = getBuiltins(app, {});
   four0four((ctx) => {
     ctx.body = 'newresult';
@@ -23,7 +19,8 @@ test.serial('call 404 middleware with a custom handler', async (t) => {
   t.is(response.status, 404);
 });
 
-test.serial('call 404 middleware with default handler', async (t) => {
+test('call 404 middleware with default handler', async (t) => {
+  const app = new Koa();
   const { four0four } = getBuiltins(app, {});
   four0four();
 
@@ -32,7 +29,8 @@ test.serial('call 404 middleware with default handler', async (t) => {
   t.is(response.status, 404);
 });
 
-test.serial('should not show a 404 error page', async (t) => {
+test('should not show a 404 error page', async (t) => {
+  const app = new Koa();
   app.use(
     router.get('/test', (ctx) => {
       ctx.status = 200;
@@ -49,6 +47,7 @@ test.serial('should not show a 404 error page', async (t) => {
 });
 
 test('apply compress middleware with default options', async (t) => {
+  const app = new Koa();
   app.use(
     router.get('/test', (ctx) => {
       ctx.body = {
