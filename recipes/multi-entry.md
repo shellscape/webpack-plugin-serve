@@ -10,7 +10,6 @@ Given that your configuration is already configured as multi-entry
 
 ```js
 
-const serve = new Serve();
 
 module.exports = {
   entry: {
