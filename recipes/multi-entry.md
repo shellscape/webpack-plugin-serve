@@ -15,10 +15,9 @@ const serve = new Serve();
 
 module.exports = {
   entry: {
-    app1: './app1.js',
-    app2: './app2.js',
-    app3: './app3.js',
-    app4: './app4.js',
+    landing: './landing.js',
+    checkout: './checkout.js',
+    worker: './worker.js'
   },
   // ...rest of your config
 };
@@ -35,16 +34,17 @@ const serve = new Serve();
 
 module.exports = {
   entry: {
-    app1: ['./app1.js', 'webpack-plugin-serve/client'],
-    app2: ['./app2.js', 'webpack-plugin-serve/client'],
-    app3: ['./app3.js', 'webpack-plugin-serve/client'],
-    app4: ['./app4.js', 'webpack-plugin-serve/client']
+    landing: ['./landing.js', 'webpack-plugin-serve/client'],
+    checkout: './checkout.js',
+    worker: ['./worker.js', 'webpack-plugin-serve/client']
   },
   // ...rest of your config
 };
 ```
 
+Note that we left the client script off of one of the entries. It's not required that _all entries_ have the client script - only those you wish to use the client-side features for.
+
 
 ### 🍰 Dessert
 
-Now you can go home in peace, the next day you are going to have `HMR` enabled for all your entries.
+Go forth with a full belly and contentment, for you've enabled client-side goodies for your entries.
