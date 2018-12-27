@@ -8,6 +8,7 @@
 - [What does the "Not Found / 404" error mean?](#what-does-the-not-found--404-error-mean)
 - [Why does the `static` option default to `compiler.context`?](#why-does-the-static-option-default-to-compilercontext)
 - [Why can't I use Node v10.14.x?](#why-cant-i-use-node-v1014x)
+- [Why do I have to include `webpack-plugin-serve/client` in the entry?](#why-do-i-have-to-include-webpack-plugin-serveclient-in-the-entry)
 
 <!-- tocstop -->
 
@@ -65,3 +66,10 @@ When creating `webpack-plugin-serve`, we drew upon lessons learned from webpack-
 ### Why can't I use Node v10.14.x?
 
 The minor version range for Node v10.14.x contains [a regression](https://github.com/nodejs/node/pull/17806#issuecomment-446213378) which causes `ERR_STREAM_WRITE_AFTER_END` and `Invalid WebSocket frame: RSV1 must be clear` errors when using WebSockets. We've narrowed the issue down to that version range of Node, as 10.13.x is not effected.
+
+### Why do I have to include `webpack-plugin-serve/client` in the entry?
+
+
+On `webpack-plugin-serve` this file is responsible to control the `Hot Module Replacement`, i.e, the communication between the webpack compiler and the browser. After a change happens on a file, the server is going to send a message to the browser "Hey browser, here are the files you have to hot replace, and here is the new compilation hash". By doing that, the script that you included knows what files changed and handles them to the `webpack` hmr code that exists on the browser too.
+
+This file is also responsible to serve some of the special features we created, the overlays (status and progress).
