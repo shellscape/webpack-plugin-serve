@@ -6,11 +6,11 @@ Recipes are snippets of code and useful tidbits that may be helpful to developer
 
 [Bonjour Broadcast](./bonjour-broadcast.md)<br/>
 [Custom Headers](./custom-headers.md)<br/>
+[Multi Entry Setup](./multi-entry.md)<br/>
 [Proxies](./proxies.md)<br/>
 [Using a Dynamic Port](./dynamic-port.md)<br/>
 [Using an Internal IP Address](./internal-ip.md)<br/>
 [Watching Static Content](./watch-static-content.md)
-[Multi Entry Setup](./multi-entry.md)
 
 Prepared dishes:
 
