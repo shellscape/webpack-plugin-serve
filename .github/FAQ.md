@@ -69,7 +69,6 @@ The minor version range for Node v10.14.x contains [a regression](https://github
 
 ### Why do I have to include `webpack-plugin-serve/client` in the entry?
 
-Why and what a file is needed to use some features of a development server have been unknown for a long time, users just include this file because they need but not usually know what this file does.
 
 On `webpack-plugin-serve` this file is responsible to control the `Hot Module Replacement`, i.e, the communication between the webpack compiler and the browser. After a change happens on a file, the server is going to send a message to the browser "Hey browser, here are the files you have to hot replace, and here is the new compilation hash". By doing that, the script that you included knows what files changed and handles them to the `webpack` hmr code that exists on the browser too.
 
