@@ -1,3 +1,12 @@
+[wps-size]: https://badgen.net/packagephobia/install/webpack-plugin-serve?label=size&color=green
+[wps-size-url]: https://packagephobia.now.sh/result?p=webpack-plugin-serve
+
+[ws-size]: https://badgen.net/packagephobia/install/webpack-serve?label=size&color=orange
+[ws-size-url]: https://packagephobia.now.sh/result?p=webpack-serve
+
+[wds-size]: https://badgen.net/packagephobia/install/webpack-dev-server?label=size&color=red
+[wds-size-url]: https://packagephobia.now.sh/result?p=webpack-dev-server
+
 ## Feature Comparison
 
 The grid below represents a comparison of features from the available and most used Webpack development servers.
@@ -33,7 +42,7 @@ The grid below represents a comparison of features from the available and most u
 | Status Overlay            | ✳️ | ✅ | ℹ️ |
 | Unix Sockets              |    | ✅ |    |
 | WebSocket Reconnect       | ✅ | ✅ | ✅ |
-| Package Size              | 5.77MB | 14.7MB | 8.01MB |
+| Package Size              | [![size][wps-size]][wps-size-url] | [![size][wds-size]][wds-size-url] | [![size][ws-size]][ws-size-url]
 
 
 ## Standout Features
