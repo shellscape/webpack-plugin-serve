@@ -14,7 +14,9 @@ test('non-default', async (t) => {
   const plugin = new WebpackPluginServe({
     compress: true,
     historyFallback: true,
+    hmr: false,
     host: '127.0.0.1',
+    progress: false,
     port: 3124,
     middleware: (app) => {
       app.use(async (ctx, next) => {

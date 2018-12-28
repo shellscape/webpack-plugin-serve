@@ -9,8 +9,7 @@ const { browser } = require('../helpers/puppeteer');
 test('multi compiler', browser, async (t, page, util) => {
   const { getPort, replace, setup, waitForBuild } = util;
   const fixturePath = await setup('multi', 'multi-hmr');
-  const proc = execa('wp', [], { cwd: fixturePath });
-  const { stdout, stderr } = proc;
+  const { stdout, stderr } = execa('wp', [], { cwd: fixturePath });
   const port = await getPort(stdout);
   const url = `http://localhost:${port}`;
 
