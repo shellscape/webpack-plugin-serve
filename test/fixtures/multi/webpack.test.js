@@ -15,6 +15,7 @@ const mainConfig = merge(baseConfig, {
 module.exports = [
   mainConfig,
   {
+    name: 'compiler01',
     context: __dirname,
     entry: ['./worker.js', 'webpack-plugin-serve/client'],
     mode: 'development',
