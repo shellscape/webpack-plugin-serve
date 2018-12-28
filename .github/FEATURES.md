@@ -33,7 +33,7 @@ The grid below represents a comparison of features from the available and most u
 | Status Overlay            | ✳️ | ✅ | ℹ️ |
 | Unix Sockets              |    | ✅ |    |
 | WebSocket Reconnect       | ✅ | ✅ | ✅ |
-| Package Size              | 5.77MB | 14.7MB | 8.01MB |
+| Package Size              | [![install size](https://badgen.net/packagephobia/install/webpack-plugin-serve?label=size)](https://packagephobia.now.sh/result?p=webpack-plugin-serve) | [![install size](https://badgen.net/packagephobia/install/webpack-dev-server?label=size)](https://packagephobia.now.sh/result?p=webpack-dev-server) | [![install size](https://badgen.net/packagephobia/install/webpack-serve?label=size)](https://packagephobia.now.sh/result?p=webpack-serve) |
 
 
 ## Standout Features
