@@ -2,17 +2,19 @@
 
 <!-- toc -->
 
-- [What does _evergreen_ mean?](#what-does-_evergreen_-mean)
-- [The `[::]` URI is odd, what is that?](#the--uri-is-odd-what-is-that)
-- [Why doesn't the server default to `localhost`?](#why-doesnt-the-server-default-to-localhost)
-- [What does the "Not Found / 404" error mean?](#what-does-the-not-found--404-error-mean)
-- [Why does the `static` option default to `compiler.context`?](#why-does-the-static-option-default-to-compilercontext)
-- [Why can't I use Node v10.14.x?](#why-cant-i-use-node-v1014x)
-- [Why do I have to include `webpack-plugin-serve/client` in the entry?](#why-do-i-have-to-include-webpack-plugin-serveclient-in-the-entry)
+- [Frequently Asked Questions](#frequently-asked-questions)
+  - [What does _evergreen_ mean?](#what-does-evergreen-mean)
+  - [The `[::]` URI is odd, what is that?](#the--uri-is-odd-what-is-that)
+  - [Why doesn't the server default to `localhost`?](#why-doesnt-the-server-default-to-localhost)
+  - [What does the "Not Found / 404" error mean?](#what-does-the-%22not-found--404%22-error-mean)
+  - [Why does the `static` option default to `compiler.context`?](#why-does-the-static-option-default-to-compilercontext)
+  - [Why can't I use Node v10.14.x?](#why-cant-i-use-node-v1014x)
+  - [Why do I have to include `webpack-plugin-serve/client` in the entry?](#why-do-i-have-to-include-webpack-plugin-serveclient-in-the-entry)
 
 <!-- tocstop -->
 
 <!-- NOTE: markdown-toc will render this link malformed. check it each time the toc is generated -->
+
 ### What does _evergreen_ mean?
 
 The concept behind an _evergreen_ project is derived from https://www.w3.org/2001/tag/doc/evergreen-web/. As such, this plugin only actively supports the [Active LTS](https://github.com/nodejs/Release#release-schedule) version of Node.js. As quoted from the W3C document, this decision was made:
@@ -57,7 +59,7 @@ module.exports = {
 }
 ```
 
-Alternative, one can use an array to add multiple paths for static file resolution, and files from those paths will be served from the root. e.g. `{ serve: [ process.cwd(), outputPath, ... ]}`.
+Alternative, one can use an array to add multiple paths for static file resolution, and files from those paths will be served from the root. e.g. `{ static: [ process.cwd(), outputPath, ... ]}`.
 
 ### Why does the `static` option default to `compiler.context`?
 
@@ -68,7 +70,6 @@ When creating `webpack-plugin-serve`, we drew upon lessons learned from webpack-
 The minor version range for Node v10.14.x contains [a regression](https://github.com/nodejs/node/pull/17806#issuecomment-446213378) which causes `ERR_STREAM_WRITE_AFTER_END` and `Invalid WebSocket frame: RSV1 must be clear` errors when using WebSockets. We've narrowed the issue down to that version range of Node, as 10.13.x is not effected.
 
 ### Why do I have to include `webpack-plugin-serve/client` in the entry?
-
 
 On `webpack-plugin-serve` this file is responsible to control the `Hot Module Replacement`, i.e, the communication between the webpack compiler and the browser. After a change happens on a file, the server is going to send a message to the browser "Hey browser, here are the files you have to hot replace, and here is the new compilation hash". By doing that, the script that you included knows what files changed and handles them to the `webpack` hmr code that exists on the browser too.
 
