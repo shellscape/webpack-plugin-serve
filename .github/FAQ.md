@@ -57,7 +57,7 @@ module.exports = {
 }
 ```
 
-Alternative, one can use an array to add multiple paths for static file resolution, and files from those paths will be served from the root. e.g. `{ serve: [ process.cwd(), outputPath, ... ]}`.
+Alternative, one can use an array to add multiple paths for static file resolution, and files from those paths will be served from the root. e.g. `{ static: [ process.cwd(), outputPath, ... ]}`.
 
 ### Why does the `static` option default to `compiler.context`?
 
