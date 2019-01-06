@@ -10,7 +10,7 @@ import {
 } from 'http2';
 import { ServerOptions as HttpsServerOptions} from 'https';
 import { ZlibOptions } from 'zlib';
-import {Compiler} from 'webpack';
+import { Compiler } from 'webpack';
 
 declare module 'webpack-plugin-serve' {
   interface CompressOptions extends ZlibOptions {
