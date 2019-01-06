@@ -214,7 +214,7 @@ If a value of `'minimal'` is set, the progress indicator will render as a small,
 Type: `String | Array(String)`<br>
 Default: `compiler.context`
 
-Sets the directory(s) from which static files will be served. Bundles will be served from the `output` config setting.
+Sets the directory(s) from which static files will be served. Bundles will be served from the `output` config setting. For specifying options for static file directories, please see [`middleware > static`](#middleware).
 
 ### `status`
 Type: `boolean`<br>

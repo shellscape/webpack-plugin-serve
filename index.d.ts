@@ -53,7 +53,7 @@ declare module 'webpack-plugin-serve' {
   interface Builtins {
     proxy: (args: HttpProxyMiddlewareConfig) => Proxy;
     compress: (opts: CompressOptions) => void;
-    static: (opts: KoaStaticOptions) => void;
+    static: (paths: Array<String>, opts?: KoaStaticOptions) => void;
     historyFallback: (opts: HistoryApiFallbackOptions) => void;
     websocket: () => void;
     four0four: (fn?: (ctx: Koa.Context) => void) => void;
