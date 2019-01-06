@@ -10,6 +10,7 @@ import {
 } from 'http2';
 import { ServerOptions as HttpsServerOptions} from 'https';
 import { ZlibOptions } from 'zlib';
+import {Compiler} from 'webpack';
 
 declare module 'webpack-plugin-serve' {
   interface CompressOptions extends ZlibOptions {
@@ -52,7 +53,7 @@ declare module 'webpack-plugin-serve' {
   interface Builtins {
     proxy: (args: HttpProxyMiddlewareConfig) => Proxy;
     compress: (opts: CompressOptions) => void;
-    static: (opts: KoaStaticOptions) => void;
+    statik: (opts: KoaStaticOptions) => void;
     historyFallback: (opts: HistoryApiFallbackOptions) => void;
     websocket: () => void;
     four0four: (fn?: (ctx: Koa.Context) => void) => void;
@@ -61,11 +62,12 @@ declare module 'webpack-plugin-serve' {
   export interface WebpackPluginServeOptions {
     client?: {
       address: string;
+      retry: boolean;
     };
     compress?: boolean;
     historyFallback?: boolean | HistoryApiFallbackOptions;
     hmr?: boolean;
-    host?: string | (() => Promise<string>) | (() => string);
+    host?: string | Promise<string>;
     http2?: boolean | Http2ServerOptions | Http2SecureServerOptions;
     https?: HttpsServerOptions;
     liveReload?: boolean;
@@ -78,7 +80,7 @@ declare module 'webpack-plugin-serve' {
       wait?: boolean;
       app?: string | ReadonlyArray<string>;
     };
-    port?: number | (() => Promise<number>) | (() => number);
+    port?: number | Promise<number>;
     progress?: boolean | 'minimal';
     static?: string | Array<string>;
     status?: boolean;
@@ -86,5 +88,10 @@ declare module 'webpack-plugin-serve' {
 
   export class WebpackPluginServe {
     constructor(opts?: WebpackPluginServeOptions);
+    attach(): {
+      apply(compiler: Compiler): void;
+    };
+    hook(compiler: Compiler): void;
+    apply(compiler: Compiler): void;
   }
 }
