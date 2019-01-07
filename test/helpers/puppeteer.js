@@ -70,4 +70,4 @@ const browser = async (t, run) => {
   }
 };
 
-module.exports = { browser };
+module.exports = { browser, waitForBuild };

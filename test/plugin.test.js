@@ -10,7 +10,7 @@ test('defaults', (t) => {
   t.snapshot(plugin.options);
 });
 
-test('non-default', async (t) => {
+test('non default', async (t) => {
   const plugin = new WebpackPluginServe({
     compress: true,
     historyFallback: true,
@@ -32,11 +32,8 @@ test('non-default', async (t) => {
   t.is(await plugin.options.port, 3124);
 });
 
-test('non-defaults with options passed to middlewares', (t) => {
+test('non defaults with options passed to middlewares', (t) => {
   const plugin = new WebpackPluginServe({
-    compress: {
-      threshold: 2048
-    },
     historyFallback: {
       verbose: true,
       htmlAcceptHeaders: ['text/html', 'application/xhtml+xml']
@@ -49,6 +46,5 @@ test('non-defaults with options passed to middlewares', (t) => {
     verbose: true,
     htmlAcceptHeaders: ['text/html', 'application/xhtml+xml']
   });
-  t.is(plugin.options.compress.threshold, 2048);
   t.is(plugin.options.port, '3124');
 });
