@@ -1,3 +1,7 @@
 const test = require('ava');
 
-test('placeholder', (t) => t.pass());
+// const { waitForBuild } = require('./helpers/puppeteer');
+
+// const { run: runCli } = require('./helpers/runCli');
+
+test('should start a http2 server', async (t) => {});
