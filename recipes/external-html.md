@@ -28,7 +28,7 @@ In your `html`
 You `webpack` config should be:
 
 ```js
-const {resolve} = require('fs');
+const {resolve} = require('path');
 const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
 const outputPath = resolve('./dist');
 
