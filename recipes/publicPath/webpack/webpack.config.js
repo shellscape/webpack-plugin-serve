@@ -2,7 +2,6 @@ const { resolve } = require('path');
 
 const webpack = require('webpack');
 const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const watch = process.env.NODE_ENV === 'development';
 const outputPath = resolve(__dirname, '..', 'html', 'build');
@@ -88,7 +87,6 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
-    new HtmlWebpackPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
