@@ -6,6 +6,7 @@ Recipes are snippets of code and useful tidbits that may be helpful to developer
 
 [Bonjour Broadcast](./bonjour-broadcast.md)<br/>
 [Custom Headers](./custom-headers.md)<br/>
+[External HTML File](./external-html.md)<br/>
 [Multi Entry Setup](./multi-entry.md)<br/>
 [Proxies](./proxies.md)<br/>
 [Using a Dynamic Port](./dynamic-port.md)<br/>
