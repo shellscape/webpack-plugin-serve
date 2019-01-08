@@ -36,8 +36,6 @@ const defaults = {
   status: true
 };
 
-let instance = null;
-
 class BundlerServe extends BundlerServer {
   constructor(opts = {}) {
     super();
@@ -50,14 +48,12 @@ class BundlerServe extends BundlerServer {
       throw valid.error;
     }
 
-    if (instance) {
-      instance.log.error(
+    if (this.instance) {
+      this.instance.log.error(
         'Duplicate instances created. Only the first instance of this plugin will be active.'
       );
       return;
     }
-
-    instance = this;
 
     if (options.compress === true) {
       options.compress = {};
@@ -93,17 +89,16 @@ class BundlerServe extends BundlerServer {
     }
 
     this.app = new Koa();
-    this.log = getLogger(options.log || {});
+    this.compilers = [];
+    this.instance = this;
     this.options = options;
   }
 
   init() {
-    if (instance !== this) {
-      return;
-    }
+    this.log = getLogger(this.options.log || {});
 
-    if (this.options.hmr) {
-      this.initHmr();
+    if (this.instance !== this) {
+      return;
     }
 
     if (!this.options.static) {
@@ -115,7 +110,7 @@ class BundlerServe extends BundlerServer {
 
   start() {
     if (!this.listening) {
-      return this.start();
+      return this.startServer();
     }
 
     return false;

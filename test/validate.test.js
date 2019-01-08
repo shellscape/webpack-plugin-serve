@@ -1,10 +1,16 @@
 const test = require('ava');
 
-const { defaults } = require('../lib');
-const { validate } = require('../lib/validate');
+const { defaults } = require('../framework/BundlerServe');
+const { validate } = require('../framework/validate');
 
 test('defaults', (t) => {
   delete defaults.secure;
+  // these three need to be removed while the framework is still in the WPS repo. once we move it,
+  // remove the following three deletes
+  delete defaults.bundler;
+  delete defaults.log.name;
+  delete defaults.log.symbols;
+
   const result = validate(defaults);
   t.falsy(result.error);
 });

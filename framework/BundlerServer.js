@@ -55,7 +55,7 @@ class BundlerServer extends BundlerRouter {
     return { secure, server };
   }
 
-  async start() {
+  async startServer() {
     if (this.listening) {
       return;
     }
@@ -64,8 +64,8 @@ class BundlerServer extends BundlerRouter {
     const { host, middleware, port } = this.options;
     const builtins = this.middleware();
 
-    this.options.host = await host();
-    this.options.port = await port();
+    this.options.host = await host;
+    this.options.port = await port;
 
     // allow users to add and manipulate middleware in the config
     await middleware(app, builtins);
