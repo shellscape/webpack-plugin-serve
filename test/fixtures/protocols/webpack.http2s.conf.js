@@ -18,7 +18,9 @@ module.exports = Object.assign({}, baseConf, {
             // eslint-disable-next-line
             ctx.status = 200;
             // eslint-disable-next-line
-            ctx.body = "let's revolutionize all the tools!!!";
+            ctx.body = {
+              message: "let's revolutionize all the tools!!!"
+            };
           })
         );
       }

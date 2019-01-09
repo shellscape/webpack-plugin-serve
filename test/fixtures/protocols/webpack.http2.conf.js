@@ -1,22 +1,21 @@
 const router = require('koa-route');
+const merge = require('webpack-merge');
 
-const baseConf = require('../simple/webpack.config');
+const baseConf = require('../commonAssets/webpack.config');
 const { WebpackPluginServe } = require('../../../lib/index');
 
-module.exports = Object.assign({}, baseConf, {
-  plugins: [
-    new WebpackPluginServe({
-      http2: true,
-      middleware: (app) => {
-        app.use(
-          router.get('/test', (ctx) => {
-            // eslint-disable-next-line
-            ctx.status = 200;
-            // eslint-disable-next-line
-            ctx.body = "let's revolutionize all the tools!!!";
-          })
-        );
-      }
-    })
-  ]
+const plugin = new WebpackPluginServe({
+  http2: true,
+  middleware: (app) => {
+    app.use(
+      router.get('/test', (ctx) => {
+        // eslint-disable-next-line
+        ctx.body = "let's revolutionize all the tools!!!";
+      })
+    );
+  }
+});
+
+module.exports = merge(baseConf, {
+  plugins: [plugin]
 });
