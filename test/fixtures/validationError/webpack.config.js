@@ -9,5 +9,6 @@ module.exports = merge(baseConfig, {
     new Serve({
       foo: 'bar'
     })
-  ]
+  ],
+  watch: false
 });

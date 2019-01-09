@@ -43,10 +43,13 @@ const setup = async (base, name) => {
 const waitForBuild = (stderr) => {
   return {
     then(r) {
+      let result = '';
       stderr.on('data', (data) => {
-        const content = strip(data.toString());
-        if (/webpack: Hash:/.test(content)) {
-          r();
+        const content = data.toString();
+        result += content;
+        const sanitizedOutput = strip(content);
+        if (/webpack: Hash:/.test(sanitizedOutput)) {
+          r(result);
         }
       });
     }

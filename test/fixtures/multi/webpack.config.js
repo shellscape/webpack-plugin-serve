@@ -11,6 +11,7 @@ const serve = new Serve({
 
 module.exports = [
   {
+    name: 'client',
     context: __dirname,
     entry: ['./app.js', 'webpack-plugin-serve/client'],
     mode: 'development',
@@ -19,15 +20,16 @@ module.exports = [
       path: resolve(__dirname, './output'),
       publicPath: 'output/'
     },
+    plugins: [serve],
     resolve: {
       alias: {
         'webpack-plugin-serve/client': resolve(__dirname, '../../../client')
       }
     },
-    plugins: [serve],
     watch: true
   },
   {
+    name: 'worker',
     context: __dirname,
     entry: ['./worker.js', 'webpack-plugin-serve/client'],
     mode: 'development',

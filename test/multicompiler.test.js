@@ -1,10 +1,12 @@
 const test = require('ava');
 
 const { run: runCli } = require('./helpers/runCli');
+const { waitForBuild } = require('./helpers/puppeteer');
 
 test('multicompiler should compile successfully', async (t) => {
-  const { stderr } = await runCli('multi', ['--config', './webpack.test.js']);
-  t.truthy(stderr.includes('Build Finished'));
-  t.truthy(stderr.includes('Child 0:'));
-  t.truthy(stderr.includes(' Child worker:'));
+  const { stderr } = runCli('multi');
+  const output = await waitForBuild(stderr);
+
+  t.truthy(output.includes('Child client:'));
+  t.truthy(output.includes(' Child worker:'));
 });
