@@ -5,15 +5,12 @@ const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 
-const mode = process.env.NODE_ENV
-const isDev = mode === 'development'
+const mode = process.env.NODE_ENV;
+const isDev = mode === 'development';
 const outputPath = resolve(__dirname, 'dist');
 
 module.exports = {
-  entry: [
-    './src/index.js',
-    ...(isDev ? ['webpack-plugin-serve/client'] : [])
-  ],
+  entry: ['./src/index.js', ...(isDev ? ['webpack-plugin-serve/client'] : [])],
   mode,
   devtool: 'cheap-eval-source-map',
   module: {
@@ -21,7 +18,7 @@ module.exports = {
       {
         test: /\.vue$/,
         exclude: /node_modules/,
-        loader: 'vue-loader',
+        loader: 'vue-loader'
       },
       {
         test: /\.jsx?$/,
@@ -99,9 +96,9 @@ module.exports = {
   },
   resolve: {
     alias: {
-      vue$: 'vue/dist/vue.esm.js',
+      vue$: 'vue/dist/vue.esm.js'
     },
-    extensions: ['*', '.js', '.vue', '.json'],
+    extensions: ['*', '.js', '.vue', '.json']
   },
   plugins: [
     new VueLoaderPlugin(),
@@ -114,10 +111,10 @@ module.exports = {
     ...(isDev
       ? [
           new Serve({
-          // note: this value is true by default
-          hmr: true,
-          historyFallback: true,
-          static: [outputPath]
+            // note: this value is true by default
+            hmr: true,
+            historyFallback: true,
+            static: [outputPath]
           })
         ]
       : [])
