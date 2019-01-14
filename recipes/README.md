@@ -8,6 +8,7 @@ Recipes are snippets of code and useful tidbits that may be helpful to developer
 [Custom Headers](./custom-headers.md)<br/>
 [Multi Entry Setup](./multi-entry.md)<br/>
 [Proxies](./proxies.md)<br/>
+[Static HTML File](./external-html.md)<br/>
 [Using a Dynamic Port](./dynamic-port.md)<br/>
 [Using an Internal IP Address](./internal-ip.md)<br/>
 [Watching Static Content](./watch-static-content.md)
