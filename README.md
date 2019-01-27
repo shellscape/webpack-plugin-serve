@@ -102,6 +102,12 @@ Type: `Boolean`
 
 If `true`, instructs the client to attempt to reconnect all `WebSockets` when their connects are interrupted, usually as a result of the server being stopped and/or restarted. _Note: This can be very spammy in the browser console, as there is no way to suppress error messages from the browser when a `WebSocket` fails to connect._
 
+#### `client.silent`
+Type: `Boolean`
+
+If `true`, instructs the client not to log anything to the console.
+
+
 ### `compress`
 Type: `Boolean`<br>
 Default: `false`
