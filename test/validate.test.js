@@ -9,6 +9,11 @@ test('defaults', (t) => {
   t.falsy(result.error);
 });
 
+test('client', (t) => {
+  const result = validate({ client: { address: '0', retry: false, silent: false } });
+  t.falsy(result.error);
+});
+
 test('error', (t) => {
   const result = validate({ foo: 'bar' });
   t.snapshot(result.error);
