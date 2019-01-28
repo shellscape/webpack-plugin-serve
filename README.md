@@ -122,6 +122,8 @@ If `true`, enables History API Fallback via [`connect-history-api-fallback`](htt
 
 This setting can be handy when using the HTML5 History API; `index.html` page will likely have to be served in place of any 404 responses from the server, specially when developing Single Page Applications.
 
+_Note: The `Accept` header is explicitly stripped from the `/wps` WebSocket path when using `historyFallback`, due to [an issue](https://github.com/shellscape/webpack-plugin-serve/issues/94) with how Firefox and the middleware interact.
+
 ### `hmr`
 Type: `boolean`<br>
 Default: `true`
