@@ -1,0 +1,34 @@
+{
+  "name": "react-app-with-ssr",
+  "version": "1.0.0",
+  "description": "A webpack-plugin-serve recipe",
+  "repository": "shellscape/webpack-plugin-serve/recipes/react-ssr",
+  "main": "index.js",
+  "engines": {
+    "node": ">= 10.11.0"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=development wp --config ./webpack.config",
+    "build": "cross-env NODE_ENV=production wp --config ./webpack.config",
+    "prod": "npm run build && node ./serv"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "7.2.2",
+    "@babel/preset-env": "7.3.1",
+    "@babel/preset-react": "7.0.0",
+    "babel-loader": "8.0.5",
+    "cross-env": "5.2.0",
+    "import-fresh": "3.0.0",
+    "webpack": "4.29.0",
+    "webpack-nano": "0.6.1",
+    "webpack-node-externals": "1.7.2",
+    "webpack-plugin-serve": "0.4.0"
+  },
+  "dependencies": {
+    "koa": "2.7.0",
+    "koa-static": "5.0.0",
+    "react": "16.7.0",
+    "react-dom": "16.7.0"
+  }
+}
