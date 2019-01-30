@@ -84,6 +84,7 @@ declare module 'webpack-plugin-serve' {
     progress?: boolean | 'minimal';
     static?: string | Array<string>;
     status?: boolean;
+    waitForBuild?: boolean;
   }
 
   export class WebpackPluginServe {
