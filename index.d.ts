@@ -61,8 +61,9 @@ declare module 'webpack-plugin-serve' {
 
   export interface WebpackPluginServeOptions {
     client?: {
-      address: string;
-      retry: boolean;
+      address?: string;
+      retry?: boolean;
+      silent?: boolean;
     };
     compress?: boolean;
     historyFallback?: boolean | HistoryApiFallbackOptions;
