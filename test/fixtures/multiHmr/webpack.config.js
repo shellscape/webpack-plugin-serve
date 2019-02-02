@@ -1,11 +1,12 @@
-const merge = require('webpack-merge');
 const webpack = require('webpack');
+
+const { mergeUniqPlugins } = require('../../helpers/config-merger');
 
 const { WebpackPluginServe } = require('../../../lib');
 
-const baseConfig = require('../commonAssets/webpack.config');
+const baseConfig = require('../simple/webpack.config');
 
-module.exports = merge(baseConfig, {
+module.exports = mergeUniqPlugins(baseConfig, {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new WebpackPluginServe({

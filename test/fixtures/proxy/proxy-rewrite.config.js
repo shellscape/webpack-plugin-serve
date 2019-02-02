@@ -1,18 +1,11 @@
-const { resolve } = require('path');
+const { mergeUniqPlugins } = require('../../helpers/config-merger');
+const base = require('../simple/webpack.config');
 
 const { WebpackPluginServe: Serve } = require('../../../lib/');
 
 const logLevel = 'silent';
 
-module.exports = {
-  context: __dirname,
-  entry: ['./app.js', 'webpack-plugin-serve/client'],
-  mode: 'development',
-  output: {
-    filename: './output.js',
-    path: resolve(__dirname, './output'),
-    publicPath: 'output/'
-  },
+module.exports = mergeUniqPlugins(base, {
   plugins: [
     new Serve({
       log: { level: logLevel },
@@ -27,11 +20,5 @@ module.exports = {
         );
       }
     })
-  ],
-  resolve: {
-    alias: {
-      'webpack-plugin-serve/client': resolve(__dirname, '../../../lib/client')
-    }
-  },
-  watch: true
-};
+  ]
+});

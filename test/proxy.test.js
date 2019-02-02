@@ -8,6 +8,7 @@ const webpackConfig = require('./fixtures/proxy/webpack.config');
 
 const deferred = defer();
 const compiler = webpack(webpackConfig);
+console.log(webpackConfig);
 let watcher;
 let server;
 
