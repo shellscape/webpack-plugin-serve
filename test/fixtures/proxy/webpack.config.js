@@ -1,14 +1,14 @@
-const merge = require('webpack-merge');
+const { mergeUniqPlugins } = require('../../helpers/config-merger');
 
-const baseConfig = require('../commonAssets/webpack.config');
+const { WebpackPluginServe } = require('../../../lib/');
 
-const { WebpackPluginServe: Serve } = require('../../../lib/');
+const baseConfig = require('../simple/webpack.config');
 
 const logLevel = 'silent';
 
-module.exports = merge(baseConfig, {
+module.exports = mergeUniqPlugins(baseConfig, {
   plugins: [
-    new Serve({
+    new WebpackPluginServe({
       port: 55556,
       log: { level: logLevel },
       middleware: (app, builtins) => {
@@ -32,6 +32,5 @@ module.exports = merge(baseConfig, {
         );
       }
     })
-  ],
-  watch: true
+  ]
 });
