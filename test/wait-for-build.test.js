@@ -5,7 +5,7 @@ const test = require('ava');
 const fetch = require('node-fetch');
 const defer = require('p-defer');
 
-const createWebpackConfig = require('./fixtures/waitForBuild/createWebpackConfig');
+const { make } = require('./fixtures/wait-for-build/make-config');
 
 let watcher;
 let port;
@@ -13,7 +13,7 @@ let port;
 test.before('Starting server', async () => {
   const deferred = defer();
   port = await getPort();
-  const { serve, config } = createWebpackConfig(port);
+  const { serve, config } = make(port);
   const compiler = webpack(config);
   watcher = compiler.watch({}, () => {});
   serve.on('listening', deferred.resolve);

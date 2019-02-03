@@ -1,8 +1,10 @@
+/* eslint-disable no-param-reassign */
 const { resolve } = require('path');
 
 const { WebpackPluginServe: Serve } = require('../../../lib/');
 
-function createConfig(port) {
+const make = (port) => {
+  const outputPath = resolve(__dirname, './output/output.js');
   const serve = new Serve({
     host: 'localhost',
     port,
@@ -11,7 +13,8 @@ function createConfig(port) {
       app.use(async (ctx, next) => {
         if (ctx.url === '/test') {
           try {
-            require(resolve(__dirname, './output/output.js'));
+            // eslint-disable-next-line import/no-dynamic-require, global-require
+            require(outputPath);
             ctx.body = 'success';
           } catch (e) {
             ctx.body = 'error';
@@ -38,6 +41,6 @@ function createConfig(port) {
   };
 
   return { serve, config };
-}
+};
 
-module.exports = createConfig;
+module.exports = { make };
