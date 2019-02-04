@@ -240,6 +240,12 @@ When the minimize button (yellow dot) is clicked, the overlay will shrink to a s
 	<img src="assets/status-beacons.gif" alt="status beacons"><br/><br/>
 </div>
 
+### `waitForBuild`
+Type: `boolean`<br>
+Default: `false`
+
+If `true`, instructs the server to halt middleware processing until the current build is done.
+
 ## Proxying
 
 Proxying with `webpack-plugin-serve` is supported via the [`middleware`](#middleware) option. But while this plugin module doesn't contain any fancy options processing for proxying, it does include access to the [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware) module by default, and the rest should look familiar to users of `http-proxy-middleware`.
