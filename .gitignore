@@ -3,6 +3,7 @@ npm-debug.log
 coverage
 node_modules
 .eslintcache
+.idea
 
 test/**/output*
 output.js
