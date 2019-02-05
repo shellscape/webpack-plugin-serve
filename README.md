@@ -122,13 +122,15 @@ If `true`, enables History API Fallback via [`connect-history-api-fallback`](htt
 
 This setting can be handy when using the HTML5 History API; `index.html` page will likely have to be served in place of any 404 responses from the server, specially when developing Single Page Applications.
 
-_Note: The `Accept` header is explicitly stripped from the `/wps` WebSocket path when using `historyFallback`, due to [an issue](https://github.com/shellscape/webpack-plugin-serve/issues/94) with how Firefox and the middleware interact.
+_Note: The `Accept` header is explicitly stripped from the `/wps` WebSocket path when using `historyFallback`, due to [an issue](https://github.com/shellscape/webpack-plugin-serve/issues/94) with how Firefox and the middleware interact._
 
 ### `hmr`
 Type: `boolean`<br>
 Default: `true`
 
 If `true`, will enable [`Hot Module Replacement`](https://webpack.js.org/concepts/hot-module-replacement/) which exchanges, adds, or removes modules from a bundle dynamically while the application still running, without the need of a full page reload.
+
+_Note: If the build process generates errors, the client (browser) will not be notified of new changes and no HMR will be performed. Errors must be resolved before HMR can proceed._
 
 ### `host`
 Type: `String | Promise`<br>
