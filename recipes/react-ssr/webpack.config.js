@@ -11,15 +11,11 @@ const DIST_DIR = path.resolve(__dirname, 'dist');
 const serve = new Serve({
   port: 3000,
   static: [DIST_DIR],
+  waitForBuild: true,
   middleware(app) {
     app.use(async (ctx, next) => {
-      try {
-        const renderer = importFresh(path.resolve(DIST_DIR, 'server.js'));
-        await renderer(ctx, next);
-      } catch (e) {
-        console.log(e);
-        await next(e);
-      }
+      const renderer = importFresh(path.resolve(DIST_DIR, 'server.js'));
+      await renderer(ctx, next);
     });
   }
 });

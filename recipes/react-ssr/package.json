@@ -10,7 +10,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development wp --config ./webpack.config",
     "build": "cross-env NODE_ENV=production wp --config ./webpack.config",
-    "prod": "npm run build && node ./serv"
+    "prod": "npm run build && node ./server"
   },
   "license": "MIT",
   "devDependencies": {
@@ -20,10 +20,10 @@
     "babel-loader": "8.0.5",
     "cross-env": "5.2.0",
     "import-fresh": "3.0.0",
-    "webpack": "4.29.0",
+    "webpack": "4.29.1",
     "webpack-nano": "0.6.1",
     "webpack-node-externals": "1.7.2",
-    "webpack-plugin-serve": "0.4.0"
+    "webpack-plugin-serve": "0.6.0"
   },
   "dependencies": {
     "koa": "2.7.0",
