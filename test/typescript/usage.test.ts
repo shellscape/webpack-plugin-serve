@@ -23,7 +23,7 @@ function customUsage(wc: Configuration) {
           ctx.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
           ctx.set("Access-Control-Allow-Origin", "*");
         }),
-      static: "/", // needs to be the same as the output dir for the html-webpack-plugin
+      static: "/", // needs to be thet same as the output dir for the html-webpack-plugin
 
       //
       status: true,
