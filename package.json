@@ -26,8 +26,10 @@
     "faq:toc": "echo 'temporarily disabled' # markdown-toc -i .github/FAQ.md",
     "lint": "eslint --fix --cache lib test",
     "lint-staged": "lint-staged",
+    "pretest": "npm run test:typescript",
     "security": "npm audit",
-    "test": "ava"
+    "test": "ava",
+    "test:typescript": "tslint --project tsconfig.json && tsc"
   },
   "files": [
     "client.js",
@@ -61,10 +63,12 @@
   "devDependencies": {
     "@commitlint/cli": "^7.1.2",
     "@commitlint/config-conventional": "^7.1.2",
+    "@types/webpack": "^4.4.24",
     "ava": "^1.0.1",
     "cpy": "^7.0.1",
     "del": "^3.0.0",
     "del-cli": "^1.1.0",
+    "dtslint": "^0.4.2",
     "eslint": "^5.6.1",
     "eslint-config-shellscape": "^2.0.2",
     "execa": "^1.0.0",
@@ -77,6 +81,8 @@
     "prettier": "^1.14.3",
     "puppeteer": "^1.11.0",
     "standard-version": "^4.4.0",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.3",
     "webpack": "^4.28.1",
     "webpack-nano": "^0.6.1"
   },
