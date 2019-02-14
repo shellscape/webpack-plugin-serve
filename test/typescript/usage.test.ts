@@ -1,14 +1,14 @@
 import { Configuration } from 'webpack';
 import { WebpackPluginServe } from 'webpack-plugin-serve';
 
-function customUsage(wc: Configuration) {
+const usage = (config: Configuration) => {
   // ← important: this is required, where the magic happens in the browser
-  (wc.entry as string[]).push('webpack-plugin-serve/client');
+  (config.entry as string[]).push('webpack-plugin-serve/client');
 
   // ← important: webpack and the server will continue to run in watch mode
-  wc.watch = true;
+  config.watch = true;
 
-  wc.plugins!.push(
+  config.plugins!.push(
     new WebpackPluginServe({
       compress: true,
       historyFallback: true,
@@ -32,7 +32,7 @@ function customUsage(wc: Configuration) {
   );
 
   // override the publicPath since production may be set to assets host
-  wc.output!.publicPath = '/';
+  config.output!.publicPath = '/';
 
-  return wc;
+  return config;
 }

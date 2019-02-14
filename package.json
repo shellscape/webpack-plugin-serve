@@ -9,7 +9,7 @@
   "bugs": "https://github.com/shellscape/webpack-plugin-serve/issues",
   "bin": "",
   "main": "lib/index.js",
-  "typings": "index.d.ts",
+  "typings": "typings/index.d.ts",
   "engines": {
     "node": ">= 8.0.0 < 9.0.0 || >= 10.0.0 < 10.14.0 || >= 10.15.0"
   },
@@ -24,12 +24,14 @@
     "dev:clean": "del test/fixtures/multi/output/* test/fixtures/simple/output/*",
     "dev:multi": "npm run dev:clean && node node_modules/webpack-nano/bin/wp --config test/fixtures/multi/webpack.config.js",
     "faq:toc": "echo 'temporarily disabled' # markdown-toc -i .github/FAQ.md",
-    "lint": "eslint --fix --cache lib test",
+    "lint": "npm run lint:js && npm run lint:ts",
+    "lint:js": "eslint --fix --cache lib test",
+    "lint:ts": "tslint typings/index.d.ts",
     "lint-staged": "lint-staged",
-    "pretest": "npm run test:typescript",
     "security": "npm audit",
+    "pretest": "npm run test:ts",
     "test": "ava",
-    "test:typescript": "tslint --project tsconfig.json && tsc"
+    "test:ts": "tsc --build test/typescript/tsconfig.json"
   },
   "files": [
     "client.js",

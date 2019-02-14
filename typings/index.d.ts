@@ -9,12 +9,12 @@ import { ServerOptions as HttpsServerOptions } from 'https';
 import { ZlibOptions } from 'zlib';
 import { Compiler } from 'webpack';
 
-interface CompressOptions extends ZlibOptions {
+export interface CompressOptions extends ZlibOptions {
   filter?: (content_type: string) => boolean;
   threshold?: number;
 }
 
-interface KoaStaticOptions {
+export interface KoaStaticOptions {
   maxage?: number;
   hidden?: boolean;
   index?: string;
@@ -22,22 +22,22 @@ interface KoaStaticOptions {
   gzip?: boolean;
   br?: boolean;
   setHeaders?: (res: any, path: any, stats: any) => any;
-  extensions?: Array<string> | boolean;
+  extensions?: string[] | boolean;
 }
 
-type RewriteTo = (context: Context) => string;
+export type RewriteTo = (context: Context) => string;
 
-interface Context {
+export interface Context {
   match: RegExpMatchArray;
   parsedUrl: Url;
 }
 
-interface Rewrite {
+export interface Rewrite {
   from: RegExp;
   to: string | RegExp | RewriteTo;
 }
 
-interface HistoryApiFallbackOptions {
+export interface HistoryApiFallbackOptions {
   disableDotRule?: true;
   htmlAcceptHeaders?: string[];
   index?: string;
@@ -46,10 +46,10 @@ interface HistoryApiFallbackOptions {
   verbose?: boolean;
 }
 
-interface Builtins {
+export interface Builtins {
   proxy: (args: HttpProxyMiddlewareConfig) => Proxy;
   compress: (opts: CompressOptions) => void;
-  static: (paths: Array<String>, opts?: KoaStaticOptions) => void;
+  static: (paths: string[], opts?: KoaStaticOptions) => void;
   historyFallback: (opts: HistoryApiFallbackOptions) => void;
   websocket: () => void;
   four0four: (fn?: (ctx: Koa.Context) => void) => void;
@@ -81,7 +81,7 @@ export interface WebpackPluginServeOptions {
       };
   port?: number | Promise<number>;
   progress?: boolean | 'minimal';
-  static?: string | Array<string>;
+  static?: string | string[];
   status?: boolean;
   waitForBuild?: boolean;
 }
