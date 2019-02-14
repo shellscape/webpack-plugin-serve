@@ -1,6 +1,6 @@
 {
   "name": "webpack-plugin-serve",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "A Development Server in a Webpack Plugin",
   "license": "MPL-2.0",
   "repository": "shellscape/webpack-plugin-serve",
