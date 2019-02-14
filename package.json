@@ -36,7 +36,7 @@
   "files": [
     "client.js",
     "lib/",
-    "typings/",
+    "typings/index.d.ts",
     "README.md",
     "LICENSE"
   ],
