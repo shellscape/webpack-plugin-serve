@@ -36,9 +36,9 @@
   "files": [
     "client.js",
     "lib/",
+    "typings/",
     "README.md",
-    "LICENSE",
-    "index.d.ts"
+    "LICENSE"
   ],
   "peerDependencies": {
     "webpack": "^4.20.2"
