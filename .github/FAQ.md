@@ -70,7 +70,7 @@ When creating `webpack-plugin-serve`, we drew upon lessons learned from webpack-
 
 ### Why can't I use Node v10.14.x?
 
-The minor version range for Node v10.14.x contains [a regression](https://github.com/nodejs/node/pull/17806#issuecomment-446213378) which causes `ERR_STREAM_WRITE_AFTER_END` and `Invalid WebSocket frame: RSV1 must be clear` errors when using WebSockets. We've narrowed the issue down to that version range of Node, as 10.13.x is not effected.
+The minor version range for Node v10.14.x contains [a regression](https://github.com/nodejs/node/pull/17806#issuecomment-446213378) which causes `ERR_STREAM_WRITE_AFTER_END` and `Invalid WebSocket frame: RSV1 must be clear` errors when using WebSockets. We've narrowed the issue down to that version range of Node, as 10.13.x is not affected.
 
 ### Why do I have to include `webpack-plugin-serve/client` in the entry?
 
