@@ -30,8 +30,8 @@
     "lint-staged": "lint-staged",
     "security": "npm audit",
     "pretest": "npm run test:ts",
-    "test": "ava",
     "test:ts": "tsc --build test/typescript/tsconfig.json",
+    "test": "ava",
     "test:coverage": "nyc npm run test && nyc report --reporter=lcov"
   },
   "files": [
