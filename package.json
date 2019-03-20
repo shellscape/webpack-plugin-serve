@@ -102,7 +102,7 @@
   "pre-commit": "lint-staged",
   "lint-staged": {
     "*.js": [
-      "eslint --fix",
+      "npm run lint",
       "git add"
     ]
   },
