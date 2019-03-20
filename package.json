@@ -1,6 +1,6 @@
 {
   "name": "webpack-plugin-serve",
-  "version": "0.4.0",
+  "version": "0.7.4",
   "description": "A Development Server in a Webpack Plugin",
   "license": "MPL-2.0",
   "repository": "shellscape/webpack-plugin-serve",
@@ -9,9 +9,9 @@
   "bugs": "https://github.com/shellscape/webpack-plugin-serve/issues",
   "bin": "",
   "main": "lib/index.js",
-  "typings": "index.d.ts",
+  "typings": "typings/index.d.ts",
   "engines": {
-    "node": ">= 8.0.0 < 9.0.0 || >= 10.0.0 < 10.14.0 || >= 11.0.0"
+    "node": ">= 8.0.0 < 9.0.0 || >= 10.0.0 < 10.14.0 || >= 10.15.0"
   },
   "scripts": {
     "ci:coverage": "nyc npm run test && nyc report --reporter=text-lcov > coverage.lcov",
@@ -22,25 +22,31 @@
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "dev": "npm run dev:clean && node node_modules/webpack-nano/bin/wp --config test/fixtures/simple/webpack.config.js",
     "dev:clean": "del test/fixtures/multi/output/* test/fixtures/simple/output/*",
-    "dev:multi": "npm run dev:clean && wp --config test/fixtures/multi/webpack.config.js",
-    "dev:proxy": "npm run dev:clean && wp --config test/fixtures/proxy/webpack.config.js",
+    "dev:multi": "npm run dev:clean && node node_modules/webpack-nano/bin/wp --config test/fixtures/multi/webpack.config.js",
     "faq:toc": "echo 'temporarily disabled' # markdown-toc -i .github/FAQ.md",
-    "lint": "eslint --fix --cache lib test",
+    "lint": "npm run lint:js && npm run lint:ts",
+    "lint:js": "eslint --fix --cache lib test",
+    "lint:ts": "tslint typings/index.d.ts",
     "lint-staged": "lint-staged",
     "security": "npm audit",
-    "test": "ava"
+    "pretest": "npm run test:ts",
+    "test": "ava",
+    "test:ts": "tsc --build test/typescript/tsconfig.json"
   },
   "files": [
     "client.js",
     "lib/",
+    "typings/index.d.ts",
     "README.md",
-    "LICENSE",
-    "index.d.ts"
+    "LICENSE"
   ],
   "peerDependencies": {
     "webpack": "^4.20.2"
   },
   "dependencies": {
+    "@types/http-proxy-middleware": "^0.19.2",
+    "@types/koa": "^2.0.48",
+    "@types/webpack": "^4.4.24",
     "chalk": "^2.4.1",
     "connect-history-api-fallback": "^1.5.0",
     "http-proxy-middleware": "^0.19.0",
@@ -53,11 +59,11 @@
     "koa-static": "^5.0.0",
     "loglevelnext": "^3.0.0",
     "nanoid": "^2.0.0",
-    "onetime": "^2.0.1",
+    "onetime": "^3.0.0",
     "opn": "^5.4.0",
     "p-defer": "^1.0.0",
     "strip-ansi": "^5.0.0",
-    "titleize": "^1.0.1",
+    "titleize": "^2.0.0",
     "ws": "^6.0.0"
   },
   "devDependencies": {
@@ -67,20 +73,23 @@
     "cpy": "^7.0.1",
     "del": "^3.0.0",
     "del-cli": "^1.1.0",
+    "dtslint": "^0.4.2",
     "eslint": "^5.6.1",
     "eslint-config-shellscape": "^2.0.2",
     "execa": "^1.0.0",
     "get-port": "^4.0.0",
     "lint-staged": "^8.1.0",
-    "make-dir": "^1.3.0",
+    "make-dir": "^2.0.0",
     "node-fetch": "^2.2.0",
     "nyc": "^13.0.1",
     "pre-commit": "^1.2.2",
     "prettier": "^1.14.3",
     "puppeteer": "^1.11.0",
     "standard-version": "^4.4.0",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.3",
     "webpack": "^4.28.1",
-    "webpack-nano": "^0.5.1"
+    "webpack-nano": "^0.6.1"
   },
   "keywords": [
     "dev",

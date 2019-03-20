@@ -62,6 +62,10 @@ class BundlerRouter extends EventEmitter {
   }
 
   socketProgress(socket, data) {
+    if (socket.readyState !== 1) {
+      return;
+    }
+
     socket.send(socket, this.prepSocketData({ action: 'progress', data }));
   }
 }

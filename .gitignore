@@ -3,6 +3,7 @@ npm-debug.log
 coverage
 node_modules
 .eslintcache
+.idea
 
 test/**/output*
 output.js
@@ -14,4 +15,3 @@ wps-hmr.*
 coverage.lcov
 
 dist
-lib-old

@@ -52,7 +52,8 @@ module.exports = {
       secure: any().forbidden(),
       // prettier-ignore
       static: [string().allow(null), array().items(string())],
-      status: boolean()
+      status: boolean(),
+      waitForBuild: boolean()
     };
     const schema = object().keys(keys);
     const results = validate(options, schema);

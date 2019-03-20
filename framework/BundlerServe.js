@@ -92,6 +92,7 @@ class BundlerServe extends BundlerServer {
     this.compilers = [];
     this.instance = this;
     this.options = options;
+    this.state = {};
   }
 
   init() {
