@@ -268,6 +268,12 @@ module.exports = {
 
 _Note: The `app.use(...)` call here is slightly different than what Express users are used to seeing with `http-proxy-middleware`. This is due to subtle differences in how the module interacts with `Koa`, which is used under the hood in this plugin._
 
+## Types
+
+To get type defifinitions for this project:
+
+`npm install -D @types/webpack-plugin-serve`
+
 ## Meta
 
 [CONTRIBUTING](./.github/CONTRIBUTING.md)
