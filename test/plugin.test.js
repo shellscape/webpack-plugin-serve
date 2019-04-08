@@ -15,6 +15,6 @@ test('static → glob', (t) => {
     allowMany: true,
     static: [join(basePath, '/**/app.js'), '!**/temp*/*']
   });
-  options.static = options.static.map((p) => p.replace(/^.+\/webpack/, 'webpack'));
+  options.static = options.static.map((p) => p.replace(/^.+(serve|project)\//, ''));
   t.snapshot(options.static);
 });
