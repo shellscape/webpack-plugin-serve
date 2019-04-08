@@ -15,6 +15,9 @@ module.exports = {
   },
   plugins: [
     new Serve({
+      headers: {
+        'X-Superhero': 'batman'
+      },
       host: 'localhost',
       port: getPort({ port: 55555 })
     })
