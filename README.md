@@ -226,6 +226,8 @@ Default: `compiler.context`
 
 Sets the directory(s) from which static files will be served. Bundles will be served from the `output` config setting. For specifying options for static file directories, please see [`middleware > static`](#middleware).
 
+The `static` option supports [glob patterns](https://github.com/sindresorhus/globby#globbypatterns-options) when an `Array` of `String` is passed. This is useful for targeting only specific files within a directory.
+
 ### `status`
 Type: `boolean`<br>
 Default: `true`
