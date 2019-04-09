@@ -224,7 +224,7 @@ If a value of `'minimal'` is set, the progress indicator will render as a small,
 Type: `String | Array(String)`<br>
 Default: `compiler.context`
 
-Sets the directory(s) from which static files will be served. Bundles will be served from the `output` config setting. For specifying options for static file directories, please see [`middleware > static`](#middleware).
+Sets the directory(s) from which static files will be served from the root of the application. Bundles will be served from the `output` config setting. For specifying options for static file directories, please see [`middleware > static`](#middleware). For a in-depth example, check out the [Static HTML File](./recipes/static-html-files.md) recipe.
 
 The `static` option supports [glob patterns](https://github.com/sindresorhus/globby#globbypatterns-options) when an `Array` of `String` is passed. This is useful for targeting only specific files within a directory.
 
