@@ -195,6 +195,7 @@ Currently supported built-in middleware that are available on the `builtins` par
 
 `compress` → forwards to [koa-compress](https://github.com/koajs/compress)<br>
 `four0four` → handles requests that result in a 404 status<br>
+`headers` → applies specified custom headers to each request<br>
 `historyFallback` → forwards to [connect-history-api-fallback](https://github.com/bripkens/connect-history-api-fallback/)<br>
 `proxy` → forwards to [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware)<br/>
 `static` → forwards to [koa-static](https://github.com/koajs/static)<br>
