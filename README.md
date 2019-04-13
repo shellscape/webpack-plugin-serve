@@ -273,7 +273,7 @@ _Note: The `app.use(...)` call here is slightly different than what Express user
 
 ## TypeScript Types
 
-To get type defifinitions for this project:
+To get type definitions for this project:
 
 ```console
 npm install -D @types/webpack-plugin-serve
