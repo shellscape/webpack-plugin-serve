@@ -222,12 +222,12 @@ If [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy), the modul
 If a value of `'minimal'` is set, the progress indicator will render as a small, colored bar at the top of the window. This can be useful when the default fancy progress indicator interferes with elements in the page.
 
 ### `static`
-Type: `String | Array(String)`<br>
+Type: `String | Array(String) | Object`<br>
 Default: `compiler.context`
 
 Sets the directory(s) from which static files will be served from the root of the application. Bundles will be served from the `output` config setting. For specifying options for static file directories, please see [`middleware > static`](#middleware). For a in-depth example, check out the [Static HTML File](./recipes/static-html-files.md) recipe.
 
-The `static` option supports [glob patterns](https://github.com/sindresorhus/globby#globbypatterns-options) when an `Array` of `String` is passed. This is useful for targeting only specific files within a directory.
+The `static` option supports [glob patterns](https://github.com/sindresorhus/globby#globbypatterns-options) when an `Object` is passed with a `glob` property. eg. `{ glob: [ ... ], options: { ... } }`. This is useful for targeting only specific directories in a complex tree. Users may also provide an `options` property which supports [globby options](https://github.com/sindresorhus/globby#options).
 
 ### `status`
 Type: `boolean`<br>

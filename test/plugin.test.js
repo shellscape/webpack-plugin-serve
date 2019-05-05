@@ -4,17 +4,38 @@ const test = require('ava');
 
 const { WebpackPluginServe } = require('../lib');
 
+const reCleanDir = /^.+(serve|project)\//g;
+const fixturePath = join(__dirname, 'fixtures').replace(reCleanDir, '');
+
 test('defaults', (t) => {
   const plugin = new WebpackPluginServe();
   t.snapshot(plugin.options);
 });
 
-test('static → glob', (t) => {
-  const basePath = join(__dirname, 'fixtures');
+test('static → string', (t) => {
   const { options } = new WebpackPluginServe({
     allowMany: true,
-    static: [join(basePath, '/**/app.js'), '!**/temp*/*']
+    static: fixturePath
   });
-  options.static = options.static.map((p) => p.replace(/^.+(serve|project)\//, ''));
+  t.snapshot(options.static);
+});
+
+test('static → array(string)', (t) => {
+  const { options } = new WebpackPluginServe({
+    allowMany: true,
+    static: [fixturePath]
+  });
+  t.snapshot(options.static);
+});
+
+test('static → glob', (t) => {
+  const { options } = new WebpackPluginServe({
+    allowMany: true,
+    static: {
+      glob: [join(__dirname, 'fixtures')],
+      options: { onlyDirectories: true }
+    }
+  });
+  options.static = options.static.map((p) => p.replace(reCleanDir, ''));
   t.snapshot(options.static);
 });
