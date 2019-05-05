@@ -36,6 +36,9 @@ test('static → glob', (t) => {
       options: { onlyDirectories: true }
     }
   });
-  options.static = options.static.map((p) => p.replace(reCleanDir, ''));
-  t.snapshot(options.static);
+  const res = options.static
+    .map((p) => p.replace(reCleanDir, ''))
+    .filter((p) => !/temp|output/.test(p))
+    .sort();
+  t.snapshot(res);
 });
