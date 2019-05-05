@@ -5,6 +5,7 @@ Recipes are snippets of code and useful tidbits that may be helpful to developer
 🍳 What's Cooking:
 
 [Bonjour Broadcast](./bonjour-broadcast.md)<br/>
+[Configuring Entry Points](./entry-points.md)<br/>
 [Custom Headers](./custom-headers.md)<br/>
 [Multi Entry Setup](./multi-entry.md)<br/>
 [Proxies](./proxies.md)<br/>
