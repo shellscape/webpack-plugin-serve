@@ -76,6 +76,8 @@ module.exports = {
 
 ```
 
+_Note: For more information and examples on configuring the `entry` property, please see the [Configuring Entry Points](./entry-points.md) recipe._
+
 And run `webpack`:
 
 ```console
