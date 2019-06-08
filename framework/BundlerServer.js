@@ -116,11 +116,16 @@ class BundlerServer extends BundlerRouter {
 
     address.hostname = address.address;
 
+    // fix #131 - server address reported as 127.0.0.1 for localhost
+    if (address.hostname !== this.options.host && this.options.host === 'localhost') {
+      address.hostname = this.options.host;
+    }
+
     // we set this so the client can use the actual hostname of the server. sometimes the net
     // will mutate the actual hostname value (e.g. :: -> [::])
     this.options.address = url.format(address);
 
-    const uri = `${protocol}://${url.format(this.options.address)}`;
+    const uri = `${protocol}://${this.options.address}`;
 
     this.log.info('Server Listening on:', uri);
 

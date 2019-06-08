@@ -76,6 +76,8 @@ module.exports = {
 
 ```
 
+_Note: For more information and examples on configuring the `entry` property, please see the [Configuring Entry Points](./entry-points.md) recipe._
+
 And run `webpack`:
 
 ```console
@@ -195,6 +197,7 @@ Currently supported built-in middleware that are available on the `builtins` par
 
 `compress` → forwards to [koa-compress](https://github.com/koajs/compress)<br>
 `four0four` → handles requests that result in a 404 status<br>
+`headers` → applies specified custom headers to each request<br>
 `historyFallback` → forwards to [connect-history-api-fallback](https://github.com/bripkens/connect-history-api-fallback/)<br>
 `proxy` → forwards to [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware)<br/>
 `static` → forwards to [koa-static](https://github.com/koajs/static)<br>
@@ -221,10 +224,19 @@ If [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy), the modul
 If a value of `'minimal'` is set, the progress indicator will render as a small, colored bar at the top of the window. This can be useful when the default fancy progress indicator interferes with elements in the page.
 
 ### `static`
-Type: `String | Array(String)`<br>
+Type: `String | Array(String) | Object`<br>
 Default: `compiler.context`
 
-Sets the directory(s) from which static files will be served. Bundles will be served from the `output` config setting. For specifying options for static file directories, please see [`middleware > static`](#middleware).
+Sets the directory(s) from which static files will be served from the root of the application. Bundles will be served from the `output` config setting. For specifying options for static file directories, please see [`middleware > static`](#middleware). For a in-depth example, check out the [Static HTML File](./recipes/static-html-files.md) recipe.
+
+The `static` option supports [glob patterns](https://github.com/sindresorhus/globby#globbypatterns-options) when an `Object` is passed with a `glob` property. This is useful for targeting only specific directories in a complex tree. Users may also provide an `options` property which supports [globby options](https://github.com/sindresorhus/globby#options). For example:
+
+```js
+static: {
+  glob: [path.join(__dirname, 'dist/**/public')],
+  options: { onlyDirectories: true }
+}
+```
 
 ### `status`
 Type: `boolean`<br>
@@ -267,6 +279,14 @@ module.exports = {
 ```
 
 _Note: The `app.use(...)` call here is slightly different than what Express users are used to seeing with `http-proxy-middleware`. This is due to subtle differences in how the module interacts with `Koa`, which is used under the hood in this plugin._
+
+## TypeScript Types
+
+To get type definitions for this project:
+
+```console
+npm install -D @types/webpack-plugin-serve
+```
 
 ## Meta
 

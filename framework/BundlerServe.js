@@ -9,6 +9,7 @@
   included in all copies or substantial portions of this Source Code Form.
 */
 const Koa = require('koa');
+const globby = require('globby');
 
 const { fatal, getLogger } = require('./log');
 const { BundlerServer } = require('./BundlerServer');
@@ -22,6 +23,7 @@ const defaults = {
   // leave `client` undefined
   // client: null,
   compress: null,
+  headers: null,
   historyFallback: false,
   hmr: true,
   host: null,
@@ -48,7 +50,10 @@ class BundlerServe extends BundlerServer {
       throw valid.error;
     }
 
-    if (this.instance) {
+    // NOTE: undocumented option. this is used primarily in testing to allow for multiple instances
+    // of the plugin to be tested within the same context. If you find this, use this at your own
+    // peril.
+    if (!opts.allowMany && this.instance) {
       this.instance.log.error(
         'Duplicate instances created. Only the first instance of this plugin will be active.'
       );
@@ -86,6 +91,9 @@ class BundlerServe extends BundlerServer {
 
     if (!options.static) {
       options.static = [];
+    } else if (options.static.glob) {
+      const { glob, options: globOptions = {} } = options.static;
+      options.static = globby.sync(glob, globOptions);
     }
 
     this.app = new Koa();

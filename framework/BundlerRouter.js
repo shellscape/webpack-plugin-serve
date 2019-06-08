@@ -25,9 +25,15 @@ class BundlerRouter extends EventEmitter {
     const connect = async (ctx) => {
       if (ctx.ws) {
         const socket = await ctx.ws();
+        const send = (data) => {
+          if (socket.readyState !== 1) {
+            return;
+          }
+          socket.send(data);
+        };
 
         for (const event of events) {
-          const handler = this[`socket${captialize(event)}`].bind(this, socket);
+          const handler = this[`socket${captialize(event)}`].bind(this, send);
           this.on(event, handler);
 
           socket.on('close', () => {
@@ -35,15 +41,15 @@ class BundlerRouter extends EventEmitter {
           });
         }
 
-        socket.send(this.prepSocketData({ action: 'connected' }));
+        send(this.prepSocketData({ action: 'connected' }));
       }
     };
 
     app.use(router.get('/wps', connect));
   }
 
-  socketBuild(socket, compilerName = '<unknown>') {
-    socket.send(this.prepSocketData({ action: 'build', data: { compilerName } }));
+  socketBuild(send, compilerName = '<unknown>') {
+    send(this.prepSocketData({ action: 'build', data: { compilerName } }));
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -51,22 +57,14 @@ class BundlerRouter extends EventEmitter {
     // ABSTRACT: override in consumer
   }
 
-  socketInvalid(socket, filePath = '<unknown>') {
-    if (socket.readyState === 3) {
-      return;
-    }
-
+  socketInvalid(send, filePath = '<unknown>') {
     const fileName = filePath.replace(context, '');
 
-    socket.send(this.prepSocketData({ action: 'invalid', data: { fileName } }));
+    send(this.prepSocketData({ action: 'invalid', data: { fileName } }));
   }
 
-  socketProgress(socket, data) {
-    if (socket.readyState !== 1) {
-      return;
-    }
-
-    socket.send(socket, this.prepSocketData({ action: 'progress', data }));
+  socketProgress(send, data) {
+    send(this.prepSocketData({ action: 'progress', data }));
   }
 }
 

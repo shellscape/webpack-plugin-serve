@@ -1,7 +1,7 @@
 const test = require('ava');
 
 const { defaults } = require('../lib');
-const { validate } = require('../framework/validate');
+const { validate } = require('../lib/validate');
 
 test('defaults', (t) => {
   delete defaults.secure;

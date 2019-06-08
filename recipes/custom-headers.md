@@ -1,5 +1,7 @@
 ## 🍲 Sending Custom Headers for Requests
 
+_(Update: As of v0.9.0, users may set Custom Headers using the `headers` option)_
+
 Occasionally a development environment needs to mirror certain aspects of the production environment. That may mean adding custom headers to each request the server responds to. Thankfully, this is exceptionally straightforward using the [Koa](https://koajs.com) underpinnings and the [`middleware`](https://github.com/shellscape/webpack-plugin-serve#middleware) option.
 
 ### Meat and Potatoes
