@@ -69,7 +69,9 @@ serve.on('listening', () => {
 });
 ```
 
-The important change there is `serve.emit('reload')`. We're including some sugar data there so that any listeners know where the event originated. That could be useful in an app that has multiple instruction points calling for reloads.
+The important change there is `serve.emit('reload')`. The `reload` event isn't actually handled by the `WebpackPluginServe` instance, but the plugin _does_ forward on unhandled, emitted events to all connected `WebSocket`s. The `reload` event is already handled in the client scripts as part of the `liveReload` option, so we can utilize that `WebSocket` message to reload the page. Alternatively, you might choose to connect your own `WebSocket`, use a different action (such as `static-change`), and add more magic than a plain old `window.location.reload()`.
+
+We're also including some sugar data there in `{source: 'config' }` so that any listeners know where the event originated. That could be useful in an app that has multiple instruction points calling for reloads.
 
 ### 🍰 Dessert
 
