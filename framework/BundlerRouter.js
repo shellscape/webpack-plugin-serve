@@ -19,21 +19,22 @@ class BundlerRouter extends EventEmitter {
     return JSON.stringify(data);
   }
 
+  static send(socket, data) {
+    if (socket.readyState !== 1) {
+      return;
+    }
+    socket.send(data);
+  }
+
   setupRoutes() {
     const { app } = this;
     const events = ['build', 'done', 'invalid', 'progress'];
     const connect = async (ctx) => {
       if (ctx.ws) {
         const socket = await ctx.ws();
-        const send = (data) => {
-          if (socket.readyState !== 1) {
-            return;
-          }
-          socket.send(data);
-        };
 
         for (const event of events) {
-          const handler = this[`socket${captialize(event)}`].bind(this, send);
+          const handler = this[`socket${captialize(event)}`].bind(this, socket);
           this.on(event, handler);
 
           socket.on('close', () => {
@@ -41,30 +42,34 @@ class BundlerRouter extends EventEmitter {
           });
         }
 
-        send(this.prepSocketData({ action: 'connected' }));
+        BundlerRouter.send(socket, this.prepSocketData({ action: 'connected' }));
       }
     };
 
     app.use(router.get('/wps', connect));
   }
 
-  socketBuild(send, compilerName = '<unknown>') {
-    send(this.prepSocketData({ action: 'build', data: { compilerName } }));
+  socketBuild(socket, compilerName = '<unknown>') {
+    BundlerRouter.send(socket, this.prepSocketData({ action: 'build', data: { compilerName } }));
   }
 
   // eslint-disable-next-line no-unused-vars
   socketDone(socket) {
     // ABSTRACT: override in consumer
+    BundlerRouter.send(
+      socket,
+      this.prepSocketData({ action: 'done', data: { warning: 'socketDone should be overridden' } })
+    );
   }
 
-  socketInvalid(send, filePath = '<unknown>') {
+  socketInvalid(socket, filePath = '<unknown>') {
     const fileName = filePath.replace(context, '');
 
-    send(this.prepSocketData({ action: 'invalid', data: { fileName } }));
+    BundlerRouter.send(socket, this.prepSocketData({ action: 'invalid', data: { fileName } }));
   }
 
-  socketProgress(send, data) {
-    send(this.prepSocketData({ action: 'progress', data }));
+  socketProgress(socket, data) {
+    BundlerRouter.send(socket, this.prepSocketData({ action: 'progress', data }));
   }
 }
 
