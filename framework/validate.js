@@ -32,10 +32,13 @@ const { any, array, boolean, func, number, object, string, validate } = joi.bind
 module.exports = {
   validate(options) {
     const keys = {
+      allowMany: boolean(),
+      bundler: [object().keys({ className: string(), faqUri: string() })],
       // get it together, Prettier! https://github.com/prettier/prettier/issues/3621
       // prettier-ignore
-      client: [object().keys({ address: string() }).allow(null)],
+      client: [object().keys({ address: string(), retry: boolean(), silent: boolean() }).allow(null)],
       compress: [boolean().allow(null)],
+      headers: object().allow(null),
       historyFallback: [boolean(), object()],
       hmr: boolean(),
       // prettier-ignore
@@ -43,7 +46,12 @@ module.exports = {
       http2: [boolean(), object()],
       https: object(),
       liveReload: boolean(),
-      log: object().keys({ level: string(), timestamp: boolean() }),
+      log: object().keys({
+        level: string(),
+        name: string(),
+        timestamp: boolean(),
+        symbols: object().keys({ ok: string(), whoops: string() })
+      }),
       middleware: func(),
       open: [boolean(), object()],
       // prettier-ignore
@@ -51,7 +59,11 @@ module.exports = {
       progress: [boolean(), string().valid('minimal')],
       secure: any().forbidden(),
       // prettier-ignore
-      static: [string().allow(null), array().items(string())],
+      static: [
+        string().allow(null),
+        array().items(string()),
+        object().keys({ glob: array().items(string()), options: object() })
+      ],
       status: boolean(),
       waitForBuild: boolean()
     };

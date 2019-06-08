@@ -19,6 +19,12 @@ const colors = {
   error: 'red'
 };
 
+const fatal = (options, ...args) => {
+  const { error } = console;
+  const { name, symbols } = options.log;
+  error(chalk.red(`${symbols.whoops} ${name || 'bundler'}:`), ...args);
+};
+
 const getLogger = (options) => {
   const { name: logName, symbols } = options;
   const prefix = {
@@ -41,12 +47,6 @@ const getLogger = (options) => {
   const log = loglevel.create(options);
 
   return log;
-};
-
-const fatal = (options, ...args) => {
-  const { error } = console;
-  const { logName, symbols } = options.log.name || 'bundler';
-  error(chalk.red(`${symbols.whoops} ${logName}:`), ...args);
 };
 
 module.exports = { fatal, getLogger };
