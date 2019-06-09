@@ -1,5 +1,5 @@
 /*
-  Copyright © 2018 Andrew Powell
+  Copyright © 2019 Andrew Powell
 
   This Source Code Form is subject to the terms of the Mozilla Public
   License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -19,9 +19,8 @@ const { middleware: wsMiddleware } = require('./ws');
 
 let staticPaths = [];
 
-const render404 = (ctx) => {
-  const faqUrl =
-    'https://github.com/shellscape/webpack-plugin-serve/blob/master/.github/FAQ.md#what-does-the-not-found--404-error-mean';
+const render404 = (ctx, options) => {
+  const faqUrl = `${options.bundler.faqUri}#what-does-the-not-found--404-error-mean`;
   const body = `<h1>Not Found / 404</h1>
 <p>
   You may be seeing this error due to misconfigured options.<br/>
@@ -92,7 +91,7 @@ const getBuiltins = (app, options) => {
     app.use(async (ctx, next) => {
       await next();
       if (ctx.status === 404) {
-        render404(ctx);
+        render404(ctx, options);
         fn(ctx);
       }
     });

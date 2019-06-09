@@ -1,5 +1,5 @@
 /*
-  Copyright © 2018 Andrew Powell
+  Copyright © 2019 Andrew Powell
 
   This Source Code Form is subject to the terms of the Mozilla Public
   License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -8,11 +8,12 @@
   The above copyright notice and this permission notice shall be
   included in all copies or substantial portions of this Source Code Form.
 */
+const EventEmitter = require('events');
+
 const Koa = require('koa');
 const globby = require('globby');
 
 const { fatal, getLogger } = require('./log');
-const { BundlerServer } = require('./BundlerServer');
 const { validate } = require('./validate');
 
 const defaults = {
@@ -20,6 +21,7 @@ const defaults = {
     className: 'BundlerServe',
     faqUri: 'https://github.com/shellscape/bundler-serve/blob/master/.github/FAQ.md'
   },
+
   // leave `client` undefined
   // client: null,
   compress: null,
@@ -34,16 +36,20 @@ const defaults = {
   port: 55555,
   progress: true,
   secure: false,
+  server: null,
   static: null,
   status: true
 };
 
-class BundlerServe extends BundlerServer {
+class BundlerServe extends EventEmitter {
   constructor(opts = {}) {
     super();
 
-    const options = Object.assign({}, defaults, opts);
     const valid = validate(opts);
+    const options = Object.assign({}, defaults, opts);
+    const { server } = options;
+
+    options.bundler = Object.assign({}, defaults.bundler, opts.bundler);
 
     if (valid.error) {
       fatal(options, `An option was passed to ${options.bundler.className} that is not valid`);
@@ -53,7 +59,7 @@ class BundlerServe extends BundlerServer {
     // NOTE: undocumented option. this is used primarily in testing to allow for multiple instances
     // of the plugin to be tested within the same context. If you find this, use this at your own
     // peril.
-    if (!opts.allowMany && this.instance) {
+    if (!options.allowMany && this.instance) {
       this.instance.log.error(
         'Duplicate instances created. Only the first instance of this plugin will be active.'
       );
@@ -100,7 +106,10 @@ class BundlerServe extends BundlerServer {
     this.compilers = [];
     this.instance = this;
     this.options = options;
+    this.server = server;
     this.state = {};
+
+    server.setup(this);
   }
 
   init() {
@@ -119,7 +128,7 @@ class BundlerServe extends BundlerServer {
 
   start() {
     if (!this.listening) {
-      return this.startServer();
+      return this.server.start();
     }
 
     return false;

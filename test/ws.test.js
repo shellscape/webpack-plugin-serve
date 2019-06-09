@@ -5,7 +5,7 @@ const router = require('koa-route');
 const defer = require('p-defer');
 const WebSocket = require('ws');
 
-const { middleware } = require('../lib/ws');
+const { middleware } = require('../framework/ws');
 
 test('websocket middleware', async (t) => {
   const app = new Koa();

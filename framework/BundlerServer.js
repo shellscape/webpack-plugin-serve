@@ -1,5 +1,5 @@
 /*
-  Copyright © 2018 Andrew Powell
+  Copyright © 2019 Andrew Powell
 
   This Source Code Form is subject to the terms of the Mozilla Public
   License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -11,20 +11,31 @@
 const url = require('url');
 const { createServer, ServerResponse } = require('http');
 
+const joi = require('joi');
 const open = require('opn');
 
-const { getBuiltins } = require('../lib/middleware');
-
 const { BundlerRouter } = require('./BundlerRouter');
+const { getBuiltins } = require('./middleware');
 
-class BundlerServer extends BundlerRouter {
+class BundlerServer {
+  constructor(router) {
+    const { object, validate } = joi.bind();
+    const valid = validate(router, object().type(BundlerRouter));
+
+    if (valid.error) {
+      throw valid.error;
+    }
+
+    this.router = router;
+  }
+
   middleware() {
-    const { app, options } = this;
+    const { app, options } = this.instance;
     return getBuiltins(app, options);
   }
 
   select(callback) {
-    const { options } = this;
+    const { options } = this.instance;
     /* eslint-disable global-require */
     const types = {
       http: createServer,
@@ -55,21 +66,26 @@ class BundlerServer extends BundlerRouter {
     return { secure, server };
   }
 
-  async startServer() {
+  setup(instance) {
+    this.instance = instance;
+  }
+
+  async start() {
     if (this.listening) {
       return;
     }
 
-    const { app } = this;
-    const { host, middleware, port, waitForBuild } = this.options;
+    const { instance } = this;
+    const { app, options } = instance;
+    const { host, middleware, port, waitForBuild } = options;
     const builtins = this.middleware();
 
-    this.options.host = await host;
-    this.options.port = await port;
+    instance.options.host = await host;
+    instance.options.port = await port;
 
     if (waitForBuild) {
       app.use(async (ctx, next) => {
-        await this.state.compiling;
+        await instance.state.compiling;
         await next();
       });
     }
@@ -84,13 +100,13 @@ class BundlerServer extends BundlerRouter {
       }
     }
 
-    this.setupRoutes();
+    this.router.setup(instance);
 
     const { secure, server } = this.select(app.callback());
-    const emitter = this;
+    const emitter = instance;
 
-    this.options.secure = secure;
-    server.listen({ host: this.options.host, port: this.options.port });
+    instance.options.secure = secure;
+    server.listen({ host: instance.options.host, port: instance.options.port });
 
     // wait for the server to fully spin up before asking it for details
     await {
@@ -117,21 +133,21 @@ class BundlerServer extends BundlerRouter {
     address.hostname = address.address;
 
     // fix #131 - server address reported as 127.0.0.1 for localhost
-    if (address.hostname !== this.options.host && this.options.host === 'localhost') {
-      address.hostname = this.options.host;
+    if (address.hostname !== instance.options.host && instance.options.host === 'localhost') {
+      address.hostname = instance.options.host;
     }
 
     // we set this so the client can use the actual hostname of the server. sometimes the net
     // will mutate the actual hostname value (e.g. :: -> [::])
-    this.options.address = url.format(address);
+    instance.options.address = url.format(address);
 
-    const uri = `${protocol}://${this.options.address}`;
+    const uri = `${protocol}://${instance.options.address}`;
 
-    this.log.info('Server Listening on:', uri);
+    instance.log.info('Server Listening on:', uri);
 
-    this.once('done', () => {
-      if (this.options.open) {
-        open(uri, this.options.open === true ? {} : this.options.open);
+    instance.once('done', () => {
+      if (instance.options.open) {
+        open(uri, instance.options.open === true ? {} : instance.options.open);
       }
     });
   }

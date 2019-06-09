@@ -1,5 +1,17 @@
+/*
+  Copyright © 2019 Andrew Powell
+
+  This Source Code Form is subject to the terms of the Mozilla Public
+  License, v. 2.0. If a copy of the MPL was not distributed with this
+  file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of this Source Code Form.
+*/
 const Joi = require('joi');
 const isPromise = require('is-promise');
+
+const { BundlerServer } = require('./BundlerServer');
 
 // until https://github.com/hapijs/joi/issues/1690 is fixed, we have to have a base of any(). once
 // they get that fixed, we can use object() here, which is what we should be using
@@ -33,8 +45,10 @@ module.exports = {
   validate(options) {
     const keys = {
       allowMany: boolean(),
-      bundler: [object().keys({ className: string(), faqUri: string() })],
       // get it together, Prettier! https://github.com/prettier/prettier/issues/3621
+      // prettier-ignore
+      bundler: [object().keys({ className: string(), faqUri: string() })],
+
       // prettier-ignore
       client: [object().keys({ address: string(), retry: boolean(), silent: boolean() }).allow(null)],
       compress: [boolean().allow(null)],
@@ -58,12 +72,13 @@ module.exports = {
       port: [number().integer().max(65535), any().promise()],
       progress: [boolean(), string().valid('minimal')],
       secure: any().forbidden(),
+      server: object().type(BundlerServer),
       // prettier-ignore
       static: [
-        string().allow(null),
-        array().items(string()),
-        object().keys({ glob: array().items(string()), options: object() })
-      ],
+          string().allow(null),
+          array().items(string()),
+          object().keys({ glob: array().items(string()), options: object() })
+        ],
       status: boolean(),
       waitForBuild: boolean()
     };
