@@ -14,21 +14,21 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "7.2.2",
-    "@babel/preset-env": "7.3.1",
+    "@babel/core": "7.4.5",
+    "@babel/preset-env": "7.4.5",
     "@babel/preset-react": "7.0.0",
-    "babel-loader": "8.0.5",
+    "babel-loader": "8.0.6",
     "cross-env": "5.2.0",
     "import-fresh": "3.0.0",
-    "webpack": "4.29.1",
-    "webpack-nano": "0.6.1",
+    "webpack": "4.35.0",
+    "webpack-nano": "0.6.2",
     "webpack-node-externals": "1.7.2",
-    "webpack-plugin-serve": "0.6.0"
+    "webpack-plugin-serve": "0.11.0"
   },
   "dependencies": {
     "koa": "2.7.0",
     "koa-static": "5.0.0",
-    "react": "16.7.0",
-    "react-dom": "16.7.0"
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
   }
 }

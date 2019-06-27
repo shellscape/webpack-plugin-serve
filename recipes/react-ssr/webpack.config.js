@@ -1,7 +1,7 @@
 const path = require('path');
 
-const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
-const importFresh = require('import-fresh');
+const { WebpackPluginServe: Serve } = require('../../lib/');
+
 const nodeExternals = require('webpack-node-externals');
 
 const SRC_DIR_CLIENT = path.resolve(__dirname, 'client');
@@ -14,7 +14,7 @@ const serve = new Serve({
   waitForBuild: true,
   middleware(app) {
     app.use(async (ctx, next) => {
-      const renderer = importFresh(path.resolve(DIST_DIR, 'server.js'));
+      const renderer = require(path.resolve(DIST_DIR, 'server.js'));
       await renderer(ctx, next);
     });
   }
@@ -29,12 +29,18 @@ function createConfig(opts) {
     name,
     mode: optimize ? 'production' : 'development',
     entry: isServer
-      ? { server: './server/main.js' }
+      ? { server: [...(optimize ? [] : ['webpack-plugin-serve/node-client']), './server/main.js'] }
       : { client: ['./client/index.js', ...(optimize ? [] : ['webpack-plugin-serve/client'])] },
     output: {
       path: DIST_DIR,
       filename: '[name].js',
       libraryTarget: isServer ? 'commonjs2' : 'var'
+    },
+    resolve: {
+      alias: {
+        'webpack-plugin-serve/node-client': path.resolve(__dirname, '../../node-client'),
+        'webpack-plugin-serve/client': path.resolve(__dirname, '../../client')
+      }
     },
     module: {
       rules: [
@@ -63,8 +69,14 @@ function createConfig(opts) {
     },
     plugins: [isServer ? serve.attach() : serve],
     target: isServer ? 'node' : 'web',
-    ...(isServer ? { externals: nodeExternals() } : {}),
-    watch: !isServer && !optimize
+    ...(isServer
+      ? {
+          externals: nodeExternals({
+            whitelist: ['webpack-plugin-serve/node-client']
+          })
+        }
+      : {}),
+    watch: !optimize
   };
 }
 

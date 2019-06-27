@@ -30,6 +30,7 @@
   },
   "files": [
     "client.js",
+    "node-client.js",
     "lib/",
     "README.md",
     "LICENSE"

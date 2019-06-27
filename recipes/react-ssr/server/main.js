@@ -1,10 +1,16 @@
 const React = require('react');
 const { renderToString } = require('react-dom/server');
 
-const Root = require('../client/Root').default;
+const app = {
+  root: require('../client/Root').default,
+  render() {
+    const Root = this.root;
+    return renderToString(<Root />);
+  }
+};
 
 function render() {
-  const markup = renderToString(<Root />);
+  const markup = app.render();
 
   return `
     <!doctype html>
@@ -15,6 +21,12 @@ function render() {
       </body>
     </html>
   `;
+}
+
+if (module.hot) {
+  module.hot.accept(['../client/Root'], () => {
+    app.root = require('../client/Root').default;
+  });
 }
 
 module.exports = async (ctx, next) => {
