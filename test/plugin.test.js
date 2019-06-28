@@ -38,7 +38,7 @@ test('static → glob', (t) => {
   });
   const res = options.static
     .map((p) => p.replace(reCleanDir, ''))
-    .filter((p) => !/temp|output/.test(p))
+    .filter((p) => !/temp|output|ssr/.test(p))
     .sort();
   t.snapshot(res);
 });

@@ -15,7 +15,11 @@
 
 (() => {
   /* eslint-disable global-require */
-  const { run } = require('./lib/client/client');
+  const isNode =
+    typeof process !== 'undefined' && process.versions != null && process.versions.node != null;
+
+  const { run } = isNode ? require('./lib/node-client') : require('./lib/client/client');
+
   let hash = '<unknown>';
   let options;
   try {

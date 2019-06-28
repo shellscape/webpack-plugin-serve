@@ -1,7 +1,6 @@
 const path = require('path');
 
-const { WebpackPluginServe: Serve } = require('../../lib/');
-
+const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
 const nodeExternals = require('webpack-node-externals');
 
 const SRC_DIR_CLIENT = path.resolve(__dirname, 'client');
@@ -29,18 +28,12 @@ function createConfig(opts) {
     name,
     mode: optimize ? 'production' : 'development',
     entry: isServer
-      ? { server: [...(optimize ? [] : ['webpack-plugin-serve/node-client']), './server/main.js'] }
-      : { client: ['./client/index.js', ...(optimize ? [] : ['webpack-plugin-serve/client'])] },
+      ? { server: [...(optimize ? [] : ['webpack-plugin-serve/client']), './server/main.js'] }
+      : { client: [...(optimize ? [] : ['webpack-plugin-serve/client']), './client/index.js'] },
     output: {
       path: DIST_DIR,
       filename: '[name].js',
       libraryTarget: isServer ? 'commonjs2' : 'var'
-    },
-    resolve: {
-      alias: {
-        'webpack-plugin-serve/node-client': path.resolve(__dirname, '../../node-client'),
-        'webpack-plugin-serve/client': path.resolve(__dirname, '../../client')
-      }
     },
     module: {
       rules: [
@@ -72,7 +65,7 @@ function createConfig(opts) {
     ...(isServer
       ? {
           externals: nodeExternals({
-            whitelist: ['webpack-plugin-serve/node-client']
+            whitelist: ['webpack-plugin-serve/client']
           })
         }
       : {}),
