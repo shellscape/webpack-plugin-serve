@@ -26,6 +26,8 @@ test('single compiler', browser, async (t, page, util) => {
 
   const value = await page.evaluate(() => document.querySelector('main').innerHTML);
 
+  proc.kill('SIGTERM');
+
   t.is(value, 'test');
 
   await del(fixturePath);

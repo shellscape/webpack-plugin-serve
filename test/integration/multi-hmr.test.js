@@ -30,6 +30,8 @@ test('multi compiler', browser, async (t, page, util) => {
   const componentValue = await page.evaluate(() => document.querySelector('main').innerHTML);
   const workValue = await page.evaluate(() => document.querySelector('#worker').innerHTML);
 
+  proc.kill('SIGTERM');
+
   t.is(componentValue, 'test');
   t.is(workValue, 'test');
 
