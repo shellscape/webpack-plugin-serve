@@ -12,6 +12,15 @@ test('defaults', (t) => {
   t.snapshot(plugin.options);
 });
 
+test('options manipulation', (t) => {
+  const plugin = new WebpackPluginServe({
+    allowMany: true,
+    compress: true,
+    historyFallback: true
+  });
+  t.snapshot(plugin.options);
+});
+
 test('static → string', (t) => {
   const { options } = new WebpackPluginServe({
     allowMany: true,

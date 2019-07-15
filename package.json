@@ -55,6 +55,7 @@
     "opn": "^6.0.0",
     "p-defer": "^3.0.0",
     "strip-ansi": "^5.0.0",
+    "webpack-plugin-ramdisk": "^0.1.2",
     "ws": "^7.1.0"
   },
   "devDependencies": {
@@ -101,7 +102,7 @@
   },
   "nyc": {
     "include": [
-      "lib/*.js"
+      "lib/**/*.js"
     ],
     "exclude": [
       "lib/client*.js",

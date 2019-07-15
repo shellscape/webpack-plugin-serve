@@ -1,6 +1,6 @@
 const test = require('ava');
 
-const { defaults } = require('../lib');
+const { defaults, WebpackPluginServe } = require('../lib');
 const { validate } = require('../lib/validate');
 
 test('defaults', (t) => {
@@ -31,4 +31,9 @@ test('promise', (t) => {
   result = validate({ host: thenable, port: thenable });
   t.falsy(result.error);
   t.snapshot(result);
+});
+
+test('throws', (t) => {
+  const error = t.throws(() => new WebpackPluginServe({ batman: 'nanananana' }));
+  t.snapshot(error);
 });
