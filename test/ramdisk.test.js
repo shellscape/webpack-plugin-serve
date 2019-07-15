@@ -1,3 +1,4 @@
+const { existsSync } = require('fs');
 const { join } = require('path');
 
 const test = require('ava');
@@ -28,6 +29,7 @@ test('ramdisk', async (t) => {
   const path = await getPath(stdout);
 
   t.snapshot(path);
+  t.truthy(existsSync(join(fixturePath, 'output/output.js')));
 
   proc.kill('SIGTERM');
 });

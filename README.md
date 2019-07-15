@@ -229,7 +229,7 @@ Type: `boolean`<br>
 Default: `false`<br>
 Support: MacOS and Linux, Windows with WSL 2.0.
 
-If `true`, will apply [`webpack-plugin-ramdisk`](https://www.npmjs.com/package/webpack-plugin-ramdisk) to the build. This will change the output for the build, as the _last three segments_ of `output.path` are appended to the ramdisk mount point. e.g. If the `output.path` value in the webpack configuration is `'/usr/code/my-app/build'`, the modified output path would be `/mnt/wps/code/my-app/build` on Linux, or `/Volumes/wps/code/my-app/build` on MacOS.
+If `true`, will apply [`webpack-plugin-ramdisk`](https://www.npmjs.com/package/webpack-plugin-ramdisk) to the build. `output` configuration does not have to be modified, a symlink will be created from the original output path to the output path on the ramdisk.
 
 Leveraging this option can result in significant reduction of build time, which is especially useful when using `hmr: true` or `liveReload: true`. Typical build times can be cut by 25-32% or more depending on hardware and webpack configuration. This is also recommended for users with SSD, as it reduces hard disk thrashing.
 
