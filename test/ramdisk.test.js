@@ -1,9 +1,11 @@
 const { existsSync } = require('fs');
-const { join } = require('path');
+const { join, resolve } = require('path');
 
 const test = require('ava');
 const execa = require('execa');
 const strip = require('strip-ansi');
+
+const fixturePath = join(__dirname, 'fixtures/ramdisk');
 
 const waitFor = (text, stream) => {
   return {
@@ -21,7 +23,6 @@ const waitFor = (text, stream) => {
 };
 
 test('ramdisk', async (t) => {
-  const fixturePath = join(__dirname, 'fixtures/ramdisk');
   const proc = execa('wp', [], { cwd: fixturePath });
   const { stderr, stdout } = proc;
   const pathTest = 'Build being written to ';
@@ -38,4 +39,30 @@ test('ramdisk', async (t) => {
   t.truthy(exists);
 
   proc.kill('SIGTERM');
+});
+
+test('context error', async (t) => {
+  try {
+    await execa('wp', ['--config', 'ramdisk/config-context-error.js'], {
+      cwd: resolve(fixturePath, '..')
+    });
+  } catch (e) {
+    t.regex(e.stderr, /Please set the `context` to a another path/);
+    t.is(e.exitCode, 1);
+    return;
+  }
+  t.fail();
+});
+
+test('cwd error', async (t) => {
+  try {
+    await execa('wp', ['--config', '../config-cwd-error.js'], {
+      cwd: join(fixturePath, 'cwd-error')
+    });
+  } catch (e) {
+    t.regex(e.stderr, /Please run from another path/);
+    t.is(e.exitCode, 1);
+    return;
+  }
+  t.fail();
 });
