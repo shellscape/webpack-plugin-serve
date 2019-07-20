@@ -229,7 +229,7 @@ Type: `boolean`<br>
 Default: `false`<br>
 Support: MacOS and Linux, Windows with WSL 2.0.
 
-If `true`, will apply [`webpack-plugin-ramdisk`](https://www.npmjs.com/package/webpack-plugin-ramdisk) to the build. `output` configuration does not have to be modified, a symlink will be created from the original output path to the output path on the ramdisk.
+If `true`, will apply [`webpack-plugin-ramdisk`](https://www.npmjs.com/package/webpack-plugin-ramdisk) to the build. `output` configuration does not have to be modified, a symlink will be created from the original output path to the output path on the ramdisk. _**Note:** This will remove an existing directory at the defined output path._
 
 Leveraging this option can result in significant reduction of build time, which is especially useful when using `hmr: true` or `liveReload: true`. Typical build times can be cut by 25-32% or more depending on hardware and webpack configuration. This is also recommended for users with SSD, as it reduces hard disk thrashing.
 
