@@ -1,7 +1,5 @@
 ## Frequently Asked Questions
 
-<!-- toc -->
-
 - [What does _evergreen_ mean?](#what-does-evergreen-mean)
 - [What are "vote" issues?](#what-are-vote-issues)
 - [The `[::]` URI is odd, what is that?](#the--uri-is-odd-what-is-that)
@@ -10,10 +8,8 @@
 - [Why does the `static` option default to `compiler.context`?](#why-does-the-static-option-default-to-compilercontext)
 - [Why can't I use Node v10.14.x?](#why-cant-i-use-node-v1014x)
 - [Why do I have to include `webpack-plugin-serve/client` in the entry?](#why-do-i-have-to-include-webpack-plugin-serveclient-in-the-entry)
+- [HistoryApiFallback Rewrites Everything to `index.html`](#historyapifallback-rewrites-everything-to-indexhtml)
 
-<!-- tocstop -->
-
-<!-- NOTE: markdown-toc will render this link malformed. check it each time the toc is generated -->
 ### What does _evergreen_ mean?
 
 The concept behind an _evergreen_ project is derived from https://www.w3.org/2001/tag/doc/evergreen-web/. As such, this plugin only actively supports the [Active LTS](https://github.com/nodejs/Release#release-schedule) version of Node.js. As quoted from the W3C document, this decision was made:
@@ -74,7 +70,36 @@ The minor version range for Node v10.14.x contains [a regression](https://github
 
 ### Why do I have to include `webpack-plugin-serve/client` in the entry?
 
-
 On `webpack-plugin-serve` this file is responsible to control the `Hot Module Replacement`, i.e, the communication between the webpack compiler and the browser. After a change happens on a file, the server is going to send a message to the browser "Hey browser, here are the files you have to hot replace, and here is the new compilation hash". By doing that, the script that you included knows what files changed and handles them to the `webpack` hmr code that exists on the browser too.
 
 This file is also responsible to serve some of the special features we created, the overlays (status and progress).
+
+### HistoryApiFallback Rewrites Everything to `index.html`
+
+When using the `historyFallback` option, and depending on the configuration of your project, the underlying `connect-history-api-fallback` middleware may rewrite other files to `index.html` (or the chosen rewrite destination). This rare problem was documented in [Issue #130](https://github.com/shellscape/webpack-plugin-serve/issues/130). When this issue arises, rewrites may look similar to the following:
+
+```jsx
+Rewriting GET / to /index.html
+Rewriting GET /bundle.js to /index.html
+Rewriting GET / to /index.html
+Rewriting GET /bundle.js to /index.html
+```
+
+A resolution to the problem is pending in [`connect-history-api-fallback` Issue #60](https://github.com/bripkens/connect-history-api-fallback/issues/60). Until the issue is resolved with that package, you may use a solution similar to the following, to mitigate it:
+
+```js
+historyFallback: {
+  disableDotRule: true,
+  verbose: true,
+  rewrites: [
+    {
+      from: '/wps',
+      to: (context) => context.parsedUrl.pathname,
+    },
+    {
+      from: /.js/,
+      to: (context) => context.parsedUrl.pathname,
+    },
+  ],
+},
+```
