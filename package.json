@@ -58,7 +58,7 @@
     "ws": "^7.1.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.0.0",
+    "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.0.0",
     "ava": "^2.2.0",
     "cpy": "^7.0.1",
