@@ -25,7 +25,7 @@ function createConfig(opts) {
       ? { server: ['webpack-plugin-serve/client', './server.js'] }
       : { output: ['webpack-plugin-serve/client', './app.js'] },
     mode: 'development',
-    target: isServer ? 'node' : 'web',
+    target: isServer ? 'async-node' : 'web',
     output: {
       filename: '[name].js',
       libraryTarget: isServer ? 'commonjs2' : 'var',

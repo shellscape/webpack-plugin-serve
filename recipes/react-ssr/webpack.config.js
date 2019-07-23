@@ -61,7 +61,7 @@ function createConfig(opts) {
       ]
     },
     plugins: [isServer ? serve.attach() : serve],
-    target: isServer ? 'node' : 'web',
+    target: isServer ? 'async-node' : 'web',
     ...(isServer
       ? {
           externals: nodeExternals({
