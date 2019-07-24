@@ -27,13 +27,13 @@ module.exports = {
       },
       static: [
         paths.appBuild,
+        // Changes in servedPath may cause issues here, so this may require
+        // modification
         paths.appPublic,
       ],
     };
     config = removeWebpackPlugins(config, env, {
       pluginNames: [
-        // Will be configured by webpack-plugin-serve
-        'HotModuleReplacementPlugin',
         // client environment needs to be replaced
         'InterpolateHtmlPlugin',
         // client environment needs to be replaced
@@ -41,8 +41,38 @@ module.exports = {
       ],
       verbose: true,
     });
+    // the loaders with oneOf at the time of writing are the main webpack loaders
+    const loaders = config.module.rules.find(
+      rule => Array.isArray(rule.oneOf)
+    ).oneOf;
+    // Here we're being lazy and just mutating loaders, which could be done in
+    // a more verbose manner with an immutable operation.  Note that this will
+    // prepend the MiniCssExtractPlugin loader to make it the greediest
+    loaders.splice(
+      0,
+      0,
+      // This will have to be customized based on the css support you want
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: true,
+              // if hmr does not work, this is a forceful method.
+              reloadAll: true,
+            },
+          },
+          'css-loader',
+        ],
+      },
+    );
+    // mutating operation done
+
+    // define clientEnvironment, which is used by a few plugins
     const publicUrl = paths.servedPath.replace(/\/$/, '');
     const clientEnvironment = getClientEnvironment(publicUrl);
+
     const resolve = config.resolve || {};
     const resolveAlias = resolve.alias || {};
     return {
@@ -52,7 +82,8 @@ module.exports = {
       watch: true,
       entry: [
         // webpackHotDevClient is removed here; other entries are the same
-        ...config.entry,
+        paths.appIndexJs,
+        //...config.entry,
         'webpack-plugin-serve/client',
       ],
       resolve: {
@@ -65,11 +96,15 @@ module.exports = {
       },
       plugins: [
         ...(config.plugins || []),
+        // Add back removed plugin with new client environment
         new InterpolateHtmlPlugin(HtmlWebpackPlugin, clientEnvironment.raw),
+        // Add back removed plugin with new client environment
         new webpack.DefinePlugin(clientEnvironment.stringified),
+        // This plugin is currently only configured on production in CRA
+        // so we add it for development as well
         new MiniCssExtractPlugin({
-          filename: '[name].css',
-          chunkFilename: '[id].css',
+          filename: 'static/css/[name].css',
+          chunkFilename: 'static/css/[id].css',
         }),
         new Serve(serveOptions),
       ],
@@ -78,7 +113,8 @@ module.exports = {
         // or something like it gets merged
         path: paths.appBuild,
         publicPath: paths.servedPath,
-        filename: 'bundle.js',
+        filename: 'static/js/bundle.js',
+        chunkFilename: 'static/js/[name].chunk.js',
       },
     }
   },

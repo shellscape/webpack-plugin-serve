@@ -24,32 +24,65 @@ one of the following alternatives:
 With that out of the way, let's use `webpack-plugin-serve` with
 `create-react-app`.
 
+Note that this entire section has already been taken care of, and the artifacts
+now live within this codebase. However, in order for you to effectively
+replicate what has been created here, it will help to write down these steps.
+
 You'll need to create a new app using the latest version of `create-react-app`:
 
 ```bash
 create-react-app my-app
 cd my-app
-npm install -D \
-  webpack-plugin-serve \
-  webpack-nano \
-  react-app-rewired \
-  react-app-rewire-unplug \
-  @hot-loader/react-dom
+
+# Install the rewiring plugins
+npm install -D react-app-rewired react-app-rewire-unplug
+
+# This should already be installed by create-react-app, but it's helpful to
+# keep track of this installation in package.json
+npm install -D mini-css-extract-plugin
+
+# Add webpack-plugin-serve specific packages
+npm install -D webpack-nano webpack-plugin-serve
+
+# Install react-hot-loader dependencies
+npm install -D @hot-loader/react-dom
 npm install react-hot-loader
 ```
 
 Under the hood, `create-react-app` uses the package `react-scripts` to do most
-of the heavy lifting. We'll be overriding its configuration files. Note that
-these configurations change between versions of `react-scripts`, so any upgrade
-of that package may cause these configuration overrides to break.
+of the heavy lifting. We'll be overriding its
+[configuration files](https://github.com/facebook/create-react-app/tree/master/packages/react-scripts/config). Note that these configurations change between versions of
+`react-scripts`, so any upgrade of of it may cause these configuration
+overrides to break.
 
+Also update your scripts within `package.json`:
+
+```diff
+  /* package.json */
+  "scripts": {
+-   "start": "react-scripts start",
++   "start": "wp --config webpack.config.js",
+-   "build": "react-scripts build",
++   "build": "react-app-rewired build",
+-   "test": "react-scripts test",
++   "test": "react-app-rewired test",
+    "eject": "react-scripts eject"
+}
+```
 
 ### Rewiring
 
-We've included within this recipe a `config-overrides.js` file along with a
-`webpack.config.js` file that just reads the overridden config for third party
-tools.
+We've included two additional files within this recipe:
+* `config-overrides.js`, which defines how we're overriding the `react-scripts` webpack config
+* `webpack.config.js`, which just reads the overridden config for third party
+  tools (namely, [wepack-nano](https://github.com/shellscape/webpack-nano)).
 
 The end solution will change nothing for production. Also note that the new
-`start` command is custom. See `package.json` `scripts` for more info. Run
-`npm start` to see it in action.
+`start` command is custom. See `package.json` `scripts` for more info.
+
+Run `npm start` to see it in action. Edit a `.css` file or a `.js` file within
+`src/` and you should see the application update in place.
+
+Note that none of the pre-defined `create-react-app` files have been changed,
+aside from `src/App.js` which now implements hot module replacement via
+`react-hot-loader`.
