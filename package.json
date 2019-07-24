@@ -94,7 +94,8 @@
   "ava": {
     "files": [
       "!**/fixtures/**",
-      "!**/helpers/**"
+      "!**/helpers/**",
+      "!**/recipes/**"
     ]
   },
   "lint-staged": {
