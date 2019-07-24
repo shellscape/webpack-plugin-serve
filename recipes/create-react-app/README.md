@@ -51,7 +51,9 @@ npm install react-hot-loader
 
 Under the hood, `create-react-app` uses the package `react-scripts` to do most
 of the heavy lifting. We'll be overriding its
-[configuration files](https://github.com/facebook/create-react-app/tree/master/packages/react-scripts/config). Note that these configurations change between versions of
+[configuration files](https://github.com/facebook/create-react-app/tree/master/packages/react-scripts/config)
+using [react-app-rewired](https://github.com/timarney/react-app-rewired).
+Note that these configurations change between versions of
 `react-scripts`, so any upgrade of of it may cause these configuration
 overrides to break.
 
