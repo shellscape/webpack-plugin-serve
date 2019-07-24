@@ -1,6 +1,6 @@
 ## 🍲 Create-React-App App
 
-Since it was built to hide configuration from developers, `create-react-app` actually makes it harder to use great plugins like this one.
+Since it was built to hide configuration from developers, `create-react-app` actually makes it harder to use great plugins like this one. In this recipe, we'll show how to use `create-react-app` with `webpack-plugin-serve` without having to eject.
 
 ### ☠️ Warning ☠️
 
