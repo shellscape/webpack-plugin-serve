@@ -21,6 +21,14 @@ test('options manipulation', (t) => {
   t.snapshot(plugin.options);
 });
 
+test('allow https null', (t) => {
+  const plugin = new WebpackPluginServe({
+    allowMany: true,
+    https: null
+  });
+  t.snapshot(plugin.options);
+});
+
 test('static → string', (t) => {
   const { options } = new WebpackPluginServe({
     allowMany: true,
