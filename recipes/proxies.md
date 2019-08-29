@@ -1,4 +1,5 @@
 ## 🍲 Proxies
+
 Proxying some URLs can be useful when you have an API backend server and you want to send API requests on the same domain or if during development you wan't to simulate the correct urls that are going to work in a real scenario.
 
 Proxying is supported via [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware) module but it doesn't contain any fancy options processing for proxying it just provides access directly.

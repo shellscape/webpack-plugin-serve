@@ -194,15 +194,9 @@ module.exports = {
 };
 ```
 
-Currently supported built-in middleware that are available on the `builtins` parameter:
+#### Built-in Middleware
 
-`compress` → forwards to [koa-compress](https://github.com/koajs/compress)<br>
-`four0four` → handles requests that result in a 404 status<br>
-`headers` → applies specified custom headers to each request<br>
-`historyFallback` → forwards to [connect-history-api-fallback](https://github.com/bripkens/connect-history-api-fallback/)<br>
-`proxy` → forwards to [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware)<br/>
-`static` → forwards to [koa-static](https://github.com/koajs/static)<br>
-`websocket` → Custom middleware that provides `WebSocket` support
+The `builtins` parameter provides access to all of the underlying middleware that the plugin uses internally. That provides users with a maximum amount of control over behavior of the server. For more information and examples of use, please see the [Built-in Middleware](./recipes/builtin-middleware.md) recipe.
 
 ### `open`
 Type: `boolean | Object`<br>
