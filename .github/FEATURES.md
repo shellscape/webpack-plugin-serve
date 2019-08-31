@@ -51,7 +51,7 @@ The grid below represents a comparison of features from the available and most u
 - Host and Port can be set to a `Promise`, which allows for dynamic host and port resolution before the server starts.
 - The client (browser) WebSocket host can be set, allowing full customization for contain environments.
 - Fully customizable middleware, including execution order of built-in middleware. Users may implement whichever middleware they desire in the order which works best for them.
-- Leverages the `opn` module and all of it's available options, without restriction, for opening the target application in the browser automatically.
+- Leverages the `open` module and all of it's available options, without restriction, for opening the target application in the browser automatically.
 - A themed, UX-consistent Build Status (errors, warnings) overlay with minimized beacon mode for monitoring the status of builds during editing.
 - A themed, UX-consistent set of Build Progress overlay+indicator, with minimal option.
 - Superior serverless WebSocket connectivity.
