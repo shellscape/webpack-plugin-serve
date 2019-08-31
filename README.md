@@ -202,7 +202,7 @@ The `builtins` parameter provides access to all of the underlying middleware tha
 Type: `boolean | Object`<br>
 Default: `false`
 
-If `true`, opens the default browser to the set `host` and `port`. Users may also choose to pass an `Object` containing options for the [`opn`](https://github.com/sindresorhus/opn) module, which is used for this feature.
+If `true`, opens the default browser to the set `host` and `port`. Users may also choose to pass an `Object` containing options for the [`open`](https://github.com/sindresorhus/open) module, which is used for this feature.
 
 ### `port`
 Type: `Number | Promise`<br>
