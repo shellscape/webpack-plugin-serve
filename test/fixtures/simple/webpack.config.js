@@ -19,7 +19,9 @@ module.exports = {
         'X-Superhero': 'batman'
       },
       host: 'localhost',
-      port: getPort({ port: 55555 })
+      port: getPort({ port: 55555 }),
+      log: { level: 'debug' },
+      ramdisk: true
     })
   ],
   resolve: {
