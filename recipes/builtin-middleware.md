@@ -28,7 +28,7 @@ The same holds true for all of the available built-in middleware methods, except
 
 `compress` → forwards to [koa-compress](https://github.com/koajs/compress)<br>
 `four0four` → handles requests that result in a 404 status. Check usage [here](./four0four.md)<br>
-`headers` → applies specified custom headers to each request. Check usage [here](./headers.md)<br>
+`headers` → applies specified custom headers to each request. Check usage [here](./custom-headers.md)<br>
 `historyFallback` → forwards to [connect-history-api-fallback](https://github.com/bripkens/connect-history-api-fallback/)<br>
 `proxy` → forwards to [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware)<br/>
 `static` → forwards to [koa-static](https://github.com/koajs/static)<br>
