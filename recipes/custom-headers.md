@@ -2,11 +2,11 @@
 
 _(Update: As of v0.9.0, users may set Custom Headers using the `headers` option)_
 
-Occasionally a development environment needs to mirror certain aspects of the production environment. That may mean adding custom headers to each request the server responds to. On `webpack-plugin-serve` you have two ways to do that: the straightforward using the [Koa](https://koajs.com) underpinnings and our custom middleware. 
+Occasionally a development environment needs to mirror certain aspects of the production environment. That may mean adding custom headers to each request the server responds to. With `webpack-plugin-serve` you have two ways to do that: using [Koa](https://koajs.com) underpinnings or our custom middleware. 
 
 ### Meat and Potatoes
 
-To get started, your `webpack` configuration should already be setup and building successfully without using `webpack-plugin-serve`. Next, let's get the plugin setup for custom headers using `KOA` options directly:
+To get started, your `webpack` configuration should already be setup and building successfully without using `webpack-plugin-serve`. Next, let's get the plugin setup for custom headers using `koa` options directly:
 
 ```js
 const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
@@ -47,4 +47,4 @@ module.exports = {
 
 ### 🍰 Dessert
 
-You deserve some cookies (or biscuits or whatever they're call in your neck of the woods).
+You deserve some cookies (or biscuits or whatever they're called in your neck of the woods).
