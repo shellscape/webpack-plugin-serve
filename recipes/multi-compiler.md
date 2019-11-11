@@ -9,4 +9,4 @@ TODO: Note about secondary compilers needing refresh on change
 
 ### 🍰 Dessert
 
-You deserve some cookies (or biscuits or whatever they're call in your neck of the woods).
+You deserve some cookies (or biscuits or whatever they're called in your neck of the woods).

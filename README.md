@@ -233,7 +233,7 @@ Windows users without WSL 2.0 are encouraged to install it to make use of this f
 Type: `String | Array(String) | Object`<br>
 Default: `compiler.context`
 
-Sets the directory(s) from which static files will be served from the root of the application. Bundles will be served from the `output` config setting. For specifying options for static file directories, please see [`middleware > static`](#middleware). For a in-depth example, check out the [Static HTML File](./recipes/static-html-files.md) recipe.
+Sets the directory(s) from which static files will be served from the root of the application. Bundles will be served from the `output` config setting. For specifying options for static file directories, please see [`middleware > static`](#static). For a in-depth example, check out the [Static HTML File](./recipes/static-html-files.md) recipe.
 
 The `static` option supports [glob patterns](https://github.com/sindresorhus/globby#globbypatterns-options) when an `Object` is passed with a `glob` property. This is useful for targeting only specific directories in a complex tree. Users may also provide an `options` property which supports [globby options](https://github.com/sindresorhus/globby#options). For example:
 
