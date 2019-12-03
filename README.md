@@ -268,7 +268,7 @@ If `true`, instructs the server to halt middleware processing until the current 
 
 ## Proxying
 
-Proxying with `webpack-plugin-serve` is supported via the [`middleware`](#middleware) option. But while this plugin module doesn't contain any fancy options processing for proxying, it does include access to the [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware) module by default, and the rest should look familiar to users of `http-proxy-middleware`.
+Proxying with `webpack-plugin-serve` is supported via the [`middleware`](#middleware) option, specifically the [`proxy` built-in](./recipes/proxies.md). But while this plugin module doesn't contain any fancy options processing for proxying, it does include access to the [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware) module by default, and the rest should look familiar to users of `http-proxy-middleware`.
 
 ```js
 // webpack.config.js
