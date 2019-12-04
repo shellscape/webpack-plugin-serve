@@ -233,7 +233,7 @@ Windows users without WSL 2.0 are encouraged to install it to make use of this f
 Type: `String | Array(String) | Object`<br>
 Default: `compiler.context`
 
-Sets the directory(s) from which static files will be served from the root of the application. Bundles will be served from the `output` config setting. For specifying options for static file directories, please see [`middleware > static`](#static). For a in-depth example, check out the [Static HTML File](./recipes/static-html-files.md) recipe.
+Sets the directory(s) from which static files will be served from the root of the application. Bundles will be served from the `output` config setting. For specifying options for static file directories, please see [`koa-static`](https://github.com/koajs/static). For an in-depth example, check out the [Static HTML File](./recipes/static-html-files.md) recipe.
 
 The `static` option supports [glob patterns](https://github.com/sindresorhus/globby#globbypatterns-options) when an `Object` is passed with a `glob` property. This is useful for targeting only specific directories in a complex tree. Users may also provide an `options` property which supports [globby options](https://github.com/sindresorhus/globby#options). For example:
 
@@ -268,7 +268,7 @@ If `true`, instructs the server to halt middleware processing until the current 
 
 ## Proxying
 
-Proxying with `webpack-plugin-serve` is supported via the [`middleware`](#middleware) option. But while this plugin module doesn't contain any fancy options processing for proxying, it does include access to the [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware) module by default, and the rest should look familiar to users of `http-proxy-middleware`.
+Proxying with `webpack-plugin-serve` is supported via the [`middleware`](#middleware) option, specifically the [`proxy` built-in](./recipes/proxies.md). But while this plugin module doesn't contain any fancy options processing for proxying, it does include access to the [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware) module by default, and the rest should look familiar to users of `http-proxy-middleware`.
 
 ```js
 // webpack.config.js
