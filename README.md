@@ -163,7 +163,7 @@ If `true`, will instruct the client to perform a full page reload after each bui
 _Note: This option overrides any value set for the `hmr` option property._
 
 ### `log`
-Type: `String`<br>
+Type: `Object`<br>
 Default: `{ level: 'info' }`<br>
 Valid `level` Values: `'trace' | 'debug' | 'info' | 'warn' | 'error'`
 
