@@ -69,7 +69,7 @@
     "del": "^5.0.0",
     "del-cli": "^3.0.0",
     "eslint-config-shellscape": "^2.1.0",
-    "execa": "^2.0.3",
+    "execa": "^4.0.0",
     "get-port": "^5.1.1",
     "lint-staged": "^10.2.2",
     "make-dir": "^3.0.0",
