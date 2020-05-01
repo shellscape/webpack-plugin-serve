@@ -42,7 +42,7 @@
     "chalk": "^4.0.0",
     "connect-history-api-fallback": "^1.5.0",
     "globby": "^11.0.0",
-    "http-proxy-middleware": "^0.19.0",
+    "http-proxy-middleware": "^1.0.3",
     "is-path-cwd": "^2.2.0",
     "is-promise": "^4.0.0",
     "koa": "^2.5.3",
