@@ -8,6 +8,9 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
+          name: Update NPM
+          command: npm install npm@latest -g
+      - run:
           name: Node Info
           command: node --version && npm --version
       - run:
@@ -17,22 +20,22 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
-  node-v12-latest:
+  node-v14-latest:
     machine: true
     steps:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
-          name: Setup Node 12 and Run Tests
+          name: Run Tests
           command: |
             set +e
             touch $BASH_ENV
             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
             export NVM_DIR="/opt/circleci/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            nvm install 12
-            nvm alias default 12
+            nvm install 14
+            nvm alias default 14
             node --version && npm --version
             npm install
             npm run ci:coverage
@@ -51,10 +54,10 @@ jobs:
           name: NPM Rebuild
           command: npm install
       - run:
-          name: Run linting.
+          name: Run linting
           command: npm run lint
       - run:
-          name: Run NSP Security Check.
+          name: Run Security Check
           command: npm run security
       - run:
           name: Validate Commit Messages
@@ -64,15 +67,15 @@ workflows:
   validate:
     jobs:
       - dependency_cache
-      - analysis:
+      # - analysis:
+      #     requires:
+      #       - dependency_cache
+      #     filters:
+      #       tags:
+      #         only: /.*/
+      - node-v14-latest:
           requires:
-            - dependency_cache
-          filters:
-            tags:
-              only: /.*/
-      - node-v12-latest:
-          requires:
-            - analysis
+            - dependency_cache # analysis
           filters:
             tags:
               only: /.*/
