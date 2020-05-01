@@ -76,7 +76,7 @@
     "node-fetch": "^2.2.0",
     "nyc": "^15.0.1",
     "pre-commit": "^1.2.2",
-    "puppeteer": "^1.15.0",
+    "puppeteer": "^3.0.2",
     "webpack": "^4.28.1",
     "webpack-nano": "^1.0.0"
   },
