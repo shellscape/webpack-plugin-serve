@@ -59,9 +59,6 @@ jobs:
           name: Run linting
           command: npm run lint
       - run:
-          name: Run Security Check
-          command: npm run security
-      - run:
           name: Validate Commit Messages
           command: npm run ci:lint:commits
 workflows:
@@ -69,15 +66,15 @@ workflows:
   validate:
     jobs:
       - dependency_cache
-      # - analysis:
-      #     requires:
-      #       - dependency_cache
-      #     filters:
-      #       tags:
-      #         only: /.*/
+      - analysis:
+          requires:
+            - dependency_cache
+          filters:
+            tags:
+              only: /.*/
       - node-v14-latest:
           requires:
-            - dependency_cache # analysis
+            - analysis
           filters:
             tags:
               only: /.*/
