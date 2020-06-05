@@ -25,7 +25,7 @@
     "faq:toc": "echo 'temporarily disabled' # markdown-toc -i .github/FAQ.md",
     "lint": "eslint --fix --cache lib test",
     "lint-staged": "lint-staged",
-    "security": "npm audit",
+    "security": "npm audit --audit-level=moderate",
     "test": "ava"
   },
   "files": [
@@ -67,7 +67,7 @@
     "ava": "^2.2.0",
     "cpy": "^8.1.0",
     "del": "^5.0.0",
-    "del-cli": "^3.0.0",
+    "del-cli": "^3.0.1",
     "eslint-config-shellscape": "^2.1.0",
     "execa": "^4.0.0",
     "get-port": "^5.1.1",
