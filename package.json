@@ -45,6 +45,7 @@
     "http-proxy-middleware": "^1.0.3",
     "is-path-cwd": "^2.2.0",
     "is-promise": "^4.0.0",
+    "isobject": "^4.0.0",
     "koa": "^2.5.3",
     "koa-compress": "^4.0.1",
     "koa-connect": "^2.0.1",
