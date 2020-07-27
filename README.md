@@ -77,12 +77,15 @@ module.exports = {
 
 ```
 
-_Note: For more information and examples on configuring the `entry` property, please see the [Configuring Entry Points](./entry-points.md) recipe._
+_Note: For more information and examples on configuring the `entry` property, please see the [Configuring Entry Points](./recipes/entry-points.md) recipe._
 
 And run `webpack`:
 
 ```console
 $ npx wp
+...
+⬡ wps: Server Listening on: http://[::]:55555
+...
 ```
 
 ## Options
