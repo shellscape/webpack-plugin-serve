@@ -41,6 +41,27 @@ test('ramdisk', async (t) => {
   proc.kill('SIGTERM');
 });
 
+test('ramdisk with options', async (t) => {
+  const proc = execa('wp', ['--config', 'ramdisk/custom-options.js'], {
+    cwd: resolve(fixturePath, '..')
+  });
+  const { stderr, stdout } = proc;
+  const pathTest = 'Build being written to ';
+  const doneTest = '[emitted]';
+
+  const path = await waitFor(pathTest, stdout);
+
+  t.regex(path, /(volumes|mnt)\/wps\/[a-f0-9]{32}\/output/i);
+
+  await waitFor(doneTest, stderr);
+
+  const exists = existsSync(join(fixturePath, 'output/output.js'));
+
+  t.truthy(exists);
+
+  proc.kill('SIGTERM');
+});
+
 test('context error', async (t) => {
   try {
     await execa('wp', ['--config', 'ramdisk/config-context-error.js'], {
