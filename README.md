@@ -138,6 +138,8 @@ If `true`, will enable [`Hot Module Replacement`](https://webpack.js.org/concept
 
 _Note: If the build process generates errors, the client (browser) will not be notified of new changes and no HMR will be performed. Errors must be resolved before HMR can proceed._
 
+_Note: If using in combination with `http2`, the `http2` option `allowHTTP1` must be enabled for the HMR WS connection to work._
+
 ### `host`
 Type: `String | Promise`<br>
 Default: `::` for IPv6, `127.0.0.1` for IPv4
@@ -150,6 +152,8 @@ _Note: The default URI is `http://[::]:{port}`. For more info, please read [the 
 Type: `boolean` | [`http2` options](https://nodejs.org/api/http2.html#http2_http2_createserver_options_onrequesthandler) | [secure `http2` options](https://nodejs.org/api/http2.html#http2_http2_createsecureserver_options_onrequesthandler)
 
 If set, this option will instruct the server to enable HTTP2. Properties for this option should correspond to [HTTP2 options][http2] or [HTTP2 SSL options][http2tls].
+
+_Note: If using in combination with `hmr`, the option `allowHTTP1` must be enabled for the HMR WS connection to work._
 
 ### `https`
 Type: `Object`<br>
