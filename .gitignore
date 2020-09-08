@@ -15,3 +15,6 @@ wps-hmr.*
 coverage.lcov
 
 dist
+
+*.pem
+*.key
