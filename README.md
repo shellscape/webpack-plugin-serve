@@ -151,7 +151,7 @@ _Note: The default URI is `http://[::]:{port}`. For more info, please read [the 
 ### `http2`
 Type: `boolean` | [`http2` options](https://nodejs.org/api/http2.html#http2_http2_createserver_options_onrequesthandler) | [secure `http2` options](https://nodejs.org/api/http2.html#http2_http2_createsecureserver_options_onrequesthandler)
 
-If set, this option will instruct the server to enable HTTP2. Properties for this option should correspond to [HTTP2 options][http2] or [HTTP2 SSL options][http2tls].
+If set, this option will instruct the server to enable HTTP2. Properties for this option should correspond to [HTTP2 options][http2] or [HTTP2 SSL options][http2tls]. Browsers currently do not support unencrypted HTTP2 connections, so you will need to enable SSL for this to work properly.
 
 _Note: If using in combination with `hmr`, the option `allowHTTP1` will be enabled by default for the HMR WS connection to work._
 
