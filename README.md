@@ -138,7 +138,7 @@ If `true`, will enable [`Hot Module Replacement`](https://webpack.js.org/concept
 
 _Note: If the build process generates errors, the client (browser) will not be notified of new changes and no HMR will be performed. Errors must be resolved before HMR can proceed._
 
-_Note: If using in combination with `http2`, the `http2` option `allowHTTP1` will enabled by default for the HMR WS connection to work._
+_Note: If using in combination with `http2`, the `http2` option `allowHTTP1` will be enabled by default for the HMR WS connection to work._
 
 ### `host`
 Type: `String | Promise`<br>
