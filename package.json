@@ -40,6 +40,7 @@
   "dependencies": {
     "chalk": "^4.0.0",
     "connect-history-api-fallback": "^1.5.0",
+    "escalade": "^3.1.0",
     "globby": "^11.0.0",
     "http-proxy-middleware": "^1.0.3",
     "is-path-cwd": "^2.2.0",
@@ -54,7 +55,6 @@
     "onetime": "^5.1.0",
     "open": "^7.0.3",
     "p-defer": "^3.0.0",
-    "read-pkg-up": "^7.0.1",
     "rimraf": "^3.0.2",
     "strip-ansi": "^6.0.0",
     "superstruct": "^0.10.12",

@@ -30,7 +30,7 @@ test('ramdisk', async (t) => {
 
   const path = await waitFor(pathTest, stdout);
 
-  t.regex(path, /(volumes|mnt)\/wps\/[a-f0-9]{32}\/output/i);
+  t.regex(path, /(volumes|mnt)\/wps\/webpack-plugin-serve\/output/i);
 
   await waitFor(doneTest, stderr);
 
@@ -51,7 +51,7 @@ test('ramdisk with options', async (t) => {
 
   const path = await waitFor(pathTest, stdout);
 
-  t.regex(path, /(volumes|mnt)\/wps\/[a-f0-9]{32}\/output/i);
+  t.regex(path, /(volumes|mnt)\/wps\/webpack-plugin-serve\/output/i);
 
   await waitFor(doneTest, stderr);
 
@@ -86,4 +86,22 @@ test('cwd error', async (t) => {
     return;
   }
   t.fail();
+});
+
+test('ramdisk with empty package.json', async (t) => {
+  const fixturePath = join(__dirname, 'fixtures/ramdisk-empty-pkg');
+  const proc = execa('wp', [], { cwd: fixturePath });
+  const { stderr, stdout } = proc;
+  const pathTest = 'Build being written to ';
+  const doneTest = '[emitted]';
+
+  const path = await waitFor(pathTest, stdout);
+
+  t.regex(path, /(volumes|mnt)\/wps\/[a-f0-9]{32}\/output/i);
+
+  await waitFor(doneTest, stderr);
+
+  const exists = existsSync(join(fixturePath, 'output/output.js'));
+
+  t.truthy(exists);
 });
