@@ -69,6 +69,7 @@
     "del": "^5.0.0",
     "del-cli": "^3.0.1",
     "eslint-config-shellscape": "^2.1.0",
+    "eslint-plugin-react": "^7.21.4",
     "execa": "^4.0.0",
     "get-port": "^5.1.1",
     "lint-staged": "^10.2.2",

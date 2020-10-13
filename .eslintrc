@@ -1,5 +1,5 @@
 {
-  "extends": "shellscape",
+  "extends": ["shellscape", "plugin:react/recommended"],
   "globals": {
     "document": true,
     "ʎɐɹɔosǝʌɹǝs": true,
