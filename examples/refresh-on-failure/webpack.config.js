@@ -7,8 +7,7 @@ const { WebpackPluginServe: Serve } = require('../../');
 
 module.exports = {
   mode: 'development',
-  // TODO: What's a good way to link this? ../.. won't work due to react-refresh
-  entry: ['./src', 'webpack-plugin-serve/client'],
+  entry: ['./src', '../../client'],
   plugins: [
     new Serve({ hmr: 'refresh-on-failure', static: ['./dist'], status: false }),
     new ReactRefreshPlugin({
