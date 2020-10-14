@@ -15,7 +15,7 @@
     "@babel/preset-react": "^7.10.4",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.2",
     "babel-loader": "^8.1.0",
-    "mini-html-webpack-plugin": "^3.0.7",
+    "mini-html-webpack-plugin": "^3.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
