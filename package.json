@@ -77,7 +77,8 @@
     "nyc": "^15.0.1",
     "pre-commit": "^1.2.2",
     "puppeteer": "^3.0.2",
-    "webpack": "^4.43.0",
+    "react-refresh": "^0.8.3",
+    "webpack": "^4.44.2",
     "webpack-nano": "^1.0.0"
   },
   "keywords": [

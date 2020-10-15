@@ -20,6 +20,7 @@ Prepared dishes:
 
 [Angular](./angular/README.md)<br/>
 [create-react-app](./create-react-app/README.md)
+[refresh-on-failure](./refresh-on-failure/README.md)
 [React](./react/README.md)<br/>
 [React SSR](./react-ssr/README.md)<br/>
 [Vue](./vue/README.md)
