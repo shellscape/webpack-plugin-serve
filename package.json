@@ -1,6 +1,6 @@
 {
   "name": "webpack-plugin-serve",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "description": "A Development Server in a Webpack Plugin",
   "license": "MPL-2.0",
   "repository": "shellscape/webpack-plugin-serve",
@@ -39,9 +39,9 @@
     "webpack": "^4.20.2"
   },
   "dependencies": {
-    "@hapi/joi": "^15.1.0",
     "chalk": "^4.0.0",
     "connect-history-api-fallback": "^1.5.0",
+    "escalade": "^3.1.0",
     "globby": "^11.0.0",
     "http-proxy-middleware": "^1.0.3",
     "is-path-cwd": "^2.2.0",
@@ -56,15 +56,15 @@
     "onetime": "^5.1.0",
     "open": "^7.0.3",
     "p-defer": "^3.0.0",
-    "read-pkg-up": "^7.0.1",
     "rimraf": "^3.0.2",
     "strip-ansi": "^6.0.0",
+    "superstruct": "^0.10.12",
     "webpack-plugin-ramdisk": "^0.1.2",
     "ws": "^7.1.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.1.0",
-    "@commitlint/config-conventional": "^8.0.0",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "ava": "^2.2.0",
     "cpy": "^8.1.0",
     "del": "^5.0.0",
@@ -74,12 +74,13 @@
     "get-port": "^5.1.1",
     "lint-staged": "^10.2.2",
     "make-dir": "^3.0.0",
-    "node-fetch": "^2.2.0",
+    "node-fetch": "^2.6.1",
     "nyc": "^15.0.1",
     "pre-commit": "^1.2.2",
     "puppeteer": "^3.0.2",
     "tls-keygen": "^3.7.0",
-    "webpack": "^4.43.0",
+    "react-refresh": "^0.8.3",
+    "webpack": "^4.44.2",
     "webpack-nano": "^1.0.0"
   },
   "keywords": [

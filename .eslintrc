@@ -1,5 +1,5 @@
 {
-  "extends": "shellscape",
+  "extends": ["shellscape"],
   "globals": {
     "document": true,
     "ʎɐɹɔosǝʌɹǝs": true,
