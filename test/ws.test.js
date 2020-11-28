@@ -1,11 +1,12 @@
 const test = require('ava');
-const getPort = require('get-port');
 const Koa = require('koa');
 const router = require('koa-route');
 const defer = require('p-defer');
 const WebSocket = require('ws');
 
 const { middleware } = require('../lib/ws');
+
+const { getPort } = require('./helpers/port');
 
 test('websocket middleware', async (t) => {
   const app = new Koa();
