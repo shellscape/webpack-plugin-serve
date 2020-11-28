@@ -22,7 +22,7 @@ const waitFor = (text, stream) => {
   };
 };
 
-test('ramdisk', async (t) => {
+test.serial('ramdisk', async (t) => {
   const proc = execa('wp', [], { cwd: fixturePath });
   const { stderr, stdout } = proc;
   const pathTest = 'Build being written to ';
@@ -41,7 +41,7 @@ test('ramdisk', async (t) => {
   proc.kill('SIGTERM');
 });
 
-test('ramdisk with options', async (t) => {
+test.serial('ramdisk with options', async (t) => {
   const proc = execa('wp', ['--config', 'ramdisk/custom-options.js'], {
     cwd: resolve(fixturePath, '..')
   });
@@ -62,7 +62,7 @@ test('ramdisk with options', async (t) => {
   proc.kill('SIGTERM');
 });
 
-test('context error', async (t) => {
+test.serial('context error', async (t) => {
   try {
     await execa('wp', ['--config', 'ramdisk/config-context-error.js'], {
       cwd: resolve(fixturePath, '..')
@@ -75,7 +75,7 @@ test('context error', async (t) => {
   t.fail();
 });
 
-test('cwd error', async (t) => {
+test.serial('cwd error', async (t) => {
   try {
     await execa('wp', ['--config', '../config-cwd-error.js'], {
       cwd: join(fixturePath, 'cwd-error')
@@ -88,7 +88,7 @@ test('cwd error', async (t) => {
   t.fail();
 });
 
-test('ramdisk with empty package.json', async (t) => {
+test.serial('ramdisk with empty package.json', async (t) => {
   const fixturePath = join(__dirname, 'fixtures/ramdisk-empty-pkg');
   const proc = execa('wp', [], { cwd: fixturePath });
   const { stderr, stdout } = proc;

@@ -1,12 +1,12 @@
 const { resolve } = require('path');
 
-const getPort = require('get-port');
+const { getPort } = require('../../helpers/port');
 
 const { WebpackPluginServe: Serve } = require('../../../lib/');
 
 const serve = new Serve({
   host: 'localhost',
-  port: getPort({ port: 55555 })
+  port: getPort()
 });
 
 module.exports = [

@@ -1,10 +1,10 @@
-const getPort = require('get-port');
 const del = require('del');
 const webpack = require('webpack');
 const test = require('ava');
 const fetch = require('node-fetch');
 const defer = require('p-defer');
 
+const { getPort } = require('./helpers/port');
 const { make } = require('./fixtures/wait-for-build/make-config');
 
 let watcher;
