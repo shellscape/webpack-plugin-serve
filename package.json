@@ -16,7 +16,7 @@
     "ci:coverage": "nyc npm run test && nyc report --reporter=text-lcov > coverage.lcov",
     "ci:lint": "npm run lint && npm run security",
     "ci:lint:commits": "commitlint --from=${CIRCLE_BRANCH} --to=${CIRCLE_SHA1}",
-    "ci:test": "npm run test -- --verbose",
+    "ci:test": "npm run test -- --verbose --timeout=30000",
     "commitlint": "commitlint",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "dev": "npm run dev:clean && node node_modules/webpack-nano/bin/wp --config test/fixtures/simple/webpack.config.js",
