@@ -103,6 +103,11 @@ Type: `String`
 
 If set, allows for overriding the `WebSocket` address, which corresponds to the server address by default. Values for this option should be in a valid `{host}:{port}` format. e.g. `localhost:433`.
 
+#### `client.protocol`
+Type: `String`
+
+If set, allows for overriding the `WebSocket` protocol scheme string, which corresponds to the server protocol scheme by default. Values for this option should be one of the following: `ws` or `wss`.
+
 #### `client.retry`
 Type: `Boolean`
 
