@@ -10,8 +10,14 @@ test('defaults', (t) => {
 });
 
 test('client', (t) => {
-  const result = validate({ client: { address: '0', retry: false, silent: false } });
+  const result = validate({ client: { address: '0', protocol: "wss", retry: false, silent: false } });
   t.falsy(result.error);
+
+  const resultWs = validate({ client: { address: '0', protocol: "ws", retry: false, silent: false } });
+  t.falsy(resultWs.error);
+
+  const resultProtocolBad = validate({ client: { address: '0', protocol: "lala", retry: false, silent: false } });
+  t.truthy(resultProtocolBad.error);
 });
 
 test('error', (t) => {
