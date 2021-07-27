@@ -60,7 +60,7 @@
     "strip-ansi": "^6.0.0",
     "superstruct": "^0.12.1",
     "webpack-plugin-ramdisk": "^0.1.2",
-    "ws": "^7.1.0"
+    "ws": "^7.5.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
