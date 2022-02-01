@@ -230,6 +230,12 @@ If [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy), the modul
 
 If a value of `'minimal'` is set, the progress indicator will render as a small, colored bar at the top of the window. This can be useful when the default fancy progress indicator interferes with elements in the page.
 
+### `publicPath`
+Type: `String`<br>
+Default: `webpack.output.publicPath`
+
+Sets the publicPath that the server should use to serve assets. You probably only need to set this explicitly if you are using [Webpack's `auto` feature](https://webpack.js.org/guides/public-path/#automatic-publicpath) for public path detection.
+
 ### `ramdisk`
 Type: `boolean | Object`<br>
 Default: `false`<br>

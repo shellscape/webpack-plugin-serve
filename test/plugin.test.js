@@ -16,7 +16,8 @@ test('options manipulation', (t) => {
   const plugin = new WebpackPluginServe({
     allowMany: true,
     compress: true,
-    historyFallback: true
+    historyFallback: true,
+    publicPath: 'dist'
   });
   t.snapshot(plugin.options);
 });
