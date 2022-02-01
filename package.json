@@ -59,7 +59,7 @@
     "rimraf": "^3.0.2",
     "strip-ansi": "^6.0.0",
     "superstruct": "^0.12.1",
-    "webpack-plugin-ramdisk": "^0.1.2",
+    "webpack-plugin-ramdisk": "^0.2.0",
     "ws": "^7.5.3"
   },
   "devDependencies": {
